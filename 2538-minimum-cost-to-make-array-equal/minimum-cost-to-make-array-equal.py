@@ -3,12 +3,7 @@ from sortedcontainers  import SortedDict as dict
 
 class Solution:
     def minCost(self, nums: List[int], cost: List[int]) -> int:
-        
-
-
-        
-
-        #nums_cost = list(zip(nums, cost))
+    
         val_cost_map = dict(int)
 
         for i in range(len(nums)) :
@@ -22,13 +17,11 @@ class Solution:
         for val in val_cost_map:
             new_nums.append(val)
 
-        #p#rint(new_nums,val_cost_map)
-       
         sum_cost  = val_cost_map[new_nums[0]]
         for i in range(1, n):
             num = new_nums[i]
             gap = new_nums[i] - new_nums[i-1]
-            #print(gap,sum_cost)
+         
             pref_cost[i] = pref_cost[i-1] +  gap*(sum_cost)
             sum_cost  +=  val_cost_map[num]
         sum_cost  = val_cost_map[new_nums[-1]]
@@ -44,7 +37,7 @@ class Solution:
         return ans
 
 
-        #print(pref_cost, suff_cost)
+  
     
         
 
