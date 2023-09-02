@@ -2,7 +2,9 @@ import math
 class Solution:
     def countKSubsequencesWithMaxBeauty(self, s: str, k: int) -> int:
        
-    
+        #create map of count mapped to number of charcter having that counr
+        #choose the k unique charcter having the max coutn 
+        #remember sometimes, we migh end up choosing only some numbers from a character of particular count ,in that case , we might need combination to choose those character
         mp ={}
         seen  = set()
         MOD = 10**9+7 
@@ -18,7 +20,8 @@ class Solution:
         remain = k
         combi =1 
         res= 1
-    
+
+        #if k> number of unique character in the string , no possibility to form , the required beauty subsequence 
         if k>len(seen):
             return  0 
         for freq   in sorted(mp.keys(),reverse = True):
