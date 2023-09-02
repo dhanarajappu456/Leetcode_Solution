@@ -27,12 +27,13 @@ class Solution:
         for freq   in sorted(mp.keys(),reverse = True):
             if remain ==0 :
                 break
-       
+            #choosing all the leeters of this freq 
             if mp[freq]<=remain:
                 print( (freq**mp[freq]))
                 res *= (freq**mp[freq])
                 remain-= (mp[freq])
             
+            #end up choosing some chars from chars of particular count
             else:
             
                 combi   = (freq**remain)*math.comb(mp[freq],remain)
