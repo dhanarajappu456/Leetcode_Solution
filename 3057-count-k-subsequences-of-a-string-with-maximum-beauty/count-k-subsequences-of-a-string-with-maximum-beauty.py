@@ -18,7 +18,7 @@ class Solution:
         remain = k
         combi =1 
         res= 1
-        print(mp)
+    
         if k>len(seen):
             return  0 
         for freq   in sorted(mp.keys(),reverse = True):
@@ -31,11 +31,11 @@ class Solution:
                 remain-= (mp[freq])
             
             else:
-                print("combi",mp[freq],remain,math.comb(mp[freq],remain))
+            
                 combi   = (freq**remain)*math.comb(mp[freq],remain)
-                print(combi,id(combi))
+            
                 break
-        #print(combi,res,id(combi))
+      
         ans = (combi*res)%MOD
         
         return ans
