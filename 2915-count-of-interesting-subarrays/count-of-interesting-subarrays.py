@@ -10,9 +10,6 @@ class Solution:
         print(valid_array)
         reminder_cnt = dict(int)
         remainder_cnt[0]+=1
-
-
-
         #at each index of valid_array,  go on  finding the prefix sum ,which indicate cnt of numbers upto i 
         #that , obeys nums[i]%modulo =k 
         #then  to get count of subarray ending at i ,with cnt%modulo = k , we check the map, where  we store , 
@@ -20,10 +17,12 @@ class Solution:
         ans=0 
         prefix_sum=0 
         for i in range(n):
-
             prefix_sum  += valid_array[i]
             rem = (prefix_sum % modulo )
-            print(rem)
+
+            #remember we cant increase the rem to k , we can only decrease, by removing the prefix array, 
+            #increasing can be thought of as removing k-mod from rem
+
             ans +=remainder_cnt[(rem-k+modulo)%modulo]
             remainder_cnt[rem]+=1 
         return ans 
