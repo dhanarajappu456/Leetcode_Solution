@@ -20,7 +20,8 @@ class Solution:
             prefix_sum  += valid_array[i]
             rem = (prefix_sum % modulo )
 
-            #remember we cant increase the rem to k , we can only decrease, by removing the prefix array, 
+            #remember we cant increase the rem to k , we can only decrease, by removing the prefix array,
+            #that is in case where k>rem , we need to add the cyclc factor of modulo or in other way 
             #increasing can be thought of as removing k-mod from rem
 
             ans +=remainder_cnt[(rem-k+modulo)%modulo]
