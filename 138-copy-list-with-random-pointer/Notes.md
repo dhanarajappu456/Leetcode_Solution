@@ -1,0 +1,1 @@
+<h2>copy-list-with-random-pointer Notes</h2><hr>in the same while loop ,create the map of corresponding nodes, and assign the random and next nodes
