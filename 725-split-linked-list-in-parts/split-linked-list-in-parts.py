@@ -15,16 +15,17 @@ class Solution:
             tot+=1
             temp= temp.next
 
-        #calculate the min number of nodes in each list
+        #min_number of nodes will be present in each part
         min_nodes  = int(math.floor(tot/  k))
+        #in addition to that , the first few number of nodes, will have to accomodare 1 node from the extra nodes, 
+        #the number of such nodes having 1 extra node,  is = extr_nodes itself(since each accept on node) 
         max_nodes =  int(math.ceil(tot/  k))
-        # print(tot, min_nodes)
         extra_nodes  = tot- (min_nodes*k)
         temp =head
         pos =1
         while(temp):
+            #if else, to see if it  is the part that needs, min_number of nodes, or min_number of nodes+1 
             if pos<=extra_nodes:
-                #print(min_nodes, extra_nodes)
                 nodes  = min_nodes+1
         
             else:
