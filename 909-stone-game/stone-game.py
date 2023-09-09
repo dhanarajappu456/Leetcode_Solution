@@ -1,6 +1,8 @@
 class Solution:
     def stoneGame(self, piles: List[int]) -> bool:
 
+
+        lru_cache(None)
         def rec(i,j):
 
 
