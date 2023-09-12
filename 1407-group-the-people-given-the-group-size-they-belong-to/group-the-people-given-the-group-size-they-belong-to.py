@@ -14,7 +14,7 @@ class Solution:
             for memb in grp[size]:
                 res.append(memb)
                 if len(res)==size:
-                    ans.append(res.copy()) 
+                    ans.append(res) 
                     res  =[]
                
                    
