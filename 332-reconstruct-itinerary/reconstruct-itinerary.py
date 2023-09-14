@@ -29,12 +29,15 @@ class Solution:
                 ans=path.copy()
                 return True
             for i in range(len(adj[src])):
+                #if the neib is not visited from the source in the same path , then only visit it
                 if  adj[src][i]!= -1:
                     neib = adj[src][i]
+                    #changing the neib value to -1 as , it is to be not used from the same source again  , in the same path 
                     adj[src][i] = -1
                     if dfs(neib) :
                         
                         return True
+                    #change back the -1 to neib as the path didn't lead to a solution
                     adj[src][i] = neib
             path.pop(-1)
             return False
