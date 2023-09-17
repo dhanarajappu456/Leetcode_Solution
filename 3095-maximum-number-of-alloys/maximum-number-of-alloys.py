@@ -3,8 +3,9 @@ class Solution:
         
 
 
-
-
+    
+        #binserch on the units, cheking if the budget is possible or not
+        
         def canCreate(units):
             # remember we have to use the same machine , for creating all the units
             for machine in range(k):
