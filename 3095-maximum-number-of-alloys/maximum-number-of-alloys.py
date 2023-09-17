@@ -8,9 +8,9 @@ class Solution:
         
         def canCreate(units):
             # remember we have to use the same machine , for creating all the units
-            for machine in range(k):
+            for machine in range(k):  #k
                 totCost =  0
-                for metal in range(n):
+                for metal in range(n): #n
                     totCost+= (max(0,(composition[machine][metal]*units - stock[metal]))*cost[metal])
                
                 if totCost <= budget:
@@ -22,7 +22,7 @@ class Solution:
 
         ans = 0
         l,h = 0, 2*(10**8)
-        while(l<=h):
+        while(l<=h):     #const c 
             m  = (l+h)//2
             if canCreate(m):
                 ans  = m
@@ -30,3 +30,5 @@ class Solution:
             else:
                 h =m-1
         return ans
+
+        #t  = c*k*n  = 10^4  *c  = 10^5(c of order of 10)
