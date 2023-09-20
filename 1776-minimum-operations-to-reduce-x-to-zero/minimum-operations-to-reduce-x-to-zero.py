@@ -9,7 +9,7 @@ class Solution:
         #edge case
         #if complete array sum is ==x , then we need minimum n operations to reduce x to zero
         if sum(nums) ==x:
-            return n 
+            return n       
         
         #subarray that sum to k , is neede to be removed
         k =sum(nums) - x
