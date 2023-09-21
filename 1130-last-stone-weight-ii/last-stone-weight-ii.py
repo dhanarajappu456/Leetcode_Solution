@@ -1,3 +1,4 @@
+#this is variatoin of Minimum Difference Subsets! https://www.interviewbit.com/problems/minimum-difference-subsets/
 class Solution:
     def lastStoneWeightII(self, stones: List[int]) -> int:
 
@@ -7,13 +8,11 @@ class Solution:
         n =len(stones)
         memo = {}
 
-
+        target  = sum(nums)//2
         def rec(ind, sum_):
 
-            if ind ==n :
+            if sum_ >= target or ind ==n :
                 return abs(tot_sum - 2*sum_)
-
-
             if (ind, sum_) in memo:
                 return memo[(ind,sum_)]
             tk = rec( ind+ 1, sum_+nums[ind])
