@@ -1,41 +1,41 @@
 class Solution:
     def stoneGameIII(self, stoneValue: List[int]) -> str:
 
-        #we focus to maximise alices points , given that both of them play optimallly
-        #alice will  try out all the possibilites of choosing 3 possibiliies  and choose the max she could get, 
-        #bob will try all the 3  possibilities and choose the path that make allice get the minimum point
+        #infact we need  not have to have the 2d state, 
 
-        piles = stoneValue
-        n = len(piles)
-        memo  = {}
-      
+        '''
+        as we are asked to find the condition of who wins, 
+        we find the max difference from the perspective of the current player 
+        the idea  is brute for all possibility 
 
-      
-        def rec(ind,player):   
-            if ind>=n:
-                return 0
-            if(ind, player ) in memo:
-                return memo[(ind, player)]
-            if player:
-                points =  -float("inf")
-                piles_total =0
-                for i in range(3):
-                    if ind+i< n:
-                        piles_total += piles[ind+i]
-                        points  = max(points, piles_total + rec(ind+i+1 , 0))
-            else:
-                points  = float("inf")
-                for i in range(3):
-                    points  = min(points , rec(ind+i+1 , 1))
-            memo[(ind, player)] = points
-            return  memo[(ind, player)]
+        and the state i -> indicate  the max difference  out of all three possibility of choosing  the  elemeents , you can get for the current player 
+        this player returns this max diff, and then next player calculate max diff for him/her, using this max diff
         
-        aliceScore   = rec(0,1)
-        bobScore  = sum(piles)- aliceScore
+        '''
+        piles = stoneValue
 
-        if aliceScore == bobScore :
+        n = len(piles)
+        
+        @lru_cache(None)
+        def rec(i):
+
+            if i >=n :
+                return 0 
+            ans = -float("inf")
+            ans = max( ans, piles[i] -rec(i+1)) 
+            
+            if i+1<n:
+                ans = max(ans, piles[i] + piles[i+1] - rec(i+2)) 
+            if i+2<n :
+
+                ans  = max(ans, piles[i] + piles[i+1]+ piles[i+2]- rec(i+3))
+            return ans 
+        aliceMaxDiff = rec(0)
+        if aliceMaxDiff ==0:
             return "Tie"
-        elif aliceScore > bobScore:
+        elif aliceMaxDiff >0 :
             return "Alice"
-        return "Bob"     
+        else : 
+            return "Bob" 
+
         
