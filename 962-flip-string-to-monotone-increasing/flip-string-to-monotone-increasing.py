@@ -1,8 +1,17 @@
 class Solution:
     def minFlipsMonoIncr(self, s: str) -> int:
 
-        #when prev char is 0 i can have curr char as 0 or 1 , w
-        #when prev char is 1 , i can only have curr char as1 
+
+        '''
+
+        decision to flip current character depends up on the last character of the monotonic string made uptil current index-1 , 
+        
+        so we need to have this character passed on the sucessive call as the prev character 
+        
+       
+
+    also since the state (ind, prev)  - > is overlpaping subproblem we can cache it 
+        '''
 
 
         n = len(s)
