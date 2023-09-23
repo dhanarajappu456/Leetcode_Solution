@@ -2,17 +2,16 @@ class Solution:
     def stoneGameIII(self, stoneValue: List[int]) -> str:
 
         #we focus to maximise alices points , given that both of them play optimallly
-        #alice will  try out all the possibilites of choosing the 2m stones  and choose the max she could get, 
-        #bob will try all the 2m possibilities and choose the path that make allice get the minimum point
+        #alice will  try out all the possibilites of choosing 3 possibiliies  and choose the max she could get, 
+        #bob will try all the 3  possibilities and choose the path that make allice get the minimum point
 
         piles = stoneValue
         n = len(piles)
         memo  = {}
       
 
-      # the state m,, ind , player indicate , at the index from ind to end , with first,  2m possibility of choosing the piles
-      #if a particular player , plays , then what is the max codt alice can get 
-        def rec(ind,player):    #timw m*ind*player = logn * n * 2 = 12*(10^4)*2 = 10^5
+      
+        def rec(ind,player):   
             if ind>=n:
                 return 0
             if(ind, player ) in memo:
