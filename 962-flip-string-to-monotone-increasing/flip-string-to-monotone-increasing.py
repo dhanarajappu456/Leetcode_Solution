@@ -29,6 +29,8 @@ class Solution:
         so if current char is 0 , then  total flips_needed is flip+1, 
         else flips_needed is flip
 
+        (as the 1 , unlike 0   can come after  any kind of monotone , got before, be it 000..., 1111..., or 000...1111...  )
+
         so the min flip till the index, will be minimum of either of two
 
         ____________________
