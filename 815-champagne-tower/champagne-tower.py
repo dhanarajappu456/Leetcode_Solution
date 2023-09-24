@@ -4,7 +4,7 @@ class Solution:
 
         simulate the pouring 
 
-        we conatruct  2d array representing the glass, 
+        we construct  2d array representing the glass, 
 
         now four a glass at (i,j) it can receive the champagne , from two parents, one at (i-1,j-1) , and other at (i-1, j),
         also  remember, when a glass receive the champagne , from the  parent, it receive the a qunatitiy ,  after the parent took 1 glass, and , which is split into half 
@@ -33,7 +33,7 @@ class Solution:
    
         
         #remember, the qunatity of champagne at any glass, can't be more than 1 , no matter how much we poured from the above
-        
+
 
         return min(1,glass[query_row][query_glass] )
         
