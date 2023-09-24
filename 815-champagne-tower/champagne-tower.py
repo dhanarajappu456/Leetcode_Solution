@@ -2,38 +2,35 @@ class Solution:
     def champagneTower(self, poured: int, query_row: int, query_glass: int) -> float:
         '''
 
-        simulate the pouring 
+        recurive memo solution) 
 
-        we construct  2d array representing the glass, 
+        starting from the query glass, we go reursively to all possible parents, that fills the current glass, 
 
-        now four a glass at (i,j) it can receive the champagne , from two parents, one at (i-1,j-1) , and other at (i-1, j),
-        also  remember, when a glass receive the champagne , from the  parent, it receive the a qunatitiy ,  after the parent took 1 glass, and , which is split into half 
+        the recursion , will return the amount of champagne that is present in the glass at a time 
+        
+        since the same champagne might be called again , and the champagne present in a glass not change, so 
+        we can memoise it 
+
+
+        
         '''
 
-        glass  = [ [ 0 for j in range(i+1)] for i in range(query_row+1) ]
+        @lru_cache
+        def rec(i,j):
 
-        glass[0][0] = poured
 
+            if i==0 and j==0:
+                return poured
 
-        for i in range(1, query_row+1):
-
-            for j in range(i+1):
-
-                #receive the champagne from the 2 parents
-                left_liq , right_liq = 0,0
-                if 0<=j-1:
-
-                    left_liq = glass[i-1][j-1]
-
-                if j<i:
-           
-                    right_liq = glass[i-1][j]
+            if j<0 or j>i:
+                return 0
             
-                glass[i][ j ] = max(0, left_liq -1 )*0.5  + max(0, right_liq -1 )*0.5 
-   
-        
-        #remember, the qunatity of champagne at any glass, can't be more than 1 , no matter how much we poured from the above
+
+            left_par_content = rec (i-1, j-1 )  
+            right_par_content =   rec(i-1, j)
+
+            return max(0,left_par_content-1)/2 + max(0,right_par_content-1)/2
 
 
-        return min(1,glass[query_row][query_glass] )
+        return min(1,rec(query_row, query_glass))
         
