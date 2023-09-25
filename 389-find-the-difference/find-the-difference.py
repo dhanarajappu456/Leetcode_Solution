@@ -1,14 +1,6 @@
 class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
-
-        sl =list(s)
-        sl.sort()
-        tl = list(t)
-        tl.sort()
-
-        for i in range(len(sl)):
-
-            if tl[i]!=sl[i]:
-                return tl[i]
-        return tl[-1]
-        
+        xor_=0
+        for i in range(len(s)):
+            xor_^=ord(s[i])^ord(t[i])
+        return(chr(xor_^ord(t[-1])))
