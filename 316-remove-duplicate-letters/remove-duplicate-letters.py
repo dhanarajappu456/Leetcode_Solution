@@ -4,7 +4,7 @@ class Solution:
         stk = []
         taken = {char:False for char in s}
         lastIndex = {c:i for i,c in enumerate(s)}
-        print(lastIndex)
+    
         for currCharInd , currChar in enumerate(s):
             #"abacb" -> expected  = "abc"
             while(stk and ( stk[-1]>currChar and taken[currChar]==False and  lastIndex[stk[-1]]>currCharInd) ) :
