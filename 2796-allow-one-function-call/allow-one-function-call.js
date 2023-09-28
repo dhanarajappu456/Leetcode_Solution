@@ -2,24 +2,24 @@
  * @param {Function} fn
  * @return {Function}
  */
-
-var count =0 
-
 var once = function(fn) {
+    let called = false 
+	return function(...args){
 
-    let isCalled  = false
-    
-    return function(...args){
+        if (called === false){
 
-        if (isCalled ===false ){
-            isCalled = true
-            return fn(...args) 
+                called  = true
+                console.log(args[0] + args[1]+ args[2])
+                return fn(...args)
+        
         }
-
         return undefined
+
+
         
     }
 };
+
 
 /**
  * let fn = (a,b,c) => (a + b + c)
