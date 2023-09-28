@@ -30,11 +30,13 @@ class Solution:
 
 
         
-        2# trying out all combination  with remaining amount , but notice  , we have tp be careful not repeat same    #combination there fore it is essential to not consider the elment already considered
+        #2 trying out all combination  with remaining amount , but notice  , we have tp be careful not repeat same    #combination there fore it is essential to not consider the elment already considered
 
 
         
+        #t= n*amount * n (there is an inner loop)
 
+        #so this is less efficient  than the take not take approch
 
 
 
