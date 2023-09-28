@@ -3,6 +3,8 @@ class Solution:
 
     keep a pointer(i)for pushing in the even numbers at the front and another pointer that iterate(j) on the string as we move 
 
+    kind of technique involved in quicksort
+
     """
     def sortArrayByParity(self, nums: List[int]) -> List[int]:
 
