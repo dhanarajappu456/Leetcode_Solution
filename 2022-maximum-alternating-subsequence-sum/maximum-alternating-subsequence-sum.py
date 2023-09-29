@@ -1,6 +1,10 @@
 class Solution:
     def maxAlternatingSum(self, nums: List[int]) -> int:
+        '''
+        the state of the dp is ind, pos , which is , max value at from ind to end , given that the next chosen value is at odd position if pos is 1 else at even position ,  if value is at even position 
 
+        
+        '''
 
         n=len(nums)
 
