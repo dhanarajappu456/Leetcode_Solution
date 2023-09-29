@@ -1,23 +1,26 @@
+
+'''
+
+
+using 2 flags inc , dec
+
+at the end of the array , either inc or dec must be set , not both
+
+
+'''
+
+
 class Solution:
-    def isMonotonic(self, nums: List[int]) -> bool:
-        
-        n =len(nums)
-        if nums[0] <= nums[-1]:
-
-            for i in range(1,n):
-                if nums[i]>=nums[i-1]:
-                    continue
-                return False
-
-            return True
-        
-        
-
-        else:
-
-            for i in range(1,n):
-                if nums[i]<=nums[i-1]:
-                    continue
-                return False
-            return True
-        
+    def isMonotonic(self,nums):
+        inc=1
+        dec=1
+        a=nums
+        i=0
+        while(i<len(nums)-1):
+            if(a[i]>a[i+1]):
+                inc=0
+            if(a[i]<a[i+1]):
+                dec=0
+            i+=1       
+        return(inc or dec)        
+                
