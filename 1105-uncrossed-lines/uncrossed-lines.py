@@ -24,21 +24,18 @@ class Solution:
             ind1=i
             ind2=-1
             num = nums1[ind1]
-            if num in m2:
-                
-                if m2[num]:
-                    
-                    for ind in m2[num]:
-                        if ind >=j :
-                            ind2 = ind
-                            break
+           
+            for ind in m2[num]:
+                if ind >=j :
+                    ind2 = ind
+                    break
 
 
 
-                    if ind2>-1: 
-                  
-                        tk_ = 1+rec(ind1+1, ind2+1 )
-                    m2[num].append(ind2)
+            if ind2>-1: 
+            
+                tk_ = 1+rec(ind1+1, ind2+1 )
+            m2[num].append(ind2)
             not_ = rec(ind1+1,j)
             max_ = max(max_ , tk_, not_)
             memo[(i,j)] = max_
