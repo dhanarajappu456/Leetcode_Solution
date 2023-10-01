@@ -1,6 +1,6 @@
 class Solution(object):
     def reverseWords(self, s):
-        
+        #as we iterate through the given string , reverse each word
         n  = len(s)
         s = list(s)
         l=0 
