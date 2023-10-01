@@ -1,17 +1,15 @@
 class Solution(object):
     def reverseWords(self, s):
-        words= s.split(" ")
-        res =[ ]
-        for w in words:
+        chars= list(s)
+        print(chars)
+        l,r = 0,len(s)-1
+        while(l<r):
 
-            rev= ""
-            for c in w[::-1]:
-                rev+= c
-            res.append(rev)
-
-        print(res)
-
-
-        return " ".join(res)
-
-        
+            chars[l], chars[r] = chars[r],chars[l]
+            l+=1
+            r-=1
+        s ="".join(chars)
+        s = s.split(" ")
+        s = s[::-1]
+        return " ".join(s)
+       
