@@ -11,7 +11,7 @@ class Solution(object):
               
                 temp_l= l
                 temp_r = (r-1 if s[r]==" " else r )
-            
+                #2pointers - reversing 
                 while(temp_l<temp_r):
                     s[temp_l],s[temp_r] = s[temp_r],s[temp_l] 
                     temp_l+=1
