@@ -5,7 +5,8 @@ class Solution(object):
         s = list(s)
         l=0 
         for r in range(n):
-
+            #when we reach end of a word(delimiter is space), also note there is edge case , 
+            #where the last word may not have white space following , so take that condition as well
             if s[r] == " " or r == n-1:
               
                 temp_l= l
