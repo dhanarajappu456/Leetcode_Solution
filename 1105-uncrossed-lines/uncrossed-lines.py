@@ -1,44 +1,32 @@
-class Solution:
-    def maxUncrossedLines(self, nums1: List[int], nums2: List[int]) -> int:
+class Solution(object):
+    def maxUncrossedLines(self, nums1, nums2):
         
-        '''little optimisation , 
-            by making map , that group all the values to the indices, so that we only have to traverse that 
-            list for finiding ind2, not entire array always) 
-            '''
-        m2 =defaultdict(deque)
-        for j in range(len(nums2)) :
-            m2[nums2[j]].append(j)
 
-        m,n   = len(nums1) , len( nums2)
-        memo  = { }
-        def rec(i,j) :
+        '''
+        this is essentially asking for the longest common subsequence
+        
+        
+        '''
 
-            if i>=m or j>=n :
-                return 0 
-            if (i,j ) in memo: 
+        m,n  = len(nums1), len(nums2)
+        memo ={}
+        def rec(i,j):
+
+            if i<0 or j< 0:
+                return 0
+            if (i,j) in memo: 
+
                 return memo[(i,j)]
-            tk_ = -1
-            not_ = -1 
-            max_ =  0 
-          
-            ind1=i
-            ind2=-1
-            num = nums1[ind1]
-           
-            for ind in m2[num]:
-                if ind >=j :
-                    ind2 = ind
-                    break
 
+            if nums1[i] == nums2[j] :
 
+                ans =  1+ rec(i-1, j-1)
+            else:
 
-            if ind2>-1: 
+                ans  =  max(rec(i-1, j), rec(i,j-1))
+
+            memo[(i,j)] = ans
+            return memo[(i,j)]
+        
+        return rec(m-1, n-1)
             
-                tk_ = 1+rec(ind1+1, ind2+1 )
-            m2[num].append(ind2)
-            not_ = rec(ind1+1,j)
-            max_ = max(max_ , tk_, not_)
-            memo[(i,j)] = max_
-            return  memo[(i,j)] 
-
-        return rec(0, -1)
