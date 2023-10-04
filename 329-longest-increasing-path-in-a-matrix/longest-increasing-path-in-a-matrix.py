@@ -25,15 +25,19 @@ class Solution(object):
 
 
 
-        @lru_cache(None)
+        memo  = {}
+
+
         def dfs(i,j):
 
             if out(i,j):
                 return 0
 
+            if (i,j) in memo:
+                return memo[(i,j)]
             ans=1
             if (not out(i+1,j)) and( matrix[i+1][j] > matrix[i][j]):
-                print(i,j)
+       
                 ans = max(ans, 1+dfs(i+1,j))
             if (not out(i,j+1)) and( matrix[i][j+1] > matrix[i][j]):
           
@@ -46,7 +50,10 @@ class Solution(object):
             if (not out(i,j-1)) and( matrix[i][j-1] > matrix[i][j]):
           
                 ans = max(ans, 1+dfs(i,j-1))
-            return ans 
+            
+            memo[(i,j)]= ans
+
+            return memo[(i,j)]
         
 
         ans = 0
