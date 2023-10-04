@@ -1,11 +1,19 @@
 from functools import lru_cache
 class Solution(object):
-    def longestIncreasingPath(self, matrix):
-        """
-        :type matrix: List[List[int]]
-        :rtype: int
-        """
 
+    '''
+    the idea is simple we try starting from each cell , what is the longest Increasing path 
+
+    you can do this in two ways
+
+    1) with the state ( i,j ,prevalue)
+    2) with out using prevValue passed to next call , ie, state = (i,j)
+
+    in current call we make sure next call is made iff adjacent cell is greater than the current cell-(this is the way we did below)
+
+    '''
+    def longestIncreasingPath(self, matrix):
+       
         m,n   = len(matrix) ,len(matrix[0])
 
 
@@ -31,8 +39,6 @@ class Solution(object):
           
                 ans = max(ans, 1+dfs(i,j+1))
             
-            
-            
             if (not out(i-1,j)) and( matrix[i-1][j] > matrix[i][j]):
           
                 ans = max(ans, 1+dfs(i-1,j))
@@ -43,7 +49,7 @@ class Solution(object):
             return ans 
         
 
-        ans = -1
+        ans = 0
         for i in range(m):
 
             for j in range(n):
