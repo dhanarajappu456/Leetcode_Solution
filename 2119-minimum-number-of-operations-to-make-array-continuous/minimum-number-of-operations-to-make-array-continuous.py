@@ -4,7 +4,7 @@ class Solution:
         n =len(nums)
         ans  = n
         nums = sorted(set(nums))
-        print(nums)
+    
         for l in range(len(nums)): #o(n)
      
 
