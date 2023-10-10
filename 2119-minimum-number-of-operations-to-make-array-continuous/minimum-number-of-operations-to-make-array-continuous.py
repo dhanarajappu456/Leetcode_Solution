@@ -1,28 +1,35 @@
 class Solution:
     def minOperations(self, nums: List[int]) -> int:
-        #sliding window
-        
-        '''
-        we sort the array (of unique eleements - since we  the duplicate occurence  must always be changed to some value make the entire array continuous)
-
-        then starting at each index we find longest continous array(values from nums[l] .... nums[l]+n-1)
-        then remaning  elments (n-windowlength) need to be changed to fit into this window.
-
-        minimum among all of them is taken at the end 
-        '''
-        
-        
-        #to get only unique elements
+    
         n =len(nums)
-        nums = sorted(set(nums))  #nlogn
-        r=0 
         ans  = n
+        nums = sorted(set(nums))
+        print(nums)
         for l in range(len(nums)): #o(n)
-            end = nums[l]+n-1
-            while(r<len(nums) and nums[r]<=end): 
-                r+=1
-            windowLen  = r-1-l+1
-            ans = min(ans,n - windowLen)
+     
+
+            s,e = l+1,len(nums)-1
+            ind =l
+            target = nums[l] + n
+            while(s<=e):
+                m = (s+e)//2
+
+
+                if nums[m] == target:
+                    s = m
+                    break
+                elif  (nums[m]<target):
+                   
+                    s = m+1
+                
+                else:
+                    e = m-1
+            
+       
+            e = s
+            s = l
+            print(s,e,l)
+            ans = min(ans,n - (e-l))
         return ans
      
 
