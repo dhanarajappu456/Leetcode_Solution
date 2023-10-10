@@ -3,7 +3,7 @@ class Solution:
         #sliding window
         
         '''
-        we sort the array (of unique eleements )
+        we sort the array (of unique eleements - since we  the duplicate occurence  must always be changed to some value make the entire array continuous)
 
         then starting at each index we find longest continous array(values from nums[l] .... nums[l]+n-1)
         then remaning  elments (n-windowlength) need to be changed to fit into this window.
