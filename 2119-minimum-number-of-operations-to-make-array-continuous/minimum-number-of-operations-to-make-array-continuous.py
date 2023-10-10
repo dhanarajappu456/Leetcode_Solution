@@ -28,7 +28,7 @@ class Solution:
        
             e = s
             s = l
-            print(s,e,l)
+       
             ans = min(ans,n - (e-l))
         return ans
      
