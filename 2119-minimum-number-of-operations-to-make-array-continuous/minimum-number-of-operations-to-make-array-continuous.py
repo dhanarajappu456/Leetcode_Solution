@@ -1,6 +1,6 @@
 class Solution:
     def minOperations(self, nums: List[int]) -> int:
-        
+        #sliding window
         
         '''
         we sort the array (of unique eleements )
