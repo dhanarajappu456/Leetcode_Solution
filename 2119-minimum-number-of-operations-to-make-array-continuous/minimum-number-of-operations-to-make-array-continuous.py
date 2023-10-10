@@ -1,6 +1,13 @@
 class Solution:
     def minOperations(self, nums: List[int]) -> int:
-    
+        #binary search
+        '''
+
+        the same appproch as sliding window
+        at each index we need to find largest continuous array , for finding the right end of the window 
+        we use the binary search'''
+
+
         n =len(nums)
         ans  = n
         nums = sorted(set(nums))
@@ -33,6 +40,6 @@ class Solution:
         return ans
      
 
-     #t nlogn
+     #t nlogn + nlgon sorting  and binary search
      #s n (set)
         
