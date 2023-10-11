@@ -26,7 +26,7 @@ class Solution:
 
 
         #tabulation
-        
+
         charMap  = {'a':0 , 'e':1, 'i':2,'o':3,'u':4}
         dp =  [1,1,1,1,1]
 
@@ -41,7 +41,7 @@ class Solution:
                 
                 temp[prev] = ans 
             dp = temp
-        print(dp)     
+
         return sum(dp) % mod
                  
 
