@@ -20,5 +20,5 @@ class Solution:
             memo[(char,rem)] = ans
             return memo[(char, rem)]
 
-        return rec("",n)%mod
+        return rec("",n)
         
