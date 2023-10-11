@@ -33,7 +33,7 @@ s  26*n (preprocessed freq table , ) + aux space
     
 class Solution:
     def numWays(self, words: List[str], target: str) -> int:
-
+        #store the freq of each character at ith postion
         n= len(words[0])
         freq = dict(int)
         for i in range(n):
