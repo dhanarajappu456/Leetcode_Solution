@@ -4,28 +4,21 @@ class Solution:
 
         memo ={}
         mod  = 10**9+ 7
-        def rec(char,rem):
+        def rec(prevChar,rem):
 
             if rem ==0:
                 return 1
 
 
-            if (char , rem ) in memo:
-                return memo[(char, rem)]
+            if (prevChar , rem ) in memo:
+                return memo[(prevChar, rem)]
             ans = 0
 
-            for c in follow[char]:
+            for c in follow[prevChar]:
              
-                ans+= (rec(c,rem-1)%mod)
-            memo[(char,rem)] = ans
-            return memo[(char, rem)]
+                ans = (ans + rec(c,rem-1)%mod)%mod
+            memo[(prevChar,rem)] = ans
+            return memo[(prevChar, rem)]
 
-        return rec("",n)%mod
+        return rec("",n)
         
-
-        '''
-
-        t  5*n*5 = n
-        s  n + 5*n (aux space)  + memo
-         
-        '''
