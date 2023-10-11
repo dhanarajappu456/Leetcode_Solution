@@ -7,7 +7,6 @@ class Solution:
 
         flowers.sort()
         people_sorted  = sorted(people)
-        print(flowers)
         ans ={}
         n= len(people)
         ptr = 0 
@@ -15,7 +14,6 @@ class Solution:
         
         for i in range(n):
             t = people_sorted[i]
-           
             while(minHeap and minHeap[0]<t):
                 h.heappop(minHeap)
             #print(t, minHeap,minHeap[-1] if minHeap else 0 )
@@ -30,7 +28,6 @@ class Solution:
                     st,end = flowers[ptr][0],flowers[ptr][1]
                     h.heappush(minHeap ,end )
                     ptr+=1
-            #print(minHeap)
             ans[t] = len(minHeap)
         result =[0 for i in range(n)]
         for i in range(n):
