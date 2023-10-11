@@ -16,9 +16,16 @@ class Solution:
 
             for c in follow[char]:
              
-                ans = (ans + rec(c,rem-1)%mod)%mod
+                ans+= (rec(c,rem-1)%mod)
             memo[(char,rem)] = ans
             return memo[(char, rem)]
 
-        return rec("",n)
+        return rec("",n)%mod
         
+
+        '''
+
+        t  5*n*5 = n
+        s  n + 5*n (aux space)  + memo
+         
+        '''
