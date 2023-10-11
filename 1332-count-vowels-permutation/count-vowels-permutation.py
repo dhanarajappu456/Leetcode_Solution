@@ -1,5 +1,11 @@
 class Solution:
     def countVowelPermutation(self, n: int) -> int:
+
+        '''
+        at each position try out all the possibilities, 
+
+        the overlapping state is previous character chosen and the remaining number of characters
+        '''
         follow = {'':"aeiou",'a':"e",'e':"ai",'i':"aeou",'o':"iu",'u':"a"}
         mod  = 10**9+ 7
 
