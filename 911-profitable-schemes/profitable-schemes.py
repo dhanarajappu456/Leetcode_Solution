@@ -2,9 +2,18 @@ class Solution:
     def profitableSchemes(self, n: int, minProfit: int, group: List[int], profit: List[int]) -> int:
         '''
 
-        follow take not take approach of knapsack , with 3 states stored the ind,tot_profit earned so far, remaining number of people can be chosen
+        optimised 
 
-        
+        follow take not take approach of knapsack , with 3 states stored the ind,tot_profit earned so far, remaining number of people can be chosen, but this time we try reducing the range of values ot totprofit , as this is what gave time and memory limit exceeded  
+
+     
+
+the only difference we keep an upper bound for total profti that it never cross the minprofit 
+
+that is 
+as we follow take not take , approach , when we cross minprofit we reduce it to the minprofit , as we bother about knowing if the amount collected is atleast minprofit , and not bothered about exact amount, 
+
+thus the total profit constrained to 100 than 100*100 ( which case we got  time and memory limit exceeded)
 
         '''
         memo = {}
