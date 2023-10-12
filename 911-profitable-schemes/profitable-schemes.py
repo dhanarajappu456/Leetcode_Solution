@@ -4,6 +4,8 @@ class Solution:
 
         follow take not take approach of knapsack , with 3 states stored the ind,tot_profit earned so far, remaining number of people can be chosen
 
+        
+
         '''
         memo = {}
         mod   = 10**9+7
