@@ -2,7 +2,7 @@ class Solution:
     def profitableSchemes(self, n: int, minProfit: int, group: List[int], profit: List[int]) -> int:
         '''
 
-        optimised 
+        #optimised 
 
         follow take not take approach of knapsack , with 3 states stored the ind,tot_profit earned so far, remaining number of people can be chosen, but this time we try reducing the range of values ot totprofit , as this is what gave time and memory limit exceeded  
 
