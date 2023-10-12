@@ -42,7 +42,7 @@ thus the total profit constrained to 100 than 100*100 ( which case we got  time 
         
         '''
 
-        t  profit*tot*profit*n = 100 *(100*100) *100
-        s  profit*tot*profit*n = 100 *(100*100) *100
+        t  profit*tot*profit*n = 100 *100 *100
+        s  profit*tot*profit*n = 100 *100 *100
 
         '''
