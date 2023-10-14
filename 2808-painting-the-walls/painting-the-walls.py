@@ -1,3 +1,26 @@
+'''
+
+
+2d approach 
+
+
+we only need to keep track of walls painted by the paid worker
+
+
+
+we follow take not take approach ,
+
+we use 2 state ind, remaining , which indicate min cost paint all the walls from ind to end ,  where "remaining " number of walls are there
+
+
+
+
+
+t n^2 =  n = len (cost or time)
+s  n^2
+'''
+
+
 class Solution:
     def paintWalls(self, cost: List[int], time: List[int]) -> int:
         
