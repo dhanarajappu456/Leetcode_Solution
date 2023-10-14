@@ -43,4 +43,3 @@ class Solution:
             memo[(ind,remain_walls )]  =  min(tk,not_)
             return  memo[(ind,remain_walls )] 
         return rec(0, n-1)
-
