@@ -7,7 +7,7 @@ class Solution:
         n = len(nums)
         nums =[(num ,i) for i,num in enumerate(nums)]
         nums.sort()
-        print(nums)
+       
         def first(num):
             ans = n
             l,h  = 0,n-1
