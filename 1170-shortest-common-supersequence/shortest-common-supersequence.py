@@ -6,6 +6,10 @@ class Solution:
              generate lcs b/w the string fill in the non matching character wrt to the lcs
 
              the state(i,j) - the lcs string b/w  str1[i+1] and str2[0:j+1]
+
+             t m*n
+             s  m*n
+
             '''
         @lru_cache(None)
         def rec(i,j) :
