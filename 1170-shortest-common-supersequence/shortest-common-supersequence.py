@@ -1,6 +1,12 @@
 class Solution:
     def shortestCommonSupersequence(self, str1: str, str2: str) -> str:
-        
+        '''
+
+
+             generate lcs b/w the string fill in the non matching character wrt to the lcs
+
+             the state(i,j) - the lcs string b/w  str1[i+1] and str2[0:j+1]
+            '''
         @lru_cache(None)
         def rec(i,j) :
 
@@ -32,12 +38,12 @@ class Solution:
         while(i<len(lcs)):
             
             while(p1<m and( lcs[i]!=str1[p1])):
-                print("p1",str1[p1],p1,lcs[i],i)
+              
                 ans+=str1[p1]
                 p1+=1
 
             while(p2<n and (lcs[i]!=str2[p2])):
-                print("p2",str2[p2],p2,lcs[i],i)
+              
                 ans+=str2[p2]
                 p2+=1
             
