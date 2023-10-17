@@ -1,3 +1,4 @@
+
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
         
@@ -11,13 +12,18 @@ class Solution:
             if j ==0:
                 return i==0
             if i==0:
+                '''
+
+                if at p is still remaining 
+                then for it to be a valid mathc , it must be of form 
+                c1*c2*c3*  .... and so on
+                '''
+
                 for k in range(j+1):
                     if k%2!= 0:
                         if p[k]!="*":
                             return False
-                        
-                # # for example s=aa , p=aaaa, this must return False
-                # return "*" in p[:j]
+                    
                 return True
                         
                         
@@ -31,10 +37,10 @@ class Solution:
             elif p[j-1]=="*":
                 
                 if s[i-1]==p[j-2] or p[j-2]==".":
-                    #match or dont match(ignore char*)   
+                    #match or dont match(simply ignore char*  as we  matched to 0 chars form s)
                     ans =  rec(i-1,j) or rec(i,j-2)
                 else:
-                    #don't match
+                    #don't match(simply ignore char*  as we  matched to 0 chars form s)
                     ans  =  rec(i,j-2)
 
               
