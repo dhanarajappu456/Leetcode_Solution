@@ -60,9 +60,13 @@ class Solution:
             cycle[node] =  left or right 
             return cycle[node]
         
-        for i in range(n):
-            if rec(i):
-                return False
+        # for i in range(n):
+        #     if rec(i):
+        #         return False
+        # return True
+
+        if rec(0):
+            return False
         return True
 
 
