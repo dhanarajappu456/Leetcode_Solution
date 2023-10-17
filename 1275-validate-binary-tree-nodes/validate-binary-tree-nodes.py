@@ -60,15 +60,22 @@ class Solution:
             cycle[node] =  left or right 
             return cycle[node]
         
-        # for i in range(n):
-        #     if rec(i):
-        #         return False
-        # return True
+        #remember the test case may be such that it has more than one component
+        '''
 
-        if rec(0):
-            return False
+            n =
+            6
+            leftChild =
+            [1,-1,-1,4,-1,-1]
+            rightChild =
+            [2,-1,-1,-1,5,3]
+        '''
+        for i in range(n):
+            if rec(i):
+                return False
         return True
 
+      
 
             
 
