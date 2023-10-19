@@ -1,0 +1,1 @@
+<h2>backspace-string-compare Notes</h2><hr>2 pointer
