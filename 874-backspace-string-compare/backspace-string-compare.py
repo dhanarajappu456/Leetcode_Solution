@@ -1,22 +1,34 @@
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
-        stk1,stk2= [],[]
+        i,j =len(s)-1, len(t)-1
+        skipS, skipT = 0,0
+        while(i>=0 or  j>=0):
+            while(i>=0):
 
-        for i,c in enumerate(s):
-            if c=="#":
+                if s[i]=="#":
+                    skipS+=1
+                    i-=1
+                elif(skipS>0):
+                    skipS-=1
+                    i-=1
+                else:
+                    break
+            
+            while(j>=0):
 
-                if stk1:
-                    stk1.pop(-1)
-            else:
-                stk1.append(c)
-
-        
-        for i,c in enumerate(t):
-            if c=="#":
-
-                if stk2:
-                    stk2.pop(-1)
-            else:
-                stk2.append(c)
-        
-        return stk1==stk2
+                if t[j]=="#":
+                    skipT+=1
+                    j-=1
+                elif(skipT>0):
+                    skipT-=1
+                    j-=1
+                else:
+                    break
+            if(i>=0 and j>=0 and s[i]!=t[j]):
+                return False
+            if (i>=0) != (j>=0):
+                return False
+            i-=1
+            j-=1
+          
+        return True
