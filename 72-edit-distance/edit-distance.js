@@ -24,7 +24,7 @@ var minDistance = function(word1, word2) {
             return  (i+j);
         }
 
-        if(memo[i][j]!=-1 ){
+        if(memo[i][j]!==-1 ){
 
             return memo[i][j];
         }
