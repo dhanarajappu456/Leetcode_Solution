@@ -19,7 +19,7 @@ var minDistance = function(word1, word2) {
 
     function rec( i,j) {
 
-        if (i==0 || j==0){
+        if (i===0 || j===0){
 
             return  (i+j);
         }
@@ -33,7 +33,7 @@ var minDistance = function(word1, word2) {
 
         let ans= 0;
 
-        if (word1.charAt(i-1)== word2.charAt(j-1)){
+        if (word1.charAt(i-1)=== word2.charAt(j-1)){
 
             ans = rec(i-1,j-1); 
         }
