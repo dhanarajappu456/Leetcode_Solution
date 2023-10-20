@@ -36,9 +36,12 @@ var NestedIterator = function(nestedList) {
 
         this.list  = [];
         this.p = 0;
-        var rec =  (item )=>{
+        // remember to use arrow function here,  since inside arrow function get refernced to the this of enclosing context
 
+        // but if we has  normal function here ,  this would be referred to window object , or undefined , if you want to sue function itself, then you have to explicitly bind the context of this of  rec function to the outer object
+        function rec(item){
 
+            
             if( item.getInteger()!==null){
                 
                 this.list.push(item.getInteger());
@@ -49,16 +52,17 @@ var NestedIterator = function(nestedList) {
 
             for(let it of item.getList() ){
 
-                rec(it);
+                bound(it);
             }
             
 
         }
-
+        //binding this of rec to outer  object , and creating a new function called bound
+        let bound = rec.bind(this)
         for (let item of  nestedList){
 
 
-            rec(item);
+            bound(item);
         }
      
     
