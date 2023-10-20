@@ -58,12 +58,13 @@ var NestedIterator = function(nestedList) {
 
         }
         //binding this of rec to outer  object , and creating a new function called bound
-        let bound = rec.bind(this)
+        let bound = rec.bind(this);
         for (let item of  nestedList){
 
-
+            console.log(bound);
             bound(item);
         }
+     
      
     
 };
