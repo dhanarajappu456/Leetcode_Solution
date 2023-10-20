@@ -38,7 +38,9 @@ var NestedIterator = function(nestedList) {
         this.p = 0;
         // remember to use arrow function here,  since inside arrow function get refernced to the this of enclosing context
 
-        // but if we has  normal function here ,  this would be referred to window object , or undefined , if you want to sue function itself, then you have to explicitly bind the context of this of  rec function to the outer object
+        // but if we has  normal function here ,  this would be referred to window object , or undefined , 
+        //if you want to sue function itself, then you have to explicitly bind(using bind()function ) or (call() function  )  the context(this) of   the outer object with  the context of   rec function 
+        
         function rec(item){
 
             
