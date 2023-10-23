@@ -3,13 +3,8 @@ class Solution:
         if n<=0:
             return False
         
-        while(n>=4):
 
-            if n%4!=0 :
-                return False
-
-            n/=4
-        return n==1
+        return math.log(n,4)%1 ==0
 
         
 
