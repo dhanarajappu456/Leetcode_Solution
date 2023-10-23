@@ -1,3 +1,5 @@
-<h2>power-of-four Notes</h2><hr>using logarithm to base 4 , 
+<h2>power-of-four Notes</h2><hr>'''
 
-check log(num, 4) is and integer, not fraction 
+        any num which is power  of 4 has property , 
+        1) it is power of 2  and
+        2) num-1 is mul(3)
