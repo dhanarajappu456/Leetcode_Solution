@@ -1,7 +1,11 @@
 class Solution:
     def isPowerOfTwo(self, n: int) -> bool:
+        
 
-        if n<=0:
+        if n<=0: 
             return False
-        return n&(n-1)==0
+        
+        maxPow2 = 2**30
+
+        return maxPow2%n ==0
         
