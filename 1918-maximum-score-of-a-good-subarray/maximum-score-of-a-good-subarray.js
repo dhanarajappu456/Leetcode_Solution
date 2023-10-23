@@ -12,7 +12,7 @@ var maximumScore = function(nums, k) {
     for(let i = 0 ;i<nums.length ;i++){
 
         num  = nums[i]
-        while(stk && stk[stk.length-1][1]>= num){
+        while(stk.length>0  && stk[stk.length-1][1]>= num){
 
 
             stk.pop()
@@ -28,7 +28,7 @@ var maximumScore = function(nums, k) {
 
         num  = nums[i]
         
-        while(stk &&  stk[stk.length-1][1]>= num){
+        while(stk.length>0 &&  stk[stk.length-1][1]>= num){
             stk.pop()
         
 
