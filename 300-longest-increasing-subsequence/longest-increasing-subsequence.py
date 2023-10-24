@@ -18,5 +18,11 @@ class Solution:
             ans = max(ans, len(Lis))
         return ans 
 
+        '''
+        t nlogn 
+        s n - at worst 
+
+        '''
+
         
         
