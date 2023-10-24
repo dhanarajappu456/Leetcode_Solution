@@ -5,6 +5,8 @@ like the tabulation we use in the lis , dp  store at each index ind,  what is th
 
 the inner loop of  earlier tabulation is optimised with sliding window max
 
+you can also use the deque to find the sliding window maximum
+
 '''
 import heapq as h 
 class Solution:
