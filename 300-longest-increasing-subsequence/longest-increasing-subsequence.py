@@ -1,5 +1,10 @@
 import bisect as bs 
 
+'''
+we store the LIS in the Lis array , length of which is LIS length so far
+note the lis array may not be actual lis elements , but its length would be 
+binary search  -to find the position in Lis array where the num cn be inserted
+'''
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         Lis  = []
