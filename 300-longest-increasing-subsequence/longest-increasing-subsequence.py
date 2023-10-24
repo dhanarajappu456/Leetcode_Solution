@@ -5,14 +5,20 @@ class Solution:
         
         n= len(nums)
         
-      
-        dp =[[0 for j in range(n+1)] for i in range(n+1)]
-        
-        for ind in range(n-1, -1,-1):
-            for preInd in range(0,ind+1):
-                take= float("-inf")
-                if preInd== 0 or nums[ind]>nums[preInd-1]:
-                    take   = 1+ dp[ind+1][ind+1]
-                notTake = dp[ind+1][preInd]
-                dp[ind][preInd] =  max(take,notTake)
-        return dp[0][0]
+        #lis ending at each index
+        dp = [1 for i in range(n)]
+        ans  =1
+        i=0
+        while(i<n):
+
+            j=i-1
+            while(j>-1):
+                if nums[j]<nums[i]:
+                    
+                    dp[i]= max(dp[i], 1+dp[j])
+
+                j-=1
+            ans  = max( ans, dp[i])
+            i+=1
+        print(dp)
+        return ans
