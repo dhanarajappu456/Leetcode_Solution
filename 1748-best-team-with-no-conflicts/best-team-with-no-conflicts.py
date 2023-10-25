@@ -14,7 +14,7 @@ class Solution:
         arr = [(ages[i], scores[i]) for i in range(len(scores))]
 
         #we sort based on age, but remember we might have sama ages , in which case we need to sort them based on the
-        #increasing ages
+        #increasing score
         arr.sort( key = lambda x:(x[0], x[1]))
         n = len(arr)
         dp = [[0 for prev_scoreind in range(n+1)] for ind in range(n+1)]
