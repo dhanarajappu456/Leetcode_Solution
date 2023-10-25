@@ -1,7 +1,12 @@
 class Solution:
     def kthGrammar(self, n: int, k: int) -> int:
 
+        '''
 
+        consider it as a graph and , since the position is n,k is given , we need to find teh postion of the 
+        valus in the new grpah  as we traverse in a bst fashion . 
+        like bst traversal 
+        '''
         ans  = 0 
         i,j =0,0
         curr = 0
@@ -17,8 +22,7 @@ class Solution:
             else:
                 i,j = i+1, 2*j+1
                 k = k-2**(n-1)
-                curr = 1 if curr ==0 else 0
-            
+                curr = 1 if curr ==0 else 0  
             ans = curr
 
 
