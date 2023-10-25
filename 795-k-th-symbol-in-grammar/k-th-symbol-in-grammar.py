@@ -2,7 +2,7 @@ class Solution:
     def kthGrammar(self, n: int, k: int) -> int:
 
         '''
-
+        since the tree formed is a perfect bin tree-( all levels filled completely)
         consider it as a graph and , since the position is n,k is given , we need to find teh postion of the 
         valus in the new grpah  as we traverse in a bst fashion . 
         like bst traversal 
