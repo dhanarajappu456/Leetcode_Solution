@@ -30,4 +30,10 @@ class Solution:
            
         return ans
 
+        '''
+        let total nodes in graph =m = 2*n
+        t logm 
+        s aux space - (logm )
+        '''
+
         
