@@ -6,10 +6,9 @@ class Solution:
         
 
         here we sort it based on age
-        then we apply the take  and not take , approac, with (ind, previous-score) as the state
+        then it becomes the lis problem 
 
-        tabulation of take or not take - instead of prevsCore we take prevind(beacuse index range is known rather than score, so
-        that we can crete the dp table)
+        and the dp[i] stores the max score from 0 to i in the sorted array ending at i(ie, including the score at index i in the arr)
         '''
         arr = [(ages[i], scores[i]) for i in range(len(scores))]
 
@@ -17,30 +16,24 @@ class Solution:
         #increasing score
         arr.sort( key = lambda x:(x[0], x[1]))
         n = len(arr)
-        dp = [[0 for prev_scoreind in range(n+1)] for ind in range(n+1)]
+        ans = 0
+        dp = [ arr[i][1] for i in range(n)]
 
-        for ind in range(n-1, -1, -1):
-            #note here we mapped the prev index range form [-1 to n-1 ]to [0 to n]
-            for prevScoreInd in range(ind+1):
-                tk = 0
-                if prevScoreInd == 0 or arr[ind][1] >= arr[prevScoreInd-1][1]:
-                    tk = arr[ind][1] + dp[ind+1][ind+1]
-                no_take = dp[ind+1][prevScoreInd]
-        
-                dp[ind][prevScoreInd] = max(tk, no_take)
+        for i in range(n):
+            j= i-1
+            while(j>=0):
 
+                if arr[j][1]<=arr[i][1]:
 
-        return dp[0][0]
-
-
-
-
-
-
+                    dp[i] = max(dp[i ], arr[i][1]+ dp[j])
+                
+                j-=1
+            ans = max(ans, dp[i])
+        return ans
 
         '''
 
         t n^2
-        s n^2 
+        s n
 
         '''
