@@ -64,7 +64,7 @@ class Solution:
 
 
     '''
-    t  n^2 (n= word length)
+    t  n^2 (n= word length) + mk(creeating the triem of word dict , m = wordidct length , k = length of each word in worddict)
     s  n 
 
     '''
