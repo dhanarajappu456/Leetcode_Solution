@@ -31,7 +31,7 @@ class Solution:
        
         ans=0 
         for root in arr: 
-            ans =(ans + rec( root)%mod)%mod
+            ans =(ans%mod + rec( root)%mod)%mod
     
         return ans
 
