@@ -1,31 +1,37 @@
 from collections import defaultdict as dict 
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
-        d = dict(int)
-        nums.sort()
-        for i,num in enumerate(nums):
+        
+        counts = Counter(nums)
+        '''
+        this stores the max we can earn when choosing the prev number and not choocing the prev number
+        '''
+        prevChoice1 , prevChoice2 = 0,0
+        nums  = sorted(list(set(nums)))
+        n = len(nums)
+        for i in range(n-1, -1,-1):
+            '''currChoice1 is including the number
+            curr choice 2 is max when not including the current number'''
+            currChoice1 = nums[i]*counts[nums[i]]
 
-              d[num] = i
-  
-        n  = len(nums)
-  
-        @lru_cache(None)
-        def rec(ind):
+            #a)case choosing the current number 
+            # 1)if prev number visited is successsor of current, then , prev number cant be taken , 
+            #hence the max sum when prev number  taken
 
+          
+            if i+1<n and nums[i+1]!=nums[i]+1:
+                currChoice1 += max(prevChoice1, prevChoice2)
+            #2) prev number is not successor
+            else:
+                currChoice1+= prevChoice2
 
-            if ind ==n:
-                return 0
-
-           
-            next_ind  = d[nums[ind]]+1 if nums[ind]+1 not in d else  d[nums[ind]+1]+1
-           
-            tk  = (nums[ind] *(d[nums[ind]]-ind+1) )  + rec(next_ind )
-
-            not_  =rec(d[nums[ind]]+1)
-
-            return max(not_, tk)
-        return rec(0 )
-
+            #b) case when current number is not chosen, then we can choose or not choose the prev number, hence the max w
+            #when prev number is chosen and not chosen 
+            currChoice2 =  max(prevChoice1,prevChoice2)
+            prevChoice1,prevChoice2 = currChoice1, currChoice2
+            
+            
+        return max(prevChoice1, prevChoice2)
 
 
 
