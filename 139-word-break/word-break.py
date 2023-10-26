@@ -19,7 +19,7 @@ class Solution:
         for st in range(n-1,-1,-1):
 
             for end in range(st,n):
-                if s[st:end+1] in wordDict:
+                if s[st:end+1] in wordDict:  #this lookup takes length of substring time complexity = st-end+1
                     if dp[end+1]:
                         dp[st] = True
                         break
