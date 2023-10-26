@@ -10,25 +10,42 @@ class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         
 
-        n = len(s) 
-        dp = [False for i in range(n+1)]
-        dp[n]= True
-
-        wordDict  = set(wordDict)
+        n = len(s) +1 
+        self.memo =[-1 for i in range(n)]
         
-        for st in range(n-1,-1,-1):
+        self.wordDict=wordDict
+        self.s  = s
+        if self.rec(0):
+            return True
+        return False
+    
 
-            for end in range(st,n):
-                if s[st:end+1] in wordDict:
-                    if dp[end+1]:
-                        dp[st] = True
-                        break
-        return dp[0]
 
+
+
+    def rec(self,ind):
+        if ind == len(self.s):
+
+            return True
+
+        if self.memo[ind]!=-1 :
+
+            return self.memo[ind]
+
+        
+        for i in range(ind,len(self.s)):
+            if self.s[ind:i+1] in self.wordDict:
+
+                if self.rec(i+1):
+                    self.memo[ind] = True
+                    return self.memo
+       
+        self.memo[ind] =False 
+        return self.memo[ind]       
 
     '''
-    t  n^2 - dict length
-    s  n^2 + aux 
+    t  n^2 (n =word length)
+    s  n + aux , the memo  size and aux  space (n =word length )
 
     '''
      
