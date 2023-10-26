@@ -2,12 +2,15 @@ from collections import defaultdict as dict
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
         
+        #this keeps track of each elements count , which is needed to calculate the sum when  a number is chosen
         counts = Counter(nums)
-        '''
-        this stores the max we can earn when choosing the prev number and not choocing the prev number
-        '''
-        prevChoice1 , prevChoice2 = 0,0
+        
+        #we keep list of unique elements in the sorted order
         nums  = sorted(list(set(nums)))
+       
+        #this stores the max we can earn when choosing the prev number and not choocing the prev number
+       
+        prevChoice1 , prevChoice2 = 0,0
         n = len(nums)
         for i in range(n-1, -1,-1):
             '''currChoice1 is including the number
@@ -36,7 +39,7 @@ class Solution:
         '''
         t n 
         s o(1) excuding the newly created nums list of unique element and the counter that keeps track of the count
-        
+
 
         '''
 
