@@ -1,5 +1,7 @@
+import java.util.HashMap;
+
 class TrieNode {
-    public TrieNode[] children = new TrieNode[26]; // assuming all lowercase letters
+    public HashMap<Character, TrieNode> children = new HashMap<>();
     public boolean isEndOfWord = false;
 }
 
@@ -13,36 +15,35 @@ public class WordDictionary {
     public void addWord(String word) {
         TrieNode node = root;
         for (char c : word.toCharArray()) {
-            if (node.children[c - 'a'] == null) {
-                node.children[c - 'a'] = new TrieNode();
-            }
-            node = node.children[c - 'a'];
+            node.children.putIfAbsent(c, new TrieNode());
+            node = node.children.get(c);
         }
         node.isEndOfWord = true;
     }
 
     public boolean search(String word) {
-        return searchInNode(word, root);
+        return searchInNode(word, root, 0);
     }
 
-    public boolean searchInNode(String word, TrieNode node) {
-        for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            if (ch == '.') {
-                for (int j = 0; j < 26; j++) {
-                    if (node.children[j] != null && searchInNode(word.substring(i + 1), node.children[j])) {
-                        return true;
-                    }
-                }
-                return false;
-            } else {
-                if (node.children[ch - 'a'] == null) {
-                    return false;
-                }
-                node = node.children[ch - 'a'];
-            }
+    public boolean searchInNode(String word, TrieNode node, int index) {
+        if (index == word.length()) {
+            return node.isEndOfWord;
         }
-        return node.isEndOfWord;
+
+        char ch = word.charAt(index);
+        if (ch == '.') {
+            for (char key : node.children.keySet()) {
+                if (searchInNode(word, node.children.get(key), index + 1)) {
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            if (!node.children.containsKey(ch)) {
+                return false;
+            }
+            return searchInNode(word, node.children.get(ch), index + 1);
+        }
     }
 
     public static void main(String[] args) {
