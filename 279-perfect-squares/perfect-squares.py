@@ -1,5 +1,9 @@
 
+'''
 
+with each number brute force with all the perfect sqaure less than that number , and see which path gives min number of 
+elements
+'''
 
 class Solution:
     def numSquares(self, n: int) -> int:
