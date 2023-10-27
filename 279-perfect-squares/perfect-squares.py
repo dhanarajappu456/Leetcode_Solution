@@ -7,24 +7,38 @@ elements
 
 class Solution:
     def numSquares(self, n: int) -> int:
-        memo = [-1 for i in range(n+1)]
+    #     memo = [-1 for i in range(n+1)]
 
 
-        def rec(num):
+    #     def rec(num):
 
-            if  num ==0:
-                return 0
-            elif num<0:
-                return float("inf")
-            if memo[num]!=-1:
-                return memo[num ]
+    #         if  num ==0:
+    #             return 0
+    #         elif num<0:
+    #             return float("inf")
+    #         if memo[num]!=-1:
+    #             return memo[num ]
+    #         ans = float("inf")
+    #         for i in range(1,int(math.sqrt(num))+1):
+    #             sqr = i*i
+    #             ans = min(ans, 1+rec(num-sqr)) 
+    #         memo[num ] =  ans
+    #         return memo[num ]
+
+    #     return rec(n)
+        num = n
+        dp = [0 for i in range(num+1)]
+        for num in range (1,num+1):
             ans = float("inf")
             for i in range(1,int(math.sqrt(num))+1):
-                sqr = i*i
-                ans = min(ans, 1+rec(num-sqr)) 
-            memo[num ] =  ans
-            return memo[num ]
+                sqr  = i*i
+                if num-sqr<0:
+                    break
+                ans = min(ans,1+dp[num-sqr])
+            dp[num] = ans
+        return dp[num]
 
-        return rec(n)
+
+
 
 
