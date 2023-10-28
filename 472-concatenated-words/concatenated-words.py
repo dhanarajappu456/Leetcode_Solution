@@ -1,7 +1,7 @@
 class Solution:
     def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
         '''
-
+        approach 1 - memoised dfs solution 
         we check if we can split the word in to two(pref and suff / firshalf and second half), 
         we check if pref and suff exist in the wordSet, 
         there can be other situation ,when the pref is in the set, but suff not, so we need to call the rec function for suff further 
@@ -49,7 +49,7 @@ class Solution:
 
 
 
-
+        #solution 2 - similar to the dp problem - word break
 
 
 
