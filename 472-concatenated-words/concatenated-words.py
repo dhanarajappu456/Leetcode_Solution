@@ -3,6 +3,7 @@ class Solution:
 
         words = set(words)
         #this is dp problem word break 
+        #https://leetcode.com/problems/word-break/description/
         def wordPresentChecker(word):
             m = len(word)
             dp = [False for i in range(m+1)]
