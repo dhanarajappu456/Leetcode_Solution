@@ -36,7 +36,7 @@ class Solution:
          memoised 
             t n *(m^2*m) = n*m^3  ,  2 for loop inside the rec takes m^2 , then the m for the number of  times the isconcatenated s called at worst
               = 10^4 * (30^3) = 10^7
-             s aux space(length of word) , the list ans space is neglected
+             s aux space(length of word) , + mmeo space(n )
 
 
 
