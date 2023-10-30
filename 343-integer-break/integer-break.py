@@ -12,7 +12,9 @@ class Solution:
         
         memo = {}
         def rec(n):
-
+            
+            if n==0:
+                return 0 
             if n ==1:
                 return 1
 
@@ -27,4 +29,3 @@ class Solution:
             return memo[n] 
         return rec(n)
 
-        
