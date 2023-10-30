@@ -10,17 +10,21 @@ class Solution:
    
     def integerBreak(self, n: int) -> int:
         
-        @lru_cache(None)
+        memo = {}
         def rec(n):
 
             if n ==1:
                 return 1
+
+            if n in memo:
+                return memo[n]
+
             ans  =  0 
             for i in range(1,n+1):
 
                 ans  = max(ans, i*max(n-i, rec(n-i)))
-            return ans
-        
+            memo[n] =  ans
+            return memo[n] 
         return rec(n)
 
         
