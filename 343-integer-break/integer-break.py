@@ -45,7 +45,7 @@ class Solution:
         return dp[n]
         '''
         t num^2
-        s : num 
+        s : num(dp)  + aux(num)
         '''
 
 
