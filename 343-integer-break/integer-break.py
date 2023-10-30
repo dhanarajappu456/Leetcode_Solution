@@ -1,8 +1,11 @@
 
-#idea is simple we check all possibility of numbers i  possible to be splitted for num , ie, from(1 to num -1 )
+#idea is simple we check all possibility of numbers i  possible to be splitted for num , ie, from(1 to num)
 
 
-#then recursively call the function for (num-i)
+
+#when we split a number , to i and n-i, either i*(n-i) willbe max or n-i might be further broken(call recursion )
+
+#as this is overlapping subproblem , we cache the result
 
 
 
@@ -38,5 +41,9 @@ class Solution:
                 ans  = max(ans, j*max(i-j, dp[i-j]))
             dp[i] =  ans
         return dp[n]
+        '''
+        t num^2
+        s : num 
+        '''
 
 
