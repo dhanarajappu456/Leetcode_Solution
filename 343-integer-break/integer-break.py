@@ -10,22 +10,33 @@ class Solution:
    
     def integerBreak(self, n: int) -> int:
         
-        memo = {}
-        def rec(n):
+        # memo = {}
+        # def rec(n):
             
-            if n==0:
-                return 0 
-            if n ==1:
-                return 1
+        #     if n==0:
+        #         return 0 
+        #     if n ==1:
+        #         return 1
 
-            if n in memo:
-                return memo[n]
+        #     if n in memo:
+        #         return memo[n]
 
+        #     ans  =  0 
+        #     for i in range(1,n+1):
+
+        #         ans  = max(ans, i*max(n-i, rec(n-i)))
+        #     memo[n] =  ans
+        #     return memo[n] 
+        # return rec(n)
+
+    
+        dp =[0 for i in range(n+1)]
+        dp[1] =1 
+        for i in range(2,n+1):
             ans  =  0 
-            for i in range(1,n+1):
+            for j in range(1,i+1):
+                ans  = max(ans, j*max(i-j, dp[i-j]))
+            dp[i] =  ans
+        return dp[n]
 
-                ans  = max(ans, i*max(n-i, rec(n-i)))
-            memo[n] =  ans
-            return memo[n] 
-        return rec(n)
 
