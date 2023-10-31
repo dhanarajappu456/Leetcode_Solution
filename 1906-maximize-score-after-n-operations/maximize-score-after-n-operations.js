@@ -7,6 +7,12 @@ var maxScore = function(nums) {
         const mask = (1 << n) - 1;
         const memo = new Map();
 
+
+        
+        function gcd(a, b) {
+            return b === 0 ? a : gcd(b, a % b);
+        }
+
         function rec(i, mask) {
             if (mask === 0) {
                 return 0;
@@ -37,7 +43,3 @@ var maxScore = function(nums) {
 
 
 
-
-function gcd(a, b) {
-    return b === 0 ? a : gcd(b, a % b);
-}
