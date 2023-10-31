@@ -3,18 +3,23 @@ class Solution:
 
         n = len(s)
         @lru_cache(None)
-        
-        def rec(i):
-            if  i == n:
-                return 0 
-            ans  = float(inf)
-            for  j in range(i,n):
+    
+        def rec(start):
 
-                if s[i:j+1] not in dictionary:
-                    ans = min( ans , (j-i+1) + rec(j+1))
+
+            if start ==n:
+                return 0 
+
+            ans = n
+            for end in range(start,n):
+
+                if s[start:end+1] in dictionary:
+                    ans = min(ans ,  rec(end+1))
                 else:
-                  
-                    ans   = min( ans , rec(j+1)) 
-            return ans 
+
+                    ans = min(ans, end-start+1 +  rec(end+1))
+            return ans
+
         return rec(0)
+    
         
