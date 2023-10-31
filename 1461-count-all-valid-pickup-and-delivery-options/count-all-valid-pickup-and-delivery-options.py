@@ -1,31 +1,18 @@
 class Solution:
     def countOrders(self, n: int) -> int:
         MOD = 10**9 + 7
-        # res = 1
-        # for i in range(n):
-        #     res = res * (2*i + 1) * (i + 1) % MOD
-        # return res
 
-        # @lru_cache(None)
-        # def rec(p,d):
+        '''
 
-        #     if p==0:
-        #         return math.factorial(d)
-            
+        for a prticular i  , we can place a pair of p and d at all empty spaces created by a specific permuation of 
+        n-1
 
-        #     ans = 0 
+        ie, for a spceific n-1 ,permuation , we can have  2*(i-1)+1 spaces  , (remember , i is count of p or d )
+        let this be "spaces"
+        then we can have "spaces + spaces-1+ spaces-2 ....+1" as the current possibility for a particular permuation of i-1 , then total permuation  = tot prem of i-1 * curr permuations
+    
+        '''
 
-        #     for i in range(1,p+1):
-        #         ans = (ans%MOD+ rec(p-1,d)%MOD)%MOD
-            
-
-        #     for i in range(1,d-p+1):
-        #         ans = (ans%MOD+ rec(p,d-1)%MOD)%MOD
-        #     return ans
-        # return  rec(n,n)%MOD
-
-
-        MOD = 10**9 + 7
 
         # Initialize the memoization table with 1 as the base case.
         memo = [1] * (n + 1)
@@ -39,3 +26,12 @@ class Solution:
             memo[i] = (prevPossibility*currPossibility) % MOD
 
         return memo[n]
+
+        '''
+        t n
+        s n 
+
+        '''
+
+
+        
