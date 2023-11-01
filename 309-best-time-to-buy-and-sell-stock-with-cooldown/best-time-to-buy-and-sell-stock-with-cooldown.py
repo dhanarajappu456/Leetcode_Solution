@@ -9,7 +9,5 @@ class Solution:
             dp[i][0] = max(-prices[i]+dp[i+1][1],dp[i+1][0])
             #max cost from  i to end , when the flag is sell at i, 
             dp[i][1] = max(prices[i]+ dp[i+2][0], dp[i+1][1])  
-           
-
         return dp[i][0] 
         
