@@ -10,8 +10,10 @@ class Solution:
                 return 1 if totUniqueChosen ==n else 0 
 
             ans = 0 
+            #remaining  unqiue song u can choose now, 
             remainingUniqueSongs = n - totUniqueChosen
             #limiting the -ve values to 0 
+            #the number of song , that u aleready chose, which u can chose now , 
             repeatableSongs  =  max(0,totUniqueChosen- k)
             ans +=  remainingUniqueSongs * rec(totChosen+1, totUniqueChosen+1)
             ans +=  repeatableSongs * rec(totChosen+1, totUniqueChosen)
