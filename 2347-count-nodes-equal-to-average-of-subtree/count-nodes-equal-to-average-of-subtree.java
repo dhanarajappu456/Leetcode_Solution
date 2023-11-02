@@ -14,7 +14,8 @@
  * }
  */
 class Solution {
-    int ans;
+    int ans;// either use a instance variable as it is updated globally in each recursion 
+    //or use , a array with single element passes as refererence in the rec function 
     private int[] rec(TreeNode root){
 
         if (root  == null){
