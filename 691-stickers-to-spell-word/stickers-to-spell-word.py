@@ -2,6 +2,7 @@
 from collections import deque as dq , defaultdict as dict
 '''
 bitmasking solution - always remember this pattern ,when you need to make decisions on the set of elements 
+when the constsraints are very low number, you can use bit masking
 '''
 class Solution:
     def minStickers(self, stickers: List[str], target: str) -> int:
