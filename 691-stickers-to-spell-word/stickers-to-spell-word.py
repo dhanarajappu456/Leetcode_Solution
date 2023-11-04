@@ -3,10 +3,21 @@ from collections import deque as dq , defaultdict as dict
 '''
 bitmasking solution - always remember this pattern ,when you need to make decisions on the set of elements 
 '''
-from collections import defaultdict as dict
-
 class Solution:
     def minStickers(self, stickers: List[str], target: str) -> int:
+        
+        '''
+        preprocessing , - remove all the stickers that aint give any char in target 
+        '''
+        for stick in stickers: 
+            present = False
+            for c in stick : 
+                if c in target:
+                    present  = True
+                    break
+            if present ==False:
+                stickers.remove(stick)
+
 
         charInd = dict(dq)
         #store the character mapped to the indices 
@@ -15,8 +26,6 @@ class Solution:
         n = len(target)
         mask = (1<<n)-1 
         #call the recursive function for the remaining set of chars,(denoted by the mask)
-
-
         @lru_cache(None)
         def rec(mask):
             #print(bin(mask))
@@ -39,11 +48,13 @@ class Solution:
                 if indices:
                     ans = min(ans, 1+ rec(new_mask)) 
 
+                #backtracking , setting back the charInd , with original values , before the recursion was called
                 for c in indices:
                     for ind in indices[c]:
                         charInd[c].appendleft(ind)
             return ans
         ans = rec(mask)
+        #if not [ossibilites of getting the target , then return -1 
         return -1 if ans == float("inf") else ans 
 
                     
