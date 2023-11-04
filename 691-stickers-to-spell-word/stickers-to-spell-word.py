@@ -7,17 +7,25 @@ class Solution:
     def minStickers(self, stickers: List[str], target: str) -> int:
         
         '''
-        preprocessing , - remove all the stickers that aint give any char in target 
+        preprocessing , - 
+        1)remove duplicate stickers
+        2)remove all the stickers that aint give any char in target 
         '''
+
+        stickers  = set(stickers)
+
+        
+        stickerNew  = []
         for stick in stickers: 
             present = False
             for c in stick : 
                 if c in target:
                     present  = True
                     break
-            if present ==False:
-                stickers.remove(stick)
+            if present:
+                stickerNew.append(stick)
 
+        stickers = list(stickerNew)
 
         charInd = dict(dq)
         #store the character mapped to the indices 
