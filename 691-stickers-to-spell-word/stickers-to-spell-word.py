@@ -1,9 +1,14 @@
+
+from collections import deque as dq , defaultdict as dict
+'''
+bitmasking solution - always remember this pattern ,when you need to make decisions on the set of elements 
+'''
 from collections import defaultdict as dict
 
 class Solution:
     def minStickers(self, stickers: List[str], target: str) -> int:
 
-        charInd = dict(list)
+        charInd = dict(dq)
         #store the character mapped to the indices 
         for i,c in enumerate(target):
             charInd[c].append(i)
@@ -21,15 +26,14 @@ class Solution:
             #try all sticker if it can suffice any remaining character in the target 
             #if yes, call the rec for remaining chars
             old_mask = mask
-            
             ans = float("inf")
             for stick in stickers:
-                indices =dict(list)
+                indices =dict(dq)
                 new_mask = mask
                 for c in stick:
                     if charInd[c]:
                         indices[c].append(charInd[c][0])
-                        ind = charInd[c].pop(0)
+                        ind = charInd[c].popleft()
                         new_mask = new_mask & ~(1<<ind)
                         
                 if indices:
@@ -37,7 +41,7 @@ class Solution:
 
                 for c in indices:
                     for ind in indices[c]:
-                        charInd[c].insert(0,ind)
+                        charInd[c].appendleft(ind)
             return ans
         ans = rec(mask)
         return -1 if ans == float("inf") else ans 
