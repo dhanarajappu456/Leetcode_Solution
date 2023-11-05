@@ -34,6 +34,7 @@ class Solution:
 
 
         n =len(arr)
+        #store the max element and its index as we traverse the array from left 
         max_ = arr[0]
         max_ind = 0
         for i in range(1,n):
@@ -41,7 +42,7 @@ class Solution:
             if arr[i]>max_: 
                 max_  = arr[i] 
                 max_ind = i
-
+            #the dist must be seperately calulated if the max element was the 0th index element and otheer elements
             if max_ind ==0:
                 if i - max_ind== k:
                     return max_       
