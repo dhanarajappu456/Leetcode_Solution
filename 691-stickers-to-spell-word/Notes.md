@@ -1,9 +1,5 @@
-<h2>stickers-to-spell-word Notes</h2><hr>bit mask solution , 
+<h2>stickers-to-spell-word Notes</h2><hr>the same concept of bitamsking ,but her we use the remainig string  the parameter not mask .
 
-mask is of length of target, 
-1's in the mask denote the position in the target, the character at which we need 
-
-the state rec(mask) denote min number of stickers needed to collect characters represented by the mask 
-
-t  n*m * ( 2^k  ) -> n =len of stickers,  m - len of each sticker and k is the length of target 
-s 2^k(memo dict space)  + stack(k)
+we  consider all stickers that can suffice first character , then, recurse after using each of those stickers, the new string for the recursion is got, after removing all chars that can be sufficed by the respcetive sticeker
+t
+s
