@@ -1,45 +1,52 @@
 class Solution:
     def getWinner(self, arr: List[int], k: int) -> int:
-        # prevLarge = -1 
-        # times = 0
-        # while(True):
+#         prevLarge = -1 
+#         times = 0
+#         deq =deque(arr)
+
+#         while(True):
     
-        #     if arr[0]<arr[1]:
-        #         index  = 0
-        #         large = arr[1]
-        #     else:
+#             if deq[0]<deq[1]:
+#                 index  = 0
+#                 large = deq[1]
+#             else:
                 
-        #         index = 1  
-        #         large = arr[0]
+#                 index = 1  
+#                 large = deq[0]
             
-        #     if large != prevLarge:
-        #         prevLarge =large
-        #         times=0
-        #     times+=1
+#             if large != prevLarge:
+#                 prevLarge =large
+#                 times=0
+#             times+=1
 
-        #     if times==k:
-        #         return large
+#             if times==k:
+#                 return large
 
+#             if index==0:
 
-        #     val = arr.pop(index)
-        #     arr.append(val)
+#                 val = deq.popleft()
+#                 deq.append(val)
+#             elif index ==1:
+#                 val1,val2= deq.popleft(),deq.popleft()
+#                 deq.appendleft(val1)
+#                 deq.append(val2)
+
 
 
         n =len(arr)
         max_ = arr[0]
-        ind ={num: i for i,num in enumerate(arr)}
+        max_ind = 0
         for i in range(1,n):
             
-            max_  =max(max_, arr[i])
+            if arr[i]>max_: 
+                max_  = arr[i] 
+                max_ind = i
 
-            maxInd = ind[max_]
-            #print(maxInd)
-            if maxInd ==0:
-                if i - maxInd== k:
-                    return max_
-                
+            if max_ind ==0:
+                if i - max_ind== k:
+                    return max_       
             else: 
-                if i - maxInd + 1  == k:
+                if i - max_ind + 1  == k:
                     return max_
         return max_
            
