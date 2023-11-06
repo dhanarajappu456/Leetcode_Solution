@@ -4,9 +4,10 @@ class Solution:
         #as we traverse the array , check if prev element is lexicographically <=  or not
 
         charVal ={}
+    
         for i,c in enumerate(order):
             charVal[c] = i
-
+        #fn to check if the s1 is lexicograh<= s2
         def lexico(s1,s2):
             i,j  = 0 , 0 
             while(i<len(s1) and j<len(s2)):
