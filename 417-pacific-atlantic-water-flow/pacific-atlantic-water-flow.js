@@ -35,6 +35,8 @@ var pacificAtlantic = function(heights) {
 
         const currHeight = heights[i][j]
         //console.log("curr",currHeight)
+        //need to stringify the key , else when you try to check  same[i,j] using has (where it check ===, since 
+        //it check same  , content, type and memory , it may give incorrect ans )
         vis.add(JSON.stringify([i,j]))
         rec(i+1,j,vis,currHeight)
         rec(i-1,j,vis,currHeight)
