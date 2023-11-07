@@ -21,18 +21,13 @@ var pacificAtlantic = function(heights) {
     }
 
     let  ans  = Array.from(pac).filter(item=> atl.has(item))
-    return ans.map(item=>{
-            const li = item.split(",")
-            numberList  = li.map(item1=>  Number(item1))
-            return numberList
-
-    })
+    return ans.map(item => JSON.parse(item))
   
 
 
     function rec(i,j,vis,prevHeight){
 
-        if (i<0 || i>=m ||  j<0 || j>=n || vis.has(`${i},${j}`) || heights[i][j]<prevHeight){
+        if (i<0 || i>=m ||  j<0 || j>=n || vis.has(JSON.stringify([i,j])) || heights[i][j]<prevHeight){
             return 
         }
        
@@ -40,7 +35,7 @@ var pacificAtlantic = function(heights) {
 
         const currHeight = heights[i][j]
         //console.log("curr",currHeight)
-        vis.add(`${i},${j}`)
+        vis.add(JSON.stringify([i,j]))
         rec(i+1,j,vis,currHeight)
         rec(i-1,j,vis,currHeight)
         rec(i,j+1,vis,currHeight)
