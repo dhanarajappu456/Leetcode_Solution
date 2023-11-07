@@ -22,7 +22,7 @@ class Solution {
                     q.addLast(new int[]{i,j,0});
             }
         }
-        System.out.println(fresh);
+       
        
         while(!q.isEmpty()){
 
