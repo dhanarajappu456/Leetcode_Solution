@@ -2,6 +2,7 @@ from collections import defaultdict as dict
 
 class Solution:
     def minimumFuelCost(self, roads: List[List[int]], seats: int) -> int:
+        #it is a tree, so no cylce  and only one path  b/w each node
         #we start dfs from 0 
         #at any node, keep track of number of poeple reaching the node, based on which 
         #we determine , number of cars we might need  to travel ,up a dist(towrds 0) from the current node , we also need  
