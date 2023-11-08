@@ -2,22 +2,24 @@ class Solution:
     def isReachableAtTime(self, sx: int, sy: int, fx: int, fy: int, t: int) -> bool:
         if sx==fx and sy ==fy:
             return t!=1 
-        numberofDiag  = min(abs(sx-fx),abs(sy-fy))
-        minTime =0
-        minTime+= numberofDiag
-        coord  ={1:(-minTime,-minTime),2:(minTime,-minTime),3:(minTime,minTime),4:(-minTime,minTime)}
-        
-        coordinate =None
+        numberofDiagToTravel  = min(abs(sx-fx),abs(sy-fy))
+      
+        minTime = numberofDiagToTravel 
+        coordSign  ={1:(-1,-1),2:(1,-1),3:(1,1),4:(-1,1)}
+        #the diagonal cell travelled would be differnt based on relative position of start and end cell , 
+        #so we see in which qudrant the dest cell lie wrt ot start cell, based on which sign 
+        qdr =None
         if fx<=sx and fy<=sy:
-            coordinate = 1
+            qdr = 1
         elif fx>=sx and fy<=sy:
-            coordinate = 2
+            qdr = 2
         elif fx>=sx and fy>=sy:
-            coordinate = 3 
+            qdr = 3 
         else:
-            coordinate = 4
+            qdr = 4
        
-        newX,newY  = sx+coord[coordinate][0],sy+ coord[coordinate][1]
+        newX   = sx+coordSign[qdr][0]*numberofDiagToTravel
+        newY =   sy+ coordSign[qdr][1] *numberofDiagToTravel
     
         minTime+= abs(newX-fx) + abs(newY-fy)         
         
