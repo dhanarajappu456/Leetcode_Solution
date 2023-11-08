@@ -45,7 +45,7 @@ class Solution:
             vis.add(node)
            
             nodes=0
-            for neib in adj[node]:
+            for neib in adj[node]: #o(e for a node) = O(n)
                 if neib not in vis:
                     nodes += rec(neib)
             return  1 + nodes
@@ -57,5 +57,11 @@ class Solution:
             vis = set()
             ans =max(ans, rec(i))
         return ans
+
+        
+        # t for each node as start node we call dfs , which take o(n^2) tot = o(n^3)
+        # the dfs is o(n^2), beacuse node can go about n  and if it is complete graph , inner for loop runs for n times
+
+        # s  n(vis)+ n(stack)
 
         
