@@ -9,6 +9,14 @@ class Solution:
         #the diagonal cell travelled would be differnt based on relative position of start and end cell , 
         #so we see in which qudrant the dest cell lie wrt ot start cell, based on which sign 
         qdr =None
+
+        #     1   |   2 
+        #         |
+        # ___________________
+        
+        #     4   |   3
+        #         |
+                
         if fx<=sx and fy<=sy:
             qdr = 1
         elif fx>=sx and fy<=sy:
