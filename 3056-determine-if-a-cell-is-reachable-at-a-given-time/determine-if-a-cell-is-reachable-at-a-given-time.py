@@ -7,7 +7,9 @@ bruteforce - using bfs  to calculate  mintime  and check if given time >= mintim
 t n -tle
 s n  - tle
 
-solution 2 - optimised - finding  minTime(via diag cell and then moving either col or row) and check if time>= mintime
+solution 2 - optimised (math )
+
+- finding  minTime(via diag cell and then moving either col or row) and check if time>= mintime
 code of which is below 
 
 t 1
@@ -15,7 +17,9 @@ s 1
 
 
 
-solution 3 - same same as optimised - easy to code,
+solution 3 -  optimised (math ) 
+
+same same as optimised - easy to code,
 
 if u observe the min time to reach the cell fx and fy is max(horizontal dist and vert dist)
 just check if given t>=mintime 
