@@ -8,6 +8,7 @@ t n -tle
 s n  - tle
 
 solution 2 - using minTime(via diag cell and then moving either col or row)
+code of which is below 
 
 t 1
 s 1
