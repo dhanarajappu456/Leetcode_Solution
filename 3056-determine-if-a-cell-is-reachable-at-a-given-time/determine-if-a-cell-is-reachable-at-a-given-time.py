@@ -15,7 +15,7 @@ s 1
 
 
 
-solution 3 - ssame same as optimised ,
+solution 3 - same same as optimised - easy to code,
 
 if u observe the min time to reach the cell fx and fy is max(horizontal dist and vert dist)
 just check if given t>=mintime 
