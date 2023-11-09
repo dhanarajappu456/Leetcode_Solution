@@ -1,3 +1,20 @@
+'''
+
+solution 1 
+
+bruteforce - using bfs 
+
+t n -tle
+s n  - tle
+
+solution 2 - using minTime(via diag cell and then moving either col or row)
+
+t 1
+s 1
+
+'''
+
+
 class Solution:
     def isReachableAtTime(self, sx: int, sy: int, fx: int, fy: int, t: int) -> bool:
         if sx==fx and sy ==fy:
