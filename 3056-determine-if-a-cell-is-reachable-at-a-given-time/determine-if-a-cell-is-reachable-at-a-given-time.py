@@ -2,12 +2,12 @@
 
 solution 1 
 
-bruteforce - using bfs 
+bruteforce - using bfs  to calculate  mintime  and check if given time >= mintime
 
 t n -tle
 s n  - tle
 
-solution 2 - using minTime(via diag cell and then moving either col or row)
+solution 2 - finding  minTime(via diag cell and then moving either col or row) and check if time>= mintime
 code of which is below 
 
 t 1
