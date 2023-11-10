@@ -6,7 +6,7 @@ then find min edge weight in that component
 t  e
 s  e
 
-remember we need to traverse all the edge in the component so visited set must be storing the bidirectional edge  as visited , not the vertices
+remember we need to traverse all the edge in the component so visited set must be storing the bidirectional edge  as visited , not the vertices, 
 '''
 
 
@@ -23,19 +23,20 @@ class Solution:
             adj[a].append((b,w))
             adj[b].append((a,w))
 
-        ans =[float("inf")]
+        ans =float("inf")
         vis = set()
         def dfs(node):
-
+            nonlocal ans
 
             for neib,w  in adj[node]:
-                if (node , neib ,w ) not in vis:  
+                if (node , neib ,w ) not in vis: 
+                    #add the edge as visited 
                     vis.add((node,neib ,w ))
                     vis.add((neib,node ,w ))
-                    ans[0] = min(ans[0],w)
+                    ans = min(ans,w)
                     dfs(neib)
         dfs(1)
-        return ans[0]
+        return ans
         
 
 
