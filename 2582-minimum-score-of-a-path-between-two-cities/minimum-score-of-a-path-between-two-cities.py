@@ -17,7 +17,7 @@ traverse the edge which leads to vertex already visited  and call the dfs for th
 '''
 
 
-
+#way 2
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int: 
         adj = defaultdict(list) # node -> list of (neighbor, dist) for src, dst, dist in roads:
