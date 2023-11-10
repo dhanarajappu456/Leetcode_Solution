@@ -6,38 +6,36 @@ then find min edge weight in that component
 t  e
 s  e
 
-remember we need to traverse all the edge in the component so visited set must be storing the bidirectional edge  as visited , not the vertices, 
+way1   - visited set store the edges
+_______________
+remember we need to traverse all the edge in the component so visited set must be storing the bidirectional edge  as visited 
+
+way2 - vis store vertex 
+you can also store just vertex, 
+
+traverse the edge which leads to vertex already visited  and call the dfs for the already called vertex, then return back the recursion in the base case
 '''
 
 
-from collections import defaultdict as dict
-
 
 class Solution:
-    def minScore(self, n: int, roads: List[List[int]]) -> int:
-
-        adj =dict(list)
-
-
-        for a,b, w in roads:
-            adj[a].append((b,w))
-            adj[b].append((a,w))
-
-        ans =float("inf")
-        vis = set()
-        def dfs(node):
-            nonlocal ans
-
-            for neib,w  in adj[node]:
-                if (node , neib ,w ) not in vis: 
-                    #add the edge as visited 
-                    vis.add((node,neib ,w ))
-                    vis.add((neib,node ,w ))
-                    ans = min(ans,w)
-                    dfs(neib)
+    def minScore(self, n: int, roads: List[List[int]]) -> int: 
+        adj = defaultdict(list) # node -> list of (neighbor, dist) for src, dst, dist in roads:
+        for src, dst,dist  in roads: 
+            adj[src].append((dst, dist))
+            adj[dst].append((src, dist))
+        def dfs(i):
+            if i in visit:
+                return
+            visit.add(i)
+            nonlocal res
+            for nei, dist in adj[i]: 
+                res = min(res, dist) 
+                dfs(nei)
+        res = float("inf")
+        visit = set()
         dfs(1)
-        return ans
-        
+        return res
 
 
 
