@@ -24,7 +24,6 @@ class Solution:
 
                 if rec(i,0) == False :
                     return False
-        print(color)
         return  True
         
 
