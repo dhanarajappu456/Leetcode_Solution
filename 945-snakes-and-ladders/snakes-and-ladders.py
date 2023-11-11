@@ -60,12 +60,21 @@ class Solution:
                 if i not in vis:
                     j,k  = cellConvert(i)
                     tar = board[j][k]
-                    # cells that are reached with a jump , then just add to queue
+                    # cells that are reached with a jump , then just add to queue, for processuing 
+
                     if tar !=-1:
+                        #add for processing next
                         q.append((tar, move+1))
+                        #adding direct cell to set, jumped cell , should not be marked as visited, since this jumped cell might 
+                        #jump to another cell , so the former jumped cell , would be reached directly from another cell, again 
+                        vis.add(i)
                     else:
+                        #add for processing next
                         q.append((i,move+1))
-                    vis.add(i)
+                        #adding direct cell to set, jumped cell , should not be marked as visited, since this jumped cell might 
+                        #jump to another cell , so the former jumped cell , would be reached directly from another cell, again 
+                        vis.add(i)
+                        
    
         return -1
         
