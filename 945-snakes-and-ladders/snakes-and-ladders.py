@@ -47,9 +47,9 @@ class Solution:
             return (row, col)
         q.append((1,0))
         vis.add(1)
-        print(board)
+
         while(q):
-            print(q)
+           
             num , move = q.popleft()
             a,b = cellConvert(num)
             if  num  ==  n**2:
