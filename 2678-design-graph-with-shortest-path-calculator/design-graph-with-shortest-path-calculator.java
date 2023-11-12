@@ -28,7 +28,9 @@ class Graph {
     }
 
     public int shortestPath(int node1, int node2) {
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]);
+        //PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]);
+        //or
+        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a->a[1]));
         pq.offer(new int[]{node1, 0});
 
         dist = new int[n];
