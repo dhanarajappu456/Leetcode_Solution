@@ -42,7 +42,7 @@ class Graph {
             int node = current[0];
             int nodeWt = current[1];
 
-            for (int[] neighbor : adj.getOrDefault(node, Collections.emptyList())) {
+            for (int[] neighbor : adj.getOrDefault(node,new ArrayList<>())) {
                 int neib = neighbor[0];
                 int neibWt = neighbor[1];
 
