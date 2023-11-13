@@ -10,7 +10,7 @@ class Solution:
         adj = defaultdict(list)
         for s,e in prerequisites:
             adj[s].append(e)
-        print(adj)
+      
 
         def dfs(node):
             if node == 5:
