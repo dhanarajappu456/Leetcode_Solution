@@ -1,6 +1,6 @@
 from collections import deque as deq
 
-
+#bfs all 3 choices, 
 class Solution:
     def minDays(self, n: int) -> int:
     
@@ -8,7 +8,7 @@ class Solution:
         q = deq([(n,0)])
         vis  = set()
         while(q):
-            #print(q)
+          
             num,days = q.popleft()
             if num-1 ==0:
                 return days+1
@@ -23,6 +23,11 @@ class Solution:
                 vis.add(num/3)
 
         return -1
+
+    # t = 3^mindays(3 choices at each level ,) , ans also we dont visit same node again , )
+    #     mindays will be log(n,2) at worst , 
+    #     then 3^mindays, will still not be that efficient it seems , but in fact it is as we dont visit visited nodes again 
+    # s =  3^minDays
 
         
 
