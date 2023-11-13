@@ -1,7 +1,9 @@
 #cycle detection in dir grpah
 from collections import defaultdict
 
+#make each course that can be succesfully completed to the dict as True,
 
+# when the same course appear in ehe same path , then return False
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
 
