@@ -1,5 +1,25 @@
 from collections import defaultdict as dict
 '''
+
+
+
+
+approach 1-
+
+bruteforce
+for  every query , run  from the query[i][0] and check if query[i][1] is present in any path
+time : q*(v+e) for every query dfs takes (v+e)
+
+space : adj list(v+e), stackspace ( v)   , v = n and e  = n^2 
+
+
+approach 2 - efficient 
+
+precompute the map "course" -> {set of other course, for which "course" is a prereq}
+then answer the each query in O(1)
+
+
+
 since there is no cycle, selfloop ,  it is simple for us  to cache the result 
 run a dfs  from a node. visit all of its descndents,store it in memo[node.]
 
@@ -15,6 +35,8 @@ s adj(n+n^2} + memo(n + n^2)+ stk(n)
 
 
 '''
+
+#approach2 
 class Solution:
     def checkIfPrerequisite(self, numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
         
