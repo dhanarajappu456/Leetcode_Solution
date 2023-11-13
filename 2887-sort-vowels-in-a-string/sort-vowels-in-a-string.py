@@ -20,6 +20,7 @@ class Solution:
             if c not in sortedVowels:
                 char  = c 
             else:
+                #to check which character in the sorted vowels is avilable 
                 while( vowCount[sortedVowels[ptr]]==0):
                     ptr+=1
                 vowCount[sortedVowels[ptr]]-=1
