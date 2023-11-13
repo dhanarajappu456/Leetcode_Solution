@@ -1,5 +1,20 @@
 from collections import defaultdict as dict
+'''
+since there is no cycle, selfloop ,  it is simple for us  to cache the result 
+run a dfs  from a node. visit all of its descndents,store it in memo[node.]
 
+that is memo[node] store all the descndants of node, means it stores all the courses to which node is  prereq
+once we have this cached result. 
+
+we can detemine the each queries in o(1)
+
+
+t  (v+e)+ q -> dfs takes o(v+e) = (n, n**2) , then processing queries takes queries length
+s adj(n+n^2} + memo(n + n^2)+ stk(n)
+
+
+
+'''
 class Solution:
     def checkIfPrerequisite(self, numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
         
