@@ -27,3 +27,11 @@ class Solution:
         return "".join(res)
 
 
+    '''
+
+    t n(iterate on the string)  + klogk ,  k= len(vowelist, at worst  it can be n )
+    s k(at worst can be n )
+
+    '''
+
+
