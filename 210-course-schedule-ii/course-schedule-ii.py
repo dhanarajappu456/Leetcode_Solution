@@ -12,7 +12,9 @@ class Solution:
         #run dfs, and return False if there is cycle, else  add the course to the resuklt in a post order fashion 
         ans   = []
         def dfs(node):
-
+            
+            #base case to not visit already sucessfully completed course 
+            #or to determine there is a cycle
             if node in completed:
                 return completed[node]
 
