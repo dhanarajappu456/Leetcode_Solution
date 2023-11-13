@@ -6,7 +6,7 @@ class Solution:
     def sortVowels(self, s: str) -> str:
         #this is traversed to give the next available character to be filled in current position of result
         sortedVowels= SortedSet("AEIOUaeiou")
-        print(sortedVowels)
+
         ptr = 0
         #keeps track of avilable characters at any point of time in the string 
         vowCount =dict(int)
