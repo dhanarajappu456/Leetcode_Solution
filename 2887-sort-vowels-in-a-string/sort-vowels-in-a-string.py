@@ -1,36 +1,37 @@
+from collections import defaultdict as dict 
+
+#approach2 - suing counting sort
+
 class Solution:
     def sortVowels(self, s: str) -> str:
-        vowelSet={'a','e','i','o','u', "A","E","I","O","U"}
-        vowList =[]
- 
+        #this is traversed to give the next available character to be filled in current position of result
+        sortedVowels="AEIOUaeiou"
+        ptr = 0
+        #keeps track of avilable characters at any point of time in the string 
+        vowCount =dict(int)
+        res = []
         for c in s:
-            if c in vowelSet:
-                vowList.append(c)
-      
+            if c in sortedVowels:
+                vowCount[c]+=1
         
-        vowList.sort()
-
-     
-                
-      
-        res =[]
-        v = 0 
         for i,c in enumerate(s):
 
             char =""
-            if c not in vowelSet:
+            if c not in sortedVowels:
                 char  = c 
             else:
-                char = vowList[v]
-                v+=1
+                while( vowCount[sortedVowels[ptr]]==0):
+                    ptr+=1
+                vowCount[sortedVowels[ptr]]-=1
+                char = sortedVowels[ptr]
             res.append(char)
         return "".join(res)
 
 
     '''
 
-    t n(iterate on the string)  + klogk ,  k= len(vowelist, at worst  it can be n )
-    s k(at worst can be n )
+    t n(iterate on the string) 
+    s 10 = map size, (lower and aupper vowels in worst)
 
     '''
 
