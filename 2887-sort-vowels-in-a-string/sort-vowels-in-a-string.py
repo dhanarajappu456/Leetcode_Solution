@@ -1,35 +1,29 @@
 class Solution:
     def sortVowels(self, s: str) -> str:
-        lowerVowSet={'a','e','i','o','u'}
-        upperVowSet = {"A","E","I","O","U"}
-        lowerVowList =[]
-        upperVowList =[]
+        vowelSet={'a','e','i','o','u', "A","E","I","O","U"}
+        vowList =[]
+ 
         for c in s:
-            if c in lowerVowSet:
-                lowerVowList.append(c)
-            elif c in upperVowSet:
-                upperVowList.append(c)
+            if c in vowelSet:
+                vowList.append(c)
+      
         
-        lowerVowList.sort()
-        upperVowList.sort()
+        vowList.sort()
+
+     
                 
       
         res =[]
-        l,u= 0,0 
+        v = 0 
         for i,c in enumerate(s):
 
             char =""
-            if (c  not in lowerVowSet) and  (c not in upperVowSet):
+            if c not in vowelSet:
                 char  = c 
             else:
-                if u<len(upperVowList):
-                    char = upperVowList[u]
-                    u+=1
-                else:
-                    char = lowerVowList[l]
-                    l+=1
+                char = vowList[v]
+                v+=1
             res.append(char)
         return "".join(res)
 
 
-        
