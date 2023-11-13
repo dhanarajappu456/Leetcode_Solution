@@ -13,13 +13,9 @@ class Solution:
       
 
         def dfs(node):
-            if node == 5:
-                print(5555)
-
-
+          
             if node in ableToFinish:
-                if node == 5 : 
-                    print(5, ableToFinish[node])
+       
                 return ableToFinish[node]
             
             ableToFinish[node] = False
@@ -35,7 +31,7 @@ class Solution:
 
 
         for i in range(numCourses):
-            print(i)
+        
             if dfs(i ) ==False:
                 return False
         return True
