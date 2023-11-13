@@ -40,17 +40,11 @@ class Solution:
         for i in range(n):
             #new minimised max found then store it in mindist and that is the ans node 
             if (i in vis1)  and( i in vis2):
-
+                
                 if max(vis1[i],vis2[i]) < minDist:
                
                     minDist = max( vis1[i],vis2[i])
                     ans  = i 
 
-                #in case same minDist, take that node with less  value(index value) 
-                    
-                elif max(vis1[i],vis2[i]) == minDist:
-                
-                    ans  = min(ans , i)
-        
-        
+
         return  -1  if ans  == float("inf") else ans 
