@@ -23,10 +23,12 @@ class Solution:
                     visited.add(pattern)
 
                     for neib in adj[pattern]:
-                        
+                            
                             if neib ==endWord:
                                 return step+1
-                            q.append((neib,step+1))
+                            if neib not in visited:
+                                q.append((neib,step+1))
+                                visited.add(neib)
                 
                         
                             
