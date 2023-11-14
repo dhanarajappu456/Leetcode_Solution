@@ -1,33 +1,39 @@
 from collections import deque as deq
 
-#bfs all 3 choices, 
+#greedy dfs(dp)
 class Solution:
     def minDays(self, n: int) -> int:
-    
+        
+        memo  ={0 : 0 ,1: 1 }
 
-        q = deq([(n,0)])
-        vis  = set()
-        while(q):
-          
-            num,days = q.popleft()
-            if num-1 ==0:
-                return days+1
-            if num-1 not in vis:
-                q.append((num-1,days+1))
-                vis.add(num-1)        
-            if num%2 ==0 :
-                q.append((num/2,days+1))
-                vis.add(num/2)
-            if num%3 ==0:
-                q.append((num/3, days+ 1))
-                vis.add(num/3)
+        def rec(rem):
+            
 
-        return -1
+     
+            
+            if rem in memo:
+                return memo[rem]
+     
+            choice1,choice2 =0,0
+        
+            if rem%2==0:
+                choice1  = 1+rec(rem//2)
+            else:
+                choice1  = rem%2 + rec(rem-rem%2)
+            
+            if rem%3==0:
+                choice2  = 1+rec(rem//3)
+            else:
+                choice2  = rem%3 + rec(rem-rem%3)
+            memo[rem] = min (choice1,choice2)
+            return memo[rem]
 
-    # t = 3^mindays(3 choices at each level ,) , ans also we dont visit same node again , )
-    #     mindays will be log(n,2) at worst , 
-    #     then 3^mindays, will still not be that efficient it seems , but in fact it is as we dont visit visited nodes again 
-    # s =  3^minDays
+        return rec(n)
 
+
+    # time :  at each time the rem divided by 2 and 3, so max number of subproblme is log(n, 2)
+    # each takes o(1), so time = log(n,2)
+
+    # space : o(log(n,2))
         
 
