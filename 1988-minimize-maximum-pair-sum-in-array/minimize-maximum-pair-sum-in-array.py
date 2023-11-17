@@ -1,3 +1,5 @@
+#soltion is simple to get the optimal answer, we need to pair highest element with lowest and so on 
+#so sort and apply 2 pointer
 class Solution:
     def minPairSum(self, nums: List[int]) -> int:
 
