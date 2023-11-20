@@ -7,8 +7,13 @@ the total time is sum of time taken  all type of truck just to travel  and total
 
  we need to find last house where the particular garbage is present , 
 based on which the truck has to travel that long and hence the cost 
+to get the tot cost travelling till ith house in o(1), the prefix_travel_cost is created, i-1 the index of which has 
+tot cost travelling till ith house
 2) to calculate the time for whole collection
 since it each unit take 1 min, tot time is  sum of length of each assortment in each house
+
+t  n*k (n = len of house , and k =10 which is length of assortment) = 10^5* 10 = 10^6
+s o(n) - for the pref travel cost  , array
 
 '''
 
