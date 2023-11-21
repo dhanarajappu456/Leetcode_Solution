@@ -1,6 +1,12 @@
 '''
 
-solution is simple, 
+solution 1- brute force 
+try all pairs that satisify the condition 
+
+
+
+
+solution 2- is simple, 
 
 let value at i be a and j be b 
 
@@ -14,6 +20,7 @@ so as we traverse we keep track of these difference and the count of numbers tha
 from which we can find the number of such pair
 '''
 
+#solution 2
 from collections import defaultdict as dict
 class Solution:
     def countNicePairs(self, nums: List[int]) -> int:
@@ -40,5 +47,11 @@ class Solution:
 
         return res 
 
+
+    
+    '''
+    t nlog(n,10)
+    s n^2(may be there could be n^2 different  differnce values, which are keys of the dict)
+    '''
 
         
