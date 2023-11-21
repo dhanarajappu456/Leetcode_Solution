@@ -17,7 +17,7 @@ which means we need the pairs such that the diff between the number and its reve
 
 
 so as we traverse we keep track of these difference and the count of numbers that have the same diff, 
-from which we can find the number of such pair
+from which we can find the number of such pair having that particular difference
 '''
 
 #solution 2
