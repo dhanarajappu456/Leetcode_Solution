@@ -1,5 +1,11 @@
 from collections import deque as deq
+#solution bfs traversal on the diagonal
+#at each time insert the down cell  and right cell of a visiting cell
 
+'''
+t n
+s  n
+'''
 class Solution:
     def findDiagonalOrder(self, nums: List[List[int]]) -> List[int]:
         q = deq([(0,0)])
