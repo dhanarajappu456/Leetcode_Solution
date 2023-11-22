@@ -29,15 +29,10 @@ class Solution:
                 else:
 
                     i+=1
-            #check if   p or more  of such number of pairs with difffernce<=diff  can be formed
+                
+                #check if   p or more  of such number of pairs with difffernce<=diff  can be formed
             return pairs>=p
-            for i in range(1,n):
-                if nums[i]- nums[i-1]<=diff:
-
-                    contributing_index.add(i)
-                    contributing_index.add(i-1)
-            return len(contributing_index)>=2*p
-
+           
 
 
         ans = nums[-1] - nums[0]
