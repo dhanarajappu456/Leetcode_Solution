@@ -20,6 +20,17 @@ so we push all these info into minheap and retrieve later
 t  nlogn
 s n
 
+
+
+solution 2  - using map
+key is the diag value i+j and values are teh list of cells in this diag
+
+finally retrieve all of the cells in the grid
+while retrivering for a specific i+j diagonal , we need to retrive values from end of the list as the first elemet in the diag
+will be last element in the list
+s n
+
+
 '''
 #solution1
 # class Solution:
@@ -49,28 +60,39 @@ s n
 #         return ans
 
 
-#solution 2
+# #solution 2
 
-import heapq as h
+# import heapq as h
+# class Solution:
+#     def findDiagonalOrder(self, nums: List[List[int]]) -> List[int]:
+        
+#         minHeap =[]
+#         ans = []
+#         for i in range(len(nums)):
+#             for j in range(len(nums[i])):
+#                 h.heappush(minHeap,(i+j,j,i))
+
+
+#         while(minHeap):
+#             diagVal , j,i = h.heappop(minHeap)
+#             ans.append(nums[i][j])
+#         return ans
+
+#solution3 
+from collections import defaultdict as dict 
 class Solution:
     def findDiagonalOrder(self, nums: List[List[int]]) -> List[int]:
         
-        minHeap =[]
-        ans = []
-        for i in range(len(nums)):
+        mp = dict(list)
+
+        for i in range(len(nums)): 
             for j in range(len(nums[i])):
-                h.heappush(minHeap,(i+j,j,i))
 
-
-        while(minHeap):
-            diagVal , j,i = h.heappop(minHeap)
-            ans.append(nums[i][j])
-        return ans
-
-
-
-
-
-        
+                mp[i+j].append((i,j))
+        res =[ ]
+        for diagVal in mp:
+            for i,j in mp[diagVal][::-1]:
+                res.append(nums[i][j])    
+        return res    
 
         
