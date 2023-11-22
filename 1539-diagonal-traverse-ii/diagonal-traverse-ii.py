@@ -17,8 +17,8 @@ each diag is characterised by the value i+j
 and in each diag we need the cell having lowest col value , 
 so we push all these info into minheap and retrieve later 
 
-t  n 
-s n 
+t  nlogn
+s n
 
 '''
 #solution1
