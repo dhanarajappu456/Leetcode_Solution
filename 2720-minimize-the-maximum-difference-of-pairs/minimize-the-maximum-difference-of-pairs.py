@@ -34,7 +34,7 @@ class Solution:
             return pairs>=p
            
 
-
+        #binsearch on the possible difference
         ans = nums[-1] - nums[0]
         while(l<=h):
 
