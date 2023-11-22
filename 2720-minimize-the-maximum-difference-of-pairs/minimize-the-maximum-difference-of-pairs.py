@@ -12,7 +12,9 @@ class Solution:
             i=1 
             pairs = 0 
             while(i<n):
-
+                #theremay be adjacent values that are having neighbour differnce<= diff
+                #this groups all such number and find the number pairs possible from them
+               # which is len(this set)//2
                 contributing_index =set()
                 while(i<n and (nums[i]-nums[i-1])<=diff):
                     contributing_index.add(i)
@@ -21,7 +23,7 @@ class Solution:
                     break
                 pairs += len(contributing_index)//2
                 i+=1
-           
+            #check if   p or more  of such number of pairs with difffernce<=diff  can be formed
             return pairs>=p
             for i in range(1,n):
                 if nums[i]- nums[i-1]<=diff:
