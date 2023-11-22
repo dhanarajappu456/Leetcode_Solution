@@ -5,8 +5,8 @@ from collections import deque as deq
 #at each time insert the down cell  and right cell of a visiting cell
 
 '''
-t n  = toal cell in grid
-s  n
+t  n  = total cells in grid
+s (queue size) max lenght of a diagonal 
 '''
 
 
@@ -17,18 +17,22 @@ each diag is characterised by the value i+j
 and in each diag we need the cell having lowest col value , 
 so we push all these info into minheap and retrieve later 
 
-t  nlogn
+t  nlogn total cells in grid
 s n
 
 
 
-solution 2  - using map
+solution 3  - using map
 key is the diag value i+j and values are teh list of cells in this diag
 
 finally retrieve all of the cells in the grid
 while retrivering for a specific i+j diagonal , we need to retrive values from end of the list as the first elemet in the diag
 will be last element in the list
+
+
+t  n =  total cells in grid
 s n
+
 
 
 '''
@@ -94,5 +98,10 @@ class Solution:
             for i,j in mp[diagVal][::-1]:
                 res.append(nums[i][j])    
         return res    
+'''
+t n = toal cells in the grid
+s n = total cells in the grid
+
+'''
 
         
