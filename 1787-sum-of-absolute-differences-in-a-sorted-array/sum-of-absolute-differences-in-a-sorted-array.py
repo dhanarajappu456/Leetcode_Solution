@@ -37,7 +37,7 @@ class Solution:
         for i in range(n):
             num = nums[i]
             pref[i] = pref[i-1]+nums[i]
-        print(pref)
+        
 
         ans =[]
         for i in range(n):
