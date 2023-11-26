@@ -1,80 +1,71 @@
+class Node:
+    def __init__(self):
+        self.children = {}
+        self.word = False
+
+
+class Trie:
+    def __init__(self):
+        self.root = Node()
+
+    def insert(self, word: str) -> None:
+        root = self.root
+
+        for ch in word:
+            if ch not in root.children:
+                root.children[ch] = Node()
+            root = root.children[ch]
+
+        root.word = True   
+
+
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
-        
-        dir_= [(-1,0),(0,1),(1,0),(0,-1)]
-        
-        
-        #visitedCell in the same path not to be visited again
-        visited = set()
-        res= set()
-        
-        class Trie:
-            def __init__(self):
-                self.isEnd =  False
-                self.children = {}
-                self.totalReferences = 0
-                  
-            def addWord(self,word):
-                
-                s  = self
-                
-                for c in word:
-                    if c not in s.children:
-                        s.children[c]= Trie()   
-                    s.totalReferences+=1
-                    s  = s.children[c]
-                    
-                s.isEnd = True 
-                s.totalReferences+=1
-            def removeWord(self,word):
-                
-                s  = self
-                for c in word:
-                    if c  in s.children:
-                        s.totalReferences-=1
-                        s  = s.children[c]                
-                s.totalReferences-=1 
-                s.isEnd = False
-                
-           
+        self.trie = Trie()
+        self.rows = len(board)
+        self.cols = len(board[0])
+        self.ans = {}
 
-                
-        
-        
-            
-        
-        
-        def outOfBounds(i,j):
-            
-            if i< 0 or j <0 or j>=len(board[0])or i>=len(board):
-                return True
-            return False
-        
-        
-        def rec(i,j,node ,currStr):
-            
-            if outOfBounds(i,j) or (i,j) in visited or (board[i][j] not in node.children) or node.children[board[i][j]].totalReferences<1:
-                return
-           
-            node = node.children[board[i][j]]
-            
-            if (node.isEnd==True):
-                res.add(currStr+board[i][j])
-                root.removeWord(currStr+board[i][j])
-           
-            visited.add((i,j))
-            for d in dir_:
-                rec(i+d[0],j+d[1],node,currStr+board[i][j]) 
-            visited.remove((i,j))
-        
-        root =  Trie()
         for word in words:
-            root.addWord(word)
-      
-        for i in range(len(board)):
-                for j in range(len(board[0])):
-                    rec(i,j,root,"")
-        return list(res)
-    
+            self.trie.insert(word)
+
+        def dfs(board, i, j, path, root):
+            ch = board[i][j]
+
+            # Check if current character is in trie
+            root = root.children.get(ch)
+            if root is None:
+                return
+
+            # Update path and mark visited
+            path = path + [ch]
+            board[i][j] = None
+
+            # Add to solution if node is marked as a word in trie
+            if root.word:
+                word = ''.join(path)
+                self.ans[word] = True
+
+            # Right
+            if j + 1 < self.cols and board[i][j+1]:
+                dfs(board, i, j+1, path, root)
+
+            # Left
+            if j - 1 >= 0 and board[i][j-1]:
+                dfs(board, i, j-1, path, root)
+
+            # Down
+            if i + 1 < self.rows and board[i+1][j]:
+                dfs(board, i+1, j, path, root)
+
+            # Up
+            if i - 1 >= 0 and board[i-1][j]:
+                dfs(board, i-1, j, path, root)
             
+            board[i][j] = ch
         
+        for i in range(self.rows):
+            for j in range(self.cols):
+                dfs(board, i, j, [], self.trie.root)
+
+        return self.ans.keys()
