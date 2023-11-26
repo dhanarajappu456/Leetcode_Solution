@@ -1,6 +1,7 @@
 '''
-starting from the base, we calculate the heights of each builiding in the column(in a consecutive, cumulative fashon)
-at at any row, we thus have  building heights , in each column ending at that row or a value of 0 ,
+as we iterate row wise from top/bottom(here we do from top), we assume current row as base, and 
+we need to find culmulative 1's in a column to find height of a building which has current row as base
+
  now since we can rearrange column
  that is heights. to get the max height , we need to follow a greedy way , which is sorting the heghts in increading 
  order so that , wach building at a column can form a submatrix with all heights to right of it 
@@ -18,7 +19,7 @@ class Solution:
         max_area = 0
 
 
-        for i in range(m-1,-1,-1):
+        for i in range(m):
 
             for j in range(n):
 
