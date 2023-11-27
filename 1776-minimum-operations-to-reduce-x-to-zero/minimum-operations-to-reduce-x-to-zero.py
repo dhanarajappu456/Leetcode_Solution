@@ -18,8 +18,8 @@ class Solution:
         prefixSumHash =dict(int)
         prefixSumHash[0]=-1
         operations = float("inf")
-        othersubarray_max = -1
-      
+        
+        
         for i,num in enumerate(nums):
              
             prefixSum+=nums[i]
@@ -30,14 +30,10 @@ class Solution:
                 length = i-j
                 #if the subaarray of sum k of length long , and is removed ,remaining  
                 #arraay elements ,sum to x , which is  n  - length long
-                othersubarray_max = max(  othersubarray_max ,i-j)
-                #operations = min(operations, n - length)
+            
+                operations = min(operations, n - length)
             
             prefixSumHash[prefixSum] =i
-        
-        if othersubarray_max!=-1:
-
-            operations =  n - othersubarray_max
                    
         return -1 if operations == float("inf") else operations 
             
