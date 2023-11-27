@@ -57,9 +57,7 @@ class Solution:
             for j in range(0,10):
                 ans = 0 
                 for v in map_[j]:
-
                     ans = (ans %mod + prev[v]%mod)%mod
-                
                 curr[j] = ans
             prev =curr
         return sum(prev)%mod
