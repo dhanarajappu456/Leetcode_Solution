@@ -30,7 +30,7 @@ s (n) = 5000
 
 
 '''
-#solution 2
+#solution 3 - tabulation of memoisation -solution 2
 class Solution:
 
 
@@ -48,32 +48,24 @@ class Solution:
             7: [2,6],
             8:[1,3],
             9:[2, 4]}
-        memo ={ }
-        #current value of cell at and n is rem number of jumps
-        def rec(val,n):
+      
 
-            if n==0:
-                return 1
-            
+        ans  = 0
+        prev = [1 for i in range(10)]
+        for i in range(1,n): 
+            curr =[0 for i in range(10)]
+            for j in range(0,10):
+                ans = 0 
+                for v in map_[j]:
 
-            if (val,n) in memo:
-                return memo[(val , n)]
-            
-            ans = 0 
-            for v in map_[val]:
-
-                ans = ( ans%mod +  rec(v,n-1)%mod)%mod
-            memo[(val,n)] = ans
-            return ans
+                    ans = (ans %mod + prev[v]%mod)%mod
+                
+                curr[j] = ans
+            prev =curr
+        return sum(prev)%mod
+                    
 
 
-        ans  = 0 
-        for val in range(0,10):
-            
-            ans  = (ans%mod +  rec(val,n-1)%mod)%mod 
-        return ans 
-
-        return ans
             
 
 
