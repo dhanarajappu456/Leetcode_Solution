@@ -6,7 +6,9 @@ that is why we do ans*(p+1) ,
 
 but there could be situatiuo  when we cant find 2 seats only 1 seat isw found , and we exhauseted the array , in that case  just return 0 
 
-also remember when a set of plants after 2 seats are found this can form differnet partition with this 2 seat, there another seat following the grp of plants , else , this grp of plant can form a single partition with the grp of seats
+also remember when a set of plants after 2 seats are found this can form differnet partition with this 2 seat, there another seat following the grp of plants , else , this grp of plant can form a single partition with the grp of the last chosen 2  seats
+
+you can start iterating either from beginning or end, here we start from end
 
 
 '''
