@@ -1,5 +1,7 @@
 import math as m 
 '''
+solution 1 
+
 the question is tricky , just try break ing the problem
 
 
@@ -41,7 +43,7 @@ gray code representation of binary numbers are nothing but each of  the gray cod
 
 bin and gray representation of numbers from 0 to 7 
 
-
+you can see adjacent gray codes differ by single position 
 dec	Binary	Gray Code
 0	000	    000
 1	001	    001
@@ -52,18 +54,17 @@ dec	Binary	Gray Code
 6	110	    101
 7	111	    100
 
-you can see here in the graycode it  represent the number steps to change the 100(4) to 000(0)
+you can see here in the graycode column  it  also represent the number of  steps to change the 100(4) to 000(0)
 
-so badically for a given n if we find the path to make it 0 it basically is the number jumps to reach from n to 0  where n and 0 is in   grey code representation , essentially if an n is given we need to find index if number in the gray code chart , or index is nothing but same as the binary value corresponding to n
+so basically for a given n if we find the path to make it 0 ,it  is the number jumps to reach from n to 0  where n and 0 is in   grey code representation , essentially if an n is given we need to find index if number in the gray code chart , or index is nothing but  binary value corresponding to n
 
 learn how number is converted from bin to grey and grey to bin 
 
+https://docs.google.com/document/d/1QBBxvdX9Ohm6_ldaJfZvqqFAZTpwpvMJwIka0LaeuIc/edit
 
 
-
-
-
-you can see adjacent gray codes differ by single position 
+t logn
+s  1 
 
 
 
