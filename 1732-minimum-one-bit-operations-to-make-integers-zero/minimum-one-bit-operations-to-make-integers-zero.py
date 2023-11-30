@@ -1,6 +1,6 @@
 import math as m 
 '''
-solution 1 
+solution 1 - recursive solution
 
 the question is tricky , just try break ing the problem
 
