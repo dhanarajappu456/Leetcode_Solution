@@ -1,5 +1,5 @@
 '''
-soluion 1 
+solution 1 
 
 2 pass solution 
 make the array to string - 1 traversal
@@ -33,7 +33,7 @@ class Solution:
 
             
            
-            #if curre letter in the word not equal then return False
+            #if current letter in the word not equal then return False
             if word1[a][a1] != word2[b][b1]:
                 return False
             
