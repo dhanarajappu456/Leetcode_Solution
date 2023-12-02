@@ -7,9 +7,6 @@ class Solution:
         """
 
 
-
-        # board_c = copy.deepcopy(board)
-
         m,n = len(board), len(board[0])
 
         def out(i,j):
@@ -23,42 +20,41 @@ class Solution:
             for d in dir:
                 x , y = i+d[0], j+d[1]
                 if not out( x, y):
-                    if board[x][y][0]==1:
-
+                    if board[x][y] in [1,3]:
                         cnt+=1
             return cnt
 
 
-        for i in range(m):
-            for j in range(n):
-                #reformate each value in the cell as old and new value
-                board[i][j] = [board[i][j],board[i][j]]
-
+    
         for i in range(m): 
             for j in range(n):
                 neibs =neib_counter(i,j)
-                #print(neibs)
-                if  board[i][j][0] ==1:
+            
+   
+                if  board[i][j] ==1:
                     
                     if neibs <2 or neibs>3:
-                        #print("mod",i,j)
-                        board[i][j][1] =0
-                        #print(board_c[i][j])
-                    
-                    
+                  
+                        board[i][j] = 1
+                    else:
 
-
+                        board[i][j] = 3
+                        
 
                     
-                elif board[i][j][0] == 0:
+                elif board[i][j]== 0:
                     if neibs == 3: 
-                        board[i][j][1] =1
+                        board[i][j] = 2
+                    else:
+                        board[i][j] == 0
 
         for i in range(m):
             for j in range(n):
-
-                board[i][j] = board[i][j][1]
-        
+                if board[i][j]  in [0,1]:
+                    board[i][j] = 0
+                else:
+                    board[i][j]=1
+              
 
 
                         
