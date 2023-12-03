@@ -7,6 +7,9 @@ class Solution:
 
         to reach from p1 to p2 , we need to travel max distance wchich is either the diff in x coord of p1 and p2 or 
         diff in y coord of p1 and p2
+
+        t n 
+        s 1
         '''
 
         time = 0
