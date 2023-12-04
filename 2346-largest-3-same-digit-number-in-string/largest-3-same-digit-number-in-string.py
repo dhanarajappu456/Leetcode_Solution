@@ -5,24 +5,15 @@ class Solution:
         res = ""
         n = len(num)
         i=0
-        while(i<n-2):
+        while(i<n):
 
-            good = True
-           
-            for j in range(2):
-                if num[i+j]!=num[i+j+1]:
-                    good = False
-                    break
-            
-        
-            if good:
-              
-                if ans<int(num[i:i+3]) :
-                    ans = int(num[i:i+3])
-                    res = num[i:i+3]
-                i+=3
-            else:
-                i+=1
+            if 1<=i<=n-2 and num[i-1] == num[i] and num[i] == num[i+1]:
+
+                 if ans<int(num[i-1:i+2]) :
+                    ans = int(num[i-1:i+2])
+                    res = num[i-1:i+2]
+         
+            i+=1
             
         
         return res
