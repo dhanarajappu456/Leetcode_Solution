@@ -27,25 +27,26 @@ s = n
 
 class Solution:
     def splitString(self, s: str) -> bool:
-        @lru_cache(None)
-        def helper(prev, s):
-            if not s:
-                return True
-            
-            for i in range(1, len(s)+1):
-                x = int(s[:i])
+        
+        n  = len(s)
+        def rec(ind, prev_val , parts):
 
-                if prev - x == 1:
-                    if helper(x, s[i:]):
+            if ind  == n : 
+                return parts>=2
+
+            for i in range(ind,n):
+                curr = int(s[ind:i+1]) 
+                #if it is the first partition , then we have no prev val to 
+                # compare, with  so directly make partition , 
+
+                # else we need to make partition at i , such that s[ind: i+1] is 1 less then prev value
+                if parts ==0 or  curr == prev_val-1:
+                    if rec(i+1, curr, parts+1):
                         return True
-            
             return False
-        
-        for i in range(1, len(s)):
-            if helper(int(s[:i]), s[i:]):
-                return True
-        
-        return False
+        return rec(0,-1, 0)
+
+
 
 
 
