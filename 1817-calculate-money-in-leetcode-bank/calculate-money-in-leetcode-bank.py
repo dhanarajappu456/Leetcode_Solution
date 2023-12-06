@@ -5,25 +5,14 @@ solution1 - simultion
 
 class Solution:
     def totalMoney(self, n: int) -> int:
-    
-        ans =0 
-        start =0
-        while(n):
-            
-            if n>=7:
-                end = start+7
-   
-                ans+= (end*(end+1)//2 - start*(start+1)//2)
-                start+=1
-                n-=7 
+        tot = n
+        a=28
+        n = tot//7 
 
-            if n<7:
+        rem_start = n+1
+        n_rem = tot % 7
 
-            
-                for i in range(start+1, start+1+n):
-                   
-                    ans+= i
-            
-                n = 0
-           
-        return ans
+        
+        ans  = n/2 *(2*28 + (n-1)*7)  + n_rem/2* (2*rem_start + n_rem-1) 
+
+        return int(ans)
