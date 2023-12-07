@@ -1,4 +1,5 @@
 '''
+#solution 1 
 The idea is simple 
 
 we need to find the right most odd digit i, and all digit to left of it is part of the number 
