@@ -1,3 +1,9 @@
+'''
+The idea is simple 
+
+we need to find the right most odd digit i, and all digit to left of it is part of the number 
+that is,  digits from 0 to i gives the greatest odd number
+'''
 class Solution:
     def largestOddNumber(self, num: str) -> str:
         
