@@ -19,7 +19,7 @@ class Solution:
             for pos in range(n):
 
 
-                mins[pos] = min(mins[pos],nums[(pos+rot)%n])
+                mins[pos] = min(mins[pos],nums[(pos-rot)%n])
 
             ans = min(ans, sum(mins)+rot*x)
           
