@@ -7,20 +7,16 @@
 class Solution:
     def inorderTraversal(self, root):
         
-        ans  =[]
+        stk = []
+        ans  =  []
+        while(stk or root):
 
 
-        def rec(root):
+            while(root):
+                stk.append(root)
+                root = root.left
+            top = stk.pop(-1)
+            ans.append(top.val)
 
-            if root == None:
-                return None 
-
-            rec(root.left)
-
-            ans.append(root.val)
-
-            rec(root.right)
-       
-        rec(root)
-
+            root = top.right
         return ans 
