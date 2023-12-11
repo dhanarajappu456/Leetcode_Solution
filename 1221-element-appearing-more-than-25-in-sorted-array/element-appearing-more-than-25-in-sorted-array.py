@@ -51,6 +51,6 @@ class Solution:
               
                 if r-l+1 > (n//4):
                     return curr_num
-        return 0
+
             
             
