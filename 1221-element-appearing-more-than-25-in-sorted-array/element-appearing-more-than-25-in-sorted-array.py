@@ -5,13 +5,17 @@ class Solution:
 
         mp = dict()
         n = len(arr)
-        for num in arr:
-
-            mp[num] = mp.get(num,0)+1
-
-            if mp[num]/n>0.25:
-                return num
+        arr.sort()
+        j=0
+        while(j<len(arr)):
+            i = j
+            while(i+1<n and arr[i]==arr[i+1]):
+                i+=1
+            
+            count   = i-j+1
+            if( count/n) > 0.25:
+                return arr[i]
+            j=i+1
         
-
 
         
