@@ -7,9 +7,22 @@ and take random point out of that
 t 10^4(assuming random.choice takes o(1))
 s 100 *(2000*2000)
 
+Solution 2- 
+using cumulative freq and bin search 
+
+since we need the probavility to be eqully likely, we  have more probaility to find a point in a reactangle that has 
+greater number of points
+
+so we store the , the cumulative freq based on the number of points in each rectangle, 
+then we find a random number b/w 1 and entire number of points in the entire rectangle. 
+based on which we find the rectangle in which this point fall in 
+
+and return it 
+
+
 
 '''
-#solutiion 1 
+#solution 1 
 import random 
 
 # class Solution:
@@ -37,20 +50,7 @@ import random
 
 #solution 2 
 
-'''
-using cumulative freq and bin search 
 
-since we need the probavility to be eqully likely, we  have more probaility to find a point in a reactangle that has 
-greater number of points
-
-so we store the , the cumulative freq based on the number of points in each rectangle, 
-then we find a random number b/w 1 and entire number of points in the entire rectangle. 
-based on which we find the rectangle in which this point fall in 
-
-and return it 
-
-
-'''
 import random
 import bisect
 
