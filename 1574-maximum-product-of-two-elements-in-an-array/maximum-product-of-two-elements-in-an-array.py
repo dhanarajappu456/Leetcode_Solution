@@ -1,3 +1,17 @@
+'''
+#solution 1 - sorting , finding the first and second max which is at first and second last place 
+t nlogn
+s 1
+
+#solution 2 - with no sorting 
+finding the first and second last element in the array 
+
+t n 
+s 1
+
+
+'''
+
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
         first_max,second_max = -1, -2 
