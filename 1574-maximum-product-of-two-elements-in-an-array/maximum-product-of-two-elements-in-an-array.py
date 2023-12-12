@@ -11,7 +11,7 @@ s 1
 
 
 '''
-
+#solution 2
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
         first_max,second_max = -1, -2 
