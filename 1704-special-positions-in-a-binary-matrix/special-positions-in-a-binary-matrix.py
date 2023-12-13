@@ -15,6 +15,8 @@ where we map
 row ind -> list of cols(where 1 present)
 and col_ind -> list of rows(where 1 present)
 
+thus we can check if a  1 cell at (i,j) is special by checking if this is the only 1 cell in the respective col and the row i and j 
+
 t mn 
 s mn 
 
@@ -53,6 +55,8 @@ class Solution:
         m,n  = len(mat),len(mat[0])
 
         def check_special(i,j):
+            #check if (i,j) is the only 1 cell in the row i 
+            #and col j 
             if len(row[i])==1 and len(col[j])==1:
                 return True
             return False
