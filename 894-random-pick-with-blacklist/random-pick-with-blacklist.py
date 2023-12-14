@@ -15,12 +15,8 @@ class Solution:
             if i<self.white_len:
                 self.mapping[i] =self.whites_to_move[j]
                 j+=1
-        
-
-
-        
+             
     def pick(self) -> int:
-
         val = random.randint(0,self.white_len-1)
         if val in self.mapping:
             return self.mapping[val]
