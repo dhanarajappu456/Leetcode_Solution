@@ -18,7 +18,7 @@ s  m+n
 
 
 '''
-
+#solution2 
 from collections import defaultdict as dict
 class Solution:
     def onesMinusZeros(self, grid: List[List[int]]) -> List[List[int]]:
