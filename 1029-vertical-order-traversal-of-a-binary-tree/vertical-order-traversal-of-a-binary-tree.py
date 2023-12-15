@@ -1,3 +1,9 @@
+'''
+using hashmap to store (col,row)->list(nodes)
+t n+ k log(k) k = row*col , at worst k can be n 
+s  col*row
+'''
+
 class Solution:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
         #msp of (col, row) mapped to the values at that position 
