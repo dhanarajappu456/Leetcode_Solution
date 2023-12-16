@@ -6,33 +6,32 @@
 var isAnagram = function(s, t) {
     
 
-    const sMap  = new Map()
-    const tMap =   new Map()
+        if (s.length != t.length){
+            return false
+        }
+        chars  = Array(26).fill(0)
 
+      
+        for(let c of s){
 
-    for(const c of s){
-        sMap.set(c, (sMap.get(c)||0 )+ 1 )
-
-    }
-
-    for(const c of t){
-        tMap.set(c, (tMap.get(c)||0 )+ 1 )
-
-    }
-    //important to check this, there might be case when one map is super set of other
-    if (tMap.size !== sMap.size){
-        return false
-    }
+            chars[c.charCodeAt(0)-'a'.charCodeAt(0)]+=1
+            
+        }
         
-    for ([key, val] of sMap){
+        for(let c of t){
 
-            if (!tMap.has(key) || tMap.get(key)!== sMap.get(key)){
-                return false;
-
+            chars[c.charCodeAt(0)-'a'.charCodeAt(0)]-=1
+            if (chars[c.charCodeAt(0)-'a'.charCodeAt(0)] <0 ){
+                console.log(chars) 
+                return false
             }
+            
+        }
+        return true
+                    
 
-    }
-
-    return  true
-
+            
+           
+            
+      
 };
