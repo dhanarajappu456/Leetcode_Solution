@@ -19,6 +19,7 @@ var isAnagram = function(s, t) {
         tMap.set(c, (tMap.get(c)||0 )+ 1 )
 
     }
+    //important to check this, there might be case when one map is super set of other
     if (tMap.size !== sMap.size){
         return false
     }
