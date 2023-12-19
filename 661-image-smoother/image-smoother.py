@@ -21,7 +21,7 @@ s 1
 
 
 
-#Solution 1 
+#Solution 2
 class Solution:
     def imageSmoother(self, img: List[List[int]]) -> List[List[int]]:
         m,n  = len(img) , len(img[0])
