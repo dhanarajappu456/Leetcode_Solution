@@ -12,7 +12,7 @@ class Solution:
                         sum_[i][j] += img[x][y]
                         count[x][y]+=1 
     
-        print(count,sum_)
+        
 
         for i in range(m):
             for j in range(n):
