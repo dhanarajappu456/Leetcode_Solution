@@ -1,3 +1,8 @@
+'''
+#solution 1 -bruteforc
+#solution2 - fisher yates - algo
+
+'''
 class Solution:
 
     def __init__(self, nums: List[int]):
@@ -16,8 +21,12 @@ class Solution:
 
     def shuffle(self) -> List[int]:
         
-
-        random.shuffle(self.nums)
+        n = len(self.nums)
+        arr = self.nums[:]
+        for i in range(n):
+            rand_ind  = random.randint(0,len(arr)-1)
+            self.nums[i] = arr[rand_ind]
+            arr.pop(rand_ind)
         return self.nums
 
 
