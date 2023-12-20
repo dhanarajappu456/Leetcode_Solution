@@ -5,8 +5,14 @@ t n^2
 s n(temp used to restore the array)
 #solution2 - fisher yates - algo
 
+
+#solution 2 - fisher yates algo 
+
+t n
+s n 
+
+
 '''
-#solution 2
 
 class Solution:
 
