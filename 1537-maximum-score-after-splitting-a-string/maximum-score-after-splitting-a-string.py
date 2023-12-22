@@ -1,3 +1,22 @@
+'''
+solution 1 
+
+bruteforce try all the splits as we iterate on the string 
+then for each left and right split count zero and ones, 
+
+t = n^2
+s = 1 
+
+#solution 2 - time optimised 
+
+the above solution can be optimised, 
+the zeros in the left can be calculated as we iterate , 
+and for the ones in the right side, we can just keep total ones count before hand and 
+thus can calculate the ones in right side ( if we also have kept the count of ones in left side)
+t n 
+s 1
+'''
+
 class Solution:
     def maxScore(self, s: str) -> int:
         
