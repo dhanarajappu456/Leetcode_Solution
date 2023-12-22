@@ -22,7 +22,7 @@ class Solution:
     def maxScore(self, s: str) -> int:
         
 
-        tot_zero , tot_ones = s.count('0') , s.count('1')
+        tot_ones = s.count('1')
         score = 0
         l_zero,l_one = 0,0
         n = len(s)
