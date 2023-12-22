@@ -17,6 +17,7 @@ t n
 s 1
 '''
 
+#solution2 
 class Solution:
     def maxScore(self, s: str) -> int:
         
