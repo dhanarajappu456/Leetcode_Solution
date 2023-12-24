@@ -1,5 +1,27 @@
 '''
-the solution is simple , that , we need to see that 
+
+#solution 1 - dfs or bfs 
+
+for each node as the starting node we explore all path that end with same value as that of the node
+
+t n*n
+s  n(stk space in case of dfs or q space in case of bfs) + adjlist(v+e) , 
+
+
+#solution 2 - using disjoint set
+
+when we check all the good path where start and end values is val and all nodes in the graph has value  <=val 
+then it is easy to calculte the number of good path with val as start and end .
+
+suppose we have n1 nodes with value val 
+then this ans  = n1C2 , that is each pair of node with value n1 as the start and end.
+
+We build the graph such that we add nodes to the graph based on the increasing order of the value(val) it has  .Thus ensuring all the nodes in the graph has value<=val at any instant , thus makees computation and problem  easy 
+
+thus graph will be disjoint component as we add the new nodes or (edges) , so we come to use  DSU.
+
+in each component the ultimate parent of the component keeps count of nodes in it with current value val(in a map par_val_count)
+
 
 t  nlogn + n  
 s  adj + rank+ par = n+e + n + n 
@@ -64,15 +86,12 @@ class Solution:
 
         for val in sorted(val_node.keys()):
             '''
-            why use the vis - to add the processed node with value val
+           
 
-            for the nodes with value val , there may be case they are adjacent to each other 
-            in which case we need to avoid re-processing the node again , so we put it in  the vis set 
-            like
-            vals =[1,1]
-            edges =[0,1]
+           
             '''
-            vis = set()
+            #this keeps parent of each component mapped to number of nodes in it , with current value val
+            #this count is used in teh computation when we add new node / edge 
             par_val_count = initialize_par_val_count(val)
 
             for node in val_node[val]:
@@ -80,6 +99,16 @@ class Solution:
                 for neib in adj[node]:
                     p1 = ds.findPar(node)
                     p2 = ds.findPar(neib)
+                    '''
+                    for the nodes with value val , there may be case they are adjacent to each other 
+                    in which case we need to avoid re-processing the node again as it is already computed and 
+                    belongs to same component  so we check p1 != p2  you can either make use of a vis set instead of checking this , to put all nodes with value val that is already processed
+                    eg
+                    vals =[1,1]
+                    edges =[0,1]
+
+                    
+                    '''
                     if vals[neib] <= val and p1!=p2:
                
                         
@@ -103,8 +132,7 @@ class Solution:
                         #which is stored in the map , where ultimate parent of the combined component 
                         #represent this value, and is used as the key
                         par_val_count[ult_par] = count2 + count1
-                #add the node as processed in to the vis
-                vis.add(node)
-
+          
+        #each individual node is a good path by itself. 
         return ans + n
 
