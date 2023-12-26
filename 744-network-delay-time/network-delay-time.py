@@ -1,3 +1,21 @@
+'''
+
+#solution 1 - using normal bfs
+
+t more than v+e 
+s  v+e(adj list ) + dist array 
+
+#solution 2
+
+
+djikstra's algo - 
+
+t elogv 
+s  v+e(adj lsit ) + dist array
+
+
+'''
+#solution 1 
 from collections import deque ,defaultdict as dict
 class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
@@ -23,6 +41,7 @@ class Solution:
                     dist[neib] = neib_t + node_t
         ans = max(dist[1:])  
         return -1 if ans==float("inf")  else ans
+
 
 
 
