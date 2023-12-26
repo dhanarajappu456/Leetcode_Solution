@@ -1,3 +1,10 @@
+#solution 1 
+'''
+
+this is simple recursive memo solution for the problem 
+the state (n, tar)-> denote the 
+number of ways we can get the tar with remaining dice roll , which is overlapping subproblem 
+'''
 class Solution:
     def numRollsToTarget(self, n: int, k: int, target: int) -> int:
 
