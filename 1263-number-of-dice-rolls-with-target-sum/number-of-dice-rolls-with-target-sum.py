@@ -1,9 +1,20 @@
 #solution 1 
 '''
-
+solution 1
 this is simple recursive memo solution for the problem 
 the state (n, tar)-> denote the 
 number of ways we can get the tar with remaining dice roll , which is overlapping subproblem 
+
+
+t   n*tar*k
+s  n*tar + aux space(n)
+
+
+solution2  - dp 
+
+t   n*tar*k
+s  n*tar
+
 '''
 class Solution:
     def numRollsToTarget(self, n: int, k: int, target: int) -> int:
@@ -24,7 +35,9 @@ class Solution:
 
         # return rec(n,target)
 
+        #solution2 
 
+        #dp 
     
     
         dp =[[0 for i in range(target+1)] for  j in range(n+1)]
