@@ -10,16 +10,11 @@ class Solution:
             
             if i ==n:
                 ans  = len(str(freq))
-                if prev_char in "abcdefghijklmnopqrstuvwxyz":
-                    if freq>1:
-                     
-                        return ans
-                    else:
-                  
-                        return 0
-                #when you could delete all chars with available k 
-                return 0
-
+          
+                if freq>1: 
+                    return ans
+                return 0 
+               
             tk_ =float("inf") 
             not_ =float("inf")
 
