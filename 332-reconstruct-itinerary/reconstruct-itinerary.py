@@ -1,28 +1,47 @@
+from collections import defaultdict as dict
+import time
+from collections import defaultdict as dict 
+
+
 class Solution:
-    def findItinerary(self, tickets: List[List[str]]) -> List[str]:
-        adj = {src: [] for src, dst in tickets}
-        res = []
+    def findItinerary(self, tickets):
+        
 
-        for src, dst in tickets:
-            adj[src].append(dst)
+        #create adj list , with neibs sorted
+        tickets.sort()
 
-        for key in adj:
-            adj[key].sort()
+        adj  = dict(list)
 
-        def dfs(adj, result, src):
-            if src in adj:
-                destinations = adj[src][:]
-                while destinations:
-                    dest = destinations[0]
-                    adj[src].pop(0)
-                    dfs(adj, res, dest)
-                    destinations = adj[src][:]
-            res.append(src)
+        for a,b in  tickets:
+            adj[a].append(b)
+        
+        ans  =[]
+        def rec(node,edge_traversed):
+            # print(node, edge_traversed)
+            # print(adj)
+            # if node =="SFO":
+            #     time.sleep(134345550)
+            
+    
+            # if edge_traversed == len(tickets): 
+                
+            #     return True
+            
+            for  i in range(len(adj[node])):
+                neib  = adj[node][i]
+                if neib != -1:
 
-        dfs(adj, res, "JFK")
-        res.reverse()
+                    
+                    adj[node][i]=-1
+                    
+                    rec(neib,edge_traversed+1 )
+                    
 
-        if len(res) != len(tickets) + 1:
-            return []
+                    
 
-        return res
+            ans.append(node)
+           
+           
+
+        rec("JFK",0)
+        return ans[::-1]
