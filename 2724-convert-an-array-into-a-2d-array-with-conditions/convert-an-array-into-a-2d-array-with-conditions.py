@@ -18,7 +18,8 @@ class Solution:
             li =[]
             #iterating on copy to avoid getting error
             #mp modified during iteriton
-            for num in mp.copy():
+            keys = list(mp.keys())
+            for num in keys:
                 li.append(num)
                 mp[num]-=1
                 if mp[num] ==0:
