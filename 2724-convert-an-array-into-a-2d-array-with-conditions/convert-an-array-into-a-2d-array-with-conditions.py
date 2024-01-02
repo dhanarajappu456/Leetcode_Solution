@@ -7,7 +7,7 @@ class Solution:
         ans= []
         while mp:
             li =[]
-            keys = mp.keys()
+           
             for num in mp.copy():
                 li.append(num)
                 mp[num]-=1
