@@ -1,3 +1,6 @@
+'''
+targens algo to detect find the bridge/critical edge 
+'''
 class Solution:
     def criticalConnections(self, n: int, connections: List[List[int]]) -> List[List[int]]:
 
