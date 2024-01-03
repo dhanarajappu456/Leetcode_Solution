@@ -1,3 +1,11 @@
+'''
+
+if curr row has atleast one device   count number of device in curr row, and make it pair with each device in prevcount  
+update prev count to curr count 
+t mn m,n are the len og bank and len of bank[i]
+s m(val variable)
+'''
+
 class Solution:
     def numberOfBeams(self, bank: List[str]) -> int:
 
