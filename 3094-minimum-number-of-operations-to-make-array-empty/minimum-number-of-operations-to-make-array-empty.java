@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.lang.Math;
 
 public class Solution {
     public int minOperations(int[] nums) {
