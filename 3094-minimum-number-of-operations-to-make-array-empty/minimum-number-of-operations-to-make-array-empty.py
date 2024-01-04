@@ -1,7 +1,7 @@
 
 '''
 
-#soltuion dp/memo
+#soltuion 1 dp/memo
 
 once we create the count of each number , we used memo recursion to find the min operation to reduce a count of occurence of  a number to 0 
 
