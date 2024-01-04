@@ -6,7 +6,7 @@
 once we create the count of each number , we used memo recursion to find the min operation to reduce a count of occurence of  a number to 0 
 
 time  n+ x
-space n(aux)
+space n(aux) + x(dict)
 
 n = max number of element in the array(might be the case same number is ocuuring in the array)
 x = distinct numbers in the array
