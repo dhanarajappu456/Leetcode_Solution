@@ -1,9 +1,15 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+'''
+use the property of the BST
+
+
+t  m  = number of  with value in the range
+s  m(aux space)
+
+
+
+
+
+'''
 class Solution:
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
         
@@ -14,13 +20,15 @@ class Solution:
 
             if root ==None:
                 return 
-
+            #if node value<low then no need of going left as all nodes in left  subtree of it would be<low 
             if root.val< low :
                 rec(root.right)
+            #if node value>low then no need of going right as all nodes in right   subtree of it would be>high 
             elif root.val>high:
                 rec(root.left)
+            #else take current node value and also check left as well as right node(ie preorder of bst , which is giving the result in sorted order)
             else:
-                print(root.val)
+            
                 ans+=root.val
                 
 
