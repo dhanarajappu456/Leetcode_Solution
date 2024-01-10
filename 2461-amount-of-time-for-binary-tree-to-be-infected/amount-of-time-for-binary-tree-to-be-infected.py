@@ -4,6 +4,15 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+'''
+crate adj list (including parent )
+
+then do bfs 
+
+t n 
+s n(stack space and vis and queue)
+
+'''
 class Solution:
     def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
 
