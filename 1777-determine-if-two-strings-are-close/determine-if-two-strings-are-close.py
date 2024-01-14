@@ -4,6 +4,10 @@ if at all possible then the set of chars in both should be same
 and 
 also both words should have same set of frequencies  in the word1 and word2
 
+eg: 
+w1 =  t aa bb
+ w2 = a bb tt
+
 t n 
 s n 
 
@@ -33,5 +37,5 @@ class Solution:
         freq1.sort()
         freq2.sort()
 
-        
+
         return freq1 == freq2  and mp1.keys() == mp2.keys()
