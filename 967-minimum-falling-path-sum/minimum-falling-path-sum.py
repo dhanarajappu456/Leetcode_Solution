@@ -1,27 +1,29 @@
-from functools import lru_cache
+'''
+
+
+solution dp 
+
+t n ^2
+s n
+
+'''
 class Solution:
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
         
         m ,n = len(matrix),len(matrix[0])
-        ans = float("inf")
-        dir = [(1,0),(1,1),(1,-1)]
-        @lru_cache(None)
-        def rec(i,j):
-            
-            if i==m and 0<=j<=n:
-                return 0
-            elif i>m or j>=n or i<0 or j<0:
-                return float("inf")
-            ans  = float("inf")
-            for dx, dy in dir:
+        
+        
+        prev = [matrix[0][i] for i in range(n)]
 
-                x,y = i+dx , j+dy
-                
-                ans = min( ans, matrix[i][j]+ rec(x,y))
-            return ans
-        
-        
-        for j in range(n):
-                ans = min(ans, rec(0,j))
-        return ans 
+        for i in range(1,m):
+            curr = [float("inf") for j in range(n)]
+            for j in range(n):
+
+                for k in [-1,0,1]:
+
+                    if 0<=j+k<n :
+                        curr[j] = min(curr[j], matrix[i][j]+ prev[j+k])
+            prev = curr
+    
+        return  min(prev)
         
