@@ -1,3 +1,19 @@
+'''
+math solution 
+
+we find ans1 -> which missin_num - dup_num  ----------eqn(1)
+to find the miss and dup we need another equation 
+
+so we find ans2 = miss^2-dup^2, from which we can get equation  ans3 = miss+dup-------eq(2) 
+
+
+then it is easy to find miss and dup from these equation
+
+t n 
+s 1
+
+
+'''
 class Solution:
     def findErrorNums(self, nums: List[int]) -> List[int]:
         ans1 = 0
