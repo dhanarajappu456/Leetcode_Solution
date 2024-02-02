@@ -1,6 +1,7 @@
 
 '''
 fix a digit at msb from 1 to 9 then start creating the number by appending the lsb digit+1
+in a recurisive fashion
 
 t 9*9
 s 9(const)
