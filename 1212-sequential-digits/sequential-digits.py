@@ -1,3 +1,11 @@
+
+'''
+fix a digit at msb from 1 to 9 then start creating the number by appending the lsb digit+1
+
+t 9*9
+s 9(const)
+
+'''
 class Solution:
     def sequentialDigits(self, low: int, high: int) -> List[int]:
         ans =[]
