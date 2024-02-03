@@ -1,3 +1,10 @@
+'''
+The idea is to use dp 
+
+we use rec(i)-> which indicate max value we can get starting from i to end making parition with k elements in each partition 
+at most
+'''
+
 from functools import lru_cache 
 
 class Solution:
