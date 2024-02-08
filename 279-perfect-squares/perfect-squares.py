@@ -3,6 +3,9 @@
 
 with each number brute force with all the perfect sqaure less than that number , and see which path gives min number of 
 elements
+t n*root(n)
+s n
+
 '''
 
 class Solution:
