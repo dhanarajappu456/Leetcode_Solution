@@ -14,8 +14,6 @@ class Solution:
 
             if  num ==0:
                 return 0
-            # elif num<0:
-            #     return float("inf")
             if memo[num]!=-1:
                 return memo[num ]
             ans = float("inf")
