@@ -6,7 +6,7 @@ class Solution:
         def rec(i,j,rem):
 
             if i==m or  j ==n or  i==-1 or j==-1:
-                print(i,j,rem)
+                
                 return 1
             ans = 0
             for d in dir:
