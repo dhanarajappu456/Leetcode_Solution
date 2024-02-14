@@ -5,6 +5,7 @@ a path can be pali permuated , if even number occurence of all the number and/or
 just one occurence 
 
 
+
 t n 
 s h  = (len(set)) + aux space(h) , h can be at max height of the tree  = n 
 
@@ -39,9 +40,9 @@ class Solution:
                     return 
                 old = self.s.copy()
                 rec(root.left)
-                self.s = old.copy()
+                self.s = old
                 rec(root.right)
-                self.s = old.copy()
+                self.s = old
                 if root.val in self.s:
                     self.s.remove(root.val)
                 self.li.pop(-1)
