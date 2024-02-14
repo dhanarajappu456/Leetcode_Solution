@@ -1,11 +1,18 @@
+'''
+simple tree dfs traversal
+
+a path can be pali permuated , if even number occurence of all the number and/or  a single number with
+just one occurence 
+
+
+t n 
+s h  = (len(set)) + aux space(h) , h can be at max height of the tree  = n 
+
+
+'''
+
 from collections import defaultdict as dict 
 
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 class Solution:
     def pseudoPalindromicPaths (self, root: Optional[TreeNode]) -> int:
 
