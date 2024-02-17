@@ -24,7 +24,20 @@ no more can use the rem brick for current jump we see in past we have used a max
 that >= current cost of jumping , in which case we use ladder in that past postion and 
 collect those bricks to make current jump 
 
+note: when checking if we have a max brick in past that can be used to jump current step
 
+we are not taking   -maxheap[0]+ bricks >= cost
+
+since this is not correct way doing
+
+exmapl
+
+1,9,19,21
+b= 10
+l=1
+
+if we use this condtion then we might at max go till 2nd step 
+but 3rd step is max we can can reach
 t nlogb b = brick , n =len o f heights 
 s b(brick)
 '''
