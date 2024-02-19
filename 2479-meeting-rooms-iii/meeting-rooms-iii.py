@@ -15,7 +15,7 @@ class Solution:
                 h.heappush(available,ind)
             if len(available) ==0 :
                 end, ind  = h.heappop(curr_meeting)
-                new_end  = max(m[0],end)+m[1]-m[0]
+                new_end  = end+m[1]-m[0]
                 h.heappush(curr_meeting,(new_end,ind))
                 rooms[ind]+=1
             else:
