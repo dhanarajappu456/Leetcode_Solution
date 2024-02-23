@@ -39,7 +39,7 @@ class Solution:
                 for neib , neib_dist1 in adj[node]:
                     neib_dist2 = node_dist  + neib_dist1
                     if neib_dist2 < dist[neib]:
-                        dist[neib] = min(dis[neib], neib_dist2)
+                        dist[neib] = min(dist[neib], neib_dist2)
                         q.append((neib, dist[neib]))
                
             boundary+=1 
