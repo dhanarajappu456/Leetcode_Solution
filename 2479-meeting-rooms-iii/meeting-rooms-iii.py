@@ -1,3 +1,19 @@
+'''
+The idea is to sort the meeting in the ascending order of the start time and start processing
+
+while processing a meeting it is essential to allocate it to the room which is available and is 
+ with least value of room number , as the question to return smallest room number in case of multiple 
+ answer   so to get all rooms  available at any instant and also sorted on room number
+ we use a min heap
+
+
+at the end we look for fist room with max allocation  using a rooms array , that 
+keeps count of meeting that took place in the room
+
+ t mlogm  + mrlogr , m = len of meetings, r= count of rooms
+ s r(heap size at max ) + r the room array
+
+'''
 import heapq as h 
 
 class Solution:
