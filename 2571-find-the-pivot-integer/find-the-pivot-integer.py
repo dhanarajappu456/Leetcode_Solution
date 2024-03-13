@@ -1,17 +1,30 @@
+import bisect
+
 class Solution:
     def pivotInteger(self, n: int) -> int:
         '''
+        solution 3 
+       using binary search--
 
-        from equating the sum of 1...x element == sum of x..n elements
-        we get  x = root(n*(n+1)//2
+       from the equation of solution 2 we  know x == totsum^0.5
+       or  x**2  = totsum
+
+       we use this equation to find the x 
 
 
         
         '''
         tot = n*(n+1)//2
-        for i in range(1,n+1):
-            
-            if i == tot**(0.5):
+        l,r =1,n
 
-                return i
+        while(l<=r):
+            m =(l+r)//2
+            if m**2 == tot:
+                return  m
+            elif m**2< tot:
+                l=m+1
+            else:
+                r=m-1
         return -1
+            
+        
