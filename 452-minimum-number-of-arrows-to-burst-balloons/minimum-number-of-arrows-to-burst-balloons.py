@@ -5,13 +5,13 @@ class Solution:
         cnt = 0
         i = 0
         n =len(points)
-        print(points)
+ 
         while(i<n):
             
             j = i
-            highest_range_right = points[i][1]
-            while(j<n and points[j][0]<=highest_range_right):
-                highest_range_right = min(highest_range_right,points[j][1])
+            min_x_end = points[i][1]
+            while(j<n and points[j][0]<=min_x_end):
+                min_x_end = min(min_x_end,points[j][1])
                 j+=1
             i=j
             cnt+=1
