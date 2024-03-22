@@ -3,6 +3,15 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+
+'''
+find the middle
+reverese the right portion after the middle , 
+now  traverese both portion with 2 pointers
+
+t n
+s 1
+'''
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
         if head ==None and head.next==None:
