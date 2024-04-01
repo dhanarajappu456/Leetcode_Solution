@@ -1,19 +1,19 @@
 class Solution:
-    def countSubarrays(self, nums: List[int], mink: int, maxK: int) -> int:
-
+    def countSubarrays(self, nums: List[int], mink: int, maxk: int) -> int:
         res = 0
-        bad_idx = left_idx = right_idx = -1
-
+        bad_index, min_index, max_index = -1,-1,-1
+        
         for i, num in enumerate(nums) :
-            if not mink <= num <= maxK:
-                bad_idx = i
+            if num<mink or maxk<num:
+                bad_index = i
 
             if num == mink:
-                left_idx = i
+                min_index = i
 
-            if num == maxK:
-                right_idx = i
-
-            res += max(0, min(left_idx, right_idx) - bad_idx)
+            if num == maxk:
+                max_index = i
+            left_index = min(min_index, max_index)
+            print(left_index,bad_index, left_index-bad_index)
+            res += max(0,left_index - bad_index)
 
         return res
