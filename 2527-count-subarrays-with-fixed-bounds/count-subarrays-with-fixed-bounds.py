@@ -13,7 +13,7 @@ class Solution:
             if num == maxk:
                 max_index = i
             left_index = min(min_index, max_index)
-            print(left_index,bad_index, left_index-bad_index)
+          
             res += max(0,left_index - bad_index)
 
         return res
