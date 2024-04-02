@@ -1,18 +1,19 @@
+ #solution 3 - tabulation
 class Solution:
     def kInversePairs(self, n: int, k: int) -> int:
         mod=10**9+7
-        if k==0:
-            return 1
-        dp=[[0]*(k+1) for _ in range(n+1)]
+        dp = [[0 for  j in range(k+1)] for i in range(n+1)]
+        for i in range(0,n+1):
+            dp[i][0] =1
         for i in range(1,n+1):
-            dp[i][0]=1
-        if n<2:
-            return dp[n][k]
-        dp[2][1]=1
-        for nx in range(3,n+1):
-            mx=min(k,(n*(n-1))//2)
-            for kx in range(1,mx+1):
-                dp[nx][kx]=dp[nx-1][kx]+dp[nx][kx-1]
-                if kx>=nx:
-                    dp[nx][kx]-=dp[nx-1][kx-nx]
-        return  dp[n][k]%mod     
+            for j in range(1,k+1):
+            
+                if j<i:
+                    ans = (dp[i-1][j]%mod+ dp[i][j-1]%mod)%mod
+                else:
+                    ans = ans = (dp[i-1][j]%mod+ dp[i][j-1]%mod -dp[i-1][j-i]%mod)%mod
+                
+                    
+                dp[i][j] = ans 
+    
+        return dp[n][k]
