@@ -7,9 +7,11 @@ class Solution:
             dp[i][0] =1
         for i in range(1,n+1):
             for j in range(1,k+1):
-            
+                #if j<i, we find cum sum  of elements from prev row, upto j 
                 if j<i:
                     ans = (dp[i-1][j]%mod+ dp[i][j-1]%mod)%mod
+                #else we need to  findcum sum  of elements from prev row, upto j , but only of 
+                #i elements from j towards 0
                 else:
                     ans = ans = (dp[i-1][j]%mod+ dp[i][j-1]%mod -dp[i-1][j-i]%mod)%mod
                 
