@@ -45,20 +45,23 @@ Output:
 true
 */
 var checkIfInstanceOf = function(obj, classFunction) {
-    if(obj === null|| obj === undefined || classFunction ==null)
-        return false
+    if(obj === null|| obj === undefined || typeof classFunction !=='function'){
+        console.log("hey",obj,classFunction==null);
+               return false;
+    }
+ 
     let currentPrototype  = Object.getPrototypeOf(obj)
     while(currentPrototype!=null){
        
         if (currentPrototype == classFunction.prototype){
-            console.log(currentPrototype, classFunction.prototype)
-            return true 
+            console.log(currentPrototype, classFunction.prototype);
+            return true ;
         }
-         currentPrototype  =  Object.getPrototypeOf(currentPrototype)
+         currentPrototype  =  Object.getPrototypeOf(currentPrototype);
 
-           
     }
-    return false
+    console.log("undefined");
+    return false;
 };
 
 /**
