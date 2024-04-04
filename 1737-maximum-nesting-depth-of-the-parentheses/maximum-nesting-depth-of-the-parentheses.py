@@ -8,10 +8,10 @@ class Solution:
             if c  =="(":
                 open+=1
                 ans = max(ans, open)
-                stk.append(c)
+         
             elif c ==")":
                 open-=1
-                stk.pop(-1)
+            
             
         return ans 
         
