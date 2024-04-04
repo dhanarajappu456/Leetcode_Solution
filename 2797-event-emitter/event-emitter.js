@@ -6,6 +6,10 @@ class EventEmitter {
      * @return {Object}
      */
     // this is  new way of declaring the instance variable in ES 6
+    // you can also use , 
+    // constructor(){
+    //     this.eventMap = {}
+    // }
     eventMap  = {}
     subscribe(eventName, callback) {
         if(!(eventName in this.eventMap))
