@@ -5,7 +5,8 @@
  /*
  yield returns one value at a time 
 
- but , to yield one value at a time from list , iterable , another generator, we need to use yield*
+ but , to yield one value at a time from list , iterable , another generator, from within a 
+ generator , then  we need to use yield*
  
   */
 var inorderTraversal = function*(arr) {
