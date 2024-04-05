@@ -2,6 +2,12 @@
  * @param {Array} arr
  * @return {Generator}
  */
+ /*
+ yield returns one value at a time 
+
+ but , to yield one value at a time from list , iterable , another generator, we need to use yield*
+ 
+  */
 var inorderTraversal = function*(arr) {
      const res   = [];
  
