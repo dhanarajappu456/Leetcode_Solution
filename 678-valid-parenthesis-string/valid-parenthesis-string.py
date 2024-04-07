@@ -1,43 +1,36 @@
-#solution 3 - with 2 iteration from front and end
-from collections import deque 
+#solution 1 - recursion memo
+
 
 class Solution:
     def checkValidString(self, s: str) -> bool:
       
         '''
-        1)iterating from start and we sum up total opens , 
-        with aster being taken as open 
-        during this , if open becomes <0 return False
-        essentially we check , if there are sufficient opens for closed pars
+        recursion memo
 
-        2)iterating from end  and we sum up total closed , 
-        with aster being taken as closed 
-        during this , if closed becomes <0 return False
-        essentially we check , if there are sufficient closed pars for open pars
-        t n 
-        s 1
+        t n^2
+        s n^2(memo) + n(stk space)
 
         '''
-        close,open  = 0,0
-        for c in s :
-            if c ==")": 
-                open-=1
+        aster_stk= []
+        par_stk = []
+        n = len(s)
+        @lru_cache(None)
+        def rec(ind, open):
+            if ind==n:
+                return open == 0
+            if s[ind] == "(":
+                return rec(ind+1,open+1)
+            elif s[ind] ==")":
+                if open>0 : 
+                    return rec(ind +1, open-1)
             else:
-                open+=1
-            
-            if open<0:
-                return False
+                ans  = rec(ind+1, open+1) or rec(ind+1,open) 
+                if open>0:
+                  ans = ans or rec(ind+1, open -1)
+                return ans
+        return rec(0,0)
 
-        
-        for c in s[::-1]:
-            if c =="(": 
-                close-=1
-            else:
-                close+=1
-            if close<0:
-                return False
-        return True
-    #t n 
+    #t n    
     # s n 
 
 
