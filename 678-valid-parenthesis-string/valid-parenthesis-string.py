@@ -4,42 +4,51 @@ from collections import deque
 class Solution:
     def checkValidString(self, s: str) -> bool:
       
-        #a deq is needed here as 
-        #1)popleft
-        # when we see a ) , we need to see if we have * seen already 
-        #where we store the stars in fifo , and need to pop the * assuming it as (
-        #2) At the end of the for loop the stk might contain open brackets, which can be 
-        #mapped to * assuming as )
-        #so we need to popright in deq 
-        deq= deque([])
+        '''
+        we use 2 stack , one for pushing the  parenth
+        other for aster
 
-        stk = []
+        when we find there is not mathching open par in stack for a closed par
+        we check if aster stack has one, which can be assumed as open par
+
+        at end of loop , the par stack has only open pars, so 
+        we need to check if asterisk stack has aserisks, which can be assumed as closed pars
+
+        t n 
+        s n
+
+        '''
+        aster_stk= []
+        par_stk = []
         for i,c in enumerate(s) :
             if c == "(":
-                #index info needed to see if in case c  = ")"
-                # and we need to know if the * comes before it so that it can be assumed as (
-                stk.append((i,"(",))
+                #index is needed when matching open pars in stack to asterisk as closed pars
+                #at the end of the for loop, where asterisk can be taken as closed pars, iff it comes after the open 
+                #pars
+                par_stk.append((i,"("))
             elif c == ")":
-                #direct pop if there isopening bracket seen so far
-                if stk and stk[-1][1] == "(":
-                    stk.pop(-1)
+                #direct pop if there is opening bracket seen so far
+                if par_stk and par_stk[-1][1] == "(":
+                    par_stk.pop(-1)
                 #assuming * as (
-                elif deq:
-                    deq.popleft()
+                elif aster_stk:
+                    aster_stk.pop(-1)
                 else:
     
                     return False
             #add the *  to deq
             else:
-                deq.append(i)
+                aster_stk.append(i)
         # now the stack will only have (
         # so we need to match it with * assuming as )
-        #where we need to do popleft in deq
-        while(stk):
+        #where we need to pop asterisk from aster stack which can be assumed as 
+        #) , if it comes after this open par 
+
+        while(par_stk):
             #check if the * comes after the (, then only it can be matched
-            if  stk and  deq and deq[-1]>stk[-1][0]:
-                stk.pop(-1)
-                deq.pop()
+            if  par_stk and  aster_stk and aster_stk[-1]>par_stk[-1][0]:
+                par_stk.pop(-1)
+                aster_stk.pop(-1)
      
             else:
                 return False
