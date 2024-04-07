@@ -30,7 +30,7 @@ class Solution:
                 return ans
         return rec(0,0)
 
-    #t n    
-    # s n 
+    # t n^2
+    #s n^2(memo) + n(stk space)
 
 
