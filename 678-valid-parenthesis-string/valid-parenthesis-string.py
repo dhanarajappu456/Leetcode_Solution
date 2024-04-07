@@ -47,5 +47,8 @@ class Solution:
         
         return True
 
+    #t n 
+    # s n 
+
 
 
