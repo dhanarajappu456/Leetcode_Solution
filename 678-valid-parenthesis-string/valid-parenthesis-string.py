@@ -1,4 +1,4 @@
-#solution 1 - with stk and deq , greedey 
+#solution 1 - with 2 stack , greedey 
 from collections import deque 
 
 class Solution:
