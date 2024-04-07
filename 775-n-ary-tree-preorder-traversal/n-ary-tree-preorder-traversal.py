@@ -12,13 +12,15 @@ class Solution:
         # print(root.children )
         # return []
         ans = []
-        def rec(node):
+        stk =[]
+        if root:
+            stk =[root]
 
-            if root == None:
-                return
-            
+        while(stk):
+
+            node =stk.pop(-1)
             ans.append(node.val)
-            for c in node.children:
-                rec(c)
-        rec(root)
+            for c in node.children[::-1]:
+                stk.append(c)
+            
         return ans
