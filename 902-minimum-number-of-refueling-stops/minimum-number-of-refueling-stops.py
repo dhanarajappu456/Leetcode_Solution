@@ -1,4 +1,12 @@
-import heapq as h
+#solution 1 - dp
+
+'''
+since there are choices for the pumps chosen when at index i, we can have 2 dimension dp 
+dp[i][j] indicate the max dist that can travel , with  all i pumps  and out of which , j pumps  being chosen
+
+t n^2
+s n^2
+'''
 
 class Solution:
     def minRefuelStops(self, target: int, startFuel: int, stations: List[List[int]]) -> int:
