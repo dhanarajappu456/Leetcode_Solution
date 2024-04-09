@@ -8,11 +8,7 @@ class Solution:
         #s 1
         ans = 0 
         for i,num in enumerate(tickets):
-            #values to left of k
-            if i<=k:
-
-                ans += min(num ,  tickets[k])
-            #values to right of k 
-            else:
-                ans += min(num, tickets[k]-1)
+            #values to left of k(including k) and values to right of k 
+            ans += min(num ,  tickets[k])  if i<=k   else min(num, tickets[k]-1)
+           
         return ans 
