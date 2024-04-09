@@ -22,14 +22,15 @@ class Solution:
                 start =0 
                 
                 ones = pref[start+1][c2+1] - pref[start+1][c1] 
-                #skip all rows that dont have the c2-c1+1 number of 1's
+                
                 while(start<m):
+                    #skip all rows that dont have the c2-c1+1(which is ,length of top and bottom side )number of 1's
                     while((start<m )and (ones!=(c2-c1+1))):
                         start+=1
                         if start<m :
                             ones = pref[start+1][c2+1] - pref[start+1][c1] 
                     end  = start
-                    #find the start and end row with c2-c1+1 number of 1's
+                    #find the start and end row with c2-c1+1(which is ,length of top and bottom side ) number of 1's
                     if end<m: 
                             ones = pref[end+1][c2+1] - pref[end+1][c1] 
                     while((end < m) and( ones == (c2-c1+1))):
