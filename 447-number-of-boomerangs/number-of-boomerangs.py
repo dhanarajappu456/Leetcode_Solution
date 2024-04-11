@@ -31,7 +31,7 @@ class Solution:
             for d in m[p]:
                 c = m[p][d]
                 if c>=2:
-                    print(c,math.factorial(c)/(math.factorial(c-2)*math.factorial(2)))
+                   
                     ans+= math.factorial(c)/(math.factorial(c-2)*math.factorial(2))
 
         return int(ans)*2
