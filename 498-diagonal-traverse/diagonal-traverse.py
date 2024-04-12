@@ -6,6 +6,9 @@ understanding the fact theaty each diagonal is identified by
  and values is a dequeue of items of these elements
  dequeue is used , since we need to enque the elements from both side, based 
  on if diag value is odd or even
+ t  mn 
+ s mn
+
 '''
 class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
