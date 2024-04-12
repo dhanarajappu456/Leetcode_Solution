@@ -1,27 +1,26 @@
 class Solution:
-    def trap(self, height):
-        
-        
-        n = len( height)
-        l=0
-        r =n-1 
-        totalWater= 0
-        maxLeftSofar,maxRightSoFar = 0,0
+    def trap(self, height: List[int]) -> int:
+        heights = height 
+        n = len(heights)
+        l,r = 0,n-1
+        lMax,rMax = 0,0
+        ans= 0
         while(l<=r):
             
-            
-            if height[l]<height[r]:
-                trapedWater = max(0,min(maxLeftSofar,height[r])-height[l])
-                maxLeftSofar= max(maxLeftSofar,height[l])
+            if heights[l]<heights[r]:
+                currentHeight = heights[l]
+                limitingHeight  = lMax
+                if limitingHeight >=currentHeight :
+                    ans+=(limitingHeight - currentHeight)
+                lMax=  max(lMax,heights[l])
                 l+=1
                 
-                
             else:
-                trapedWater = max(0,min(maxRightSoFar,height[l])-height[r])
-                maxRightSoFar= max(maxRightSoFar,height[r])
+                currentHeight = heights[r]
+                limitingHeight  = rMax
+                if limitingHeight >= currentHeight:
+                    ans+=(limitingHeight -  currentHeight)
+                rMax=  max(rMax,heights[r])
                 r-=1
-           
-            totalWater += trapedWater
                 
-        return totalWater
-                
+        return ans
