@@ -1,7 +1,7 @@
 class Solution:
     def isNumber(self, s: str) -> bool:
         def is_int(s,canbe_signed):
-            print('lol',s,canbe_signed)
+           
             chars = set(s)
             if len(s)==0:
                 return False
@@ -19,11 +19,12 @@ class Solution:
             #case need to handle proper signed numbers(true) and -inf(false)
             if s[0] =="-":
                 return len(s)>1 and( "+" not in chars) and  "".join(s[1:]).isdigit()
+            #is the sign is in a position other than first index, then return false
             if "+" in s:
                 return False
             if "-" in s:
                 return False
-
+            #handles some garbage string like inf etc
             return "".join(s).isdigit()
            
         def is_dec(s):
@@ -33,17 +34,20 @@ class Solution:
                 return False
             #if . in the number split and check
             if s.count(".") ==1:
-                #t = is_int(s[:s.index(".")],True) and is_int(s[s.index(".")+1:],False) 
+            
              
-                #wither leeft or right side must be integer
+                #wither leeft or right side must be integer, but also either part should not contain any 
+                #alphabets
                 #eg -.1  and -1. are valid  dec according to question 
                 
                 for i, c in enumerate(s):
+                    #decimal shouldnot contain any alpahbet
                     if c in "abcdefghijklmnopqrstuvwxyz":
                         return False
+                    #should pnly contain sign at first index
                     if i!=0 and (c=="+" or c=="-"):
                         return False
-                 
+                #eg .9 or 8. is valid float
                 return (  is_int(s[:s.index(".")],True)  or   is_int(s[s.index(".")+1:],False) )  
                  
                 
@@ -56,17 +60,17 @@ class Solution:
                 return False
             #if e in the number split and check
             if s.count("e") ==1:
-                print( (is_dec(s[:s.index("e")]) or is_int(s[:s.index("e")],True)) and is_int(s[s.index("e")+1:],True) )
+                #left part of number can be dec or int(singed or unsigned )  and right part can be int only(signed ot unsigned)
                 return (is_dec(s[:s.index("e")]) or is_int(s[:s.index("e")],True)) and is_int(s[s.index("e")+1:],True) 
             return False
         
         
       
-
+        #lower the cases as it simplifies the comparison , like having to check for only converted case, 
+        #like test case my have E or e , so we convert it to e , for simplicity 
         s = [c.lower() for c in s ]
-        
         return  is_int(s,True) or is_dec(s) or is_exp(s) 
-        return False
+
       
 
 
