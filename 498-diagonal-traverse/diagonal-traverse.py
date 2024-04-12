@@ -1,3 +1,12 @@
+#solution - 1
+'''
+understanding the fact theaty each diagonal is identified by 
+ i+j , where i,j is coordiantate of elements in it
+ we store these values in map , where key is the diag values
+ and values is a dequeue of items of these elements
+ dequeue is used , since we need to enque the elements from both side, based 
+ on if diag value is odd or even
+'''
 class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
         m,n = len(mat),len(mat[0])
