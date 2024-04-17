@@ -7,8 +7,10 @@
 class Solution:
     def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
         # remember the stinf is constructed from bottom to top
+        #t =n 
+        #s = n 
         def rec(root,string):
-           
+            # neglect this time complexity
             string = chr(97+root.val)  + string
             if root.left and root.right:
                 return min(rec(root.left,string), rec(root.right,string))
