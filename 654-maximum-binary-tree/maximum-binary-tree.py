@@ -13,7 +13,7 @@ class Solution:
             val  = max(nums[i:j+1])
             node = TreeNode(val)
             ind  = nums.index(val)
-            print(ind)
+          
             l =rec(i,ind-1)
             r =rec(ind+1,j)
             node.left =l
