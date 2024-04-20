@@ -6,22 +6,18 @@
 #         self.right = right
 class Solution:
     def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
-        m = defaultdict(list)
-        max_h  = 0
-        def rec(root,h):
-            nonlocal max_h
-            if root == None:
-                return 
-            if root.left  == None and root.right == None and h>=max_h :
-                if h>max_h:
-          
-                    if max_h  in m:
-                        m.pop(max_h)
-                    max_h = h
-                m[max_h].append(root.val)
-                return 
-       
-            rec(root.left,h+1)
-            rec(root.right,h+1)
-        rec(root,0)
-        return sum(m[max_h])
+        visited = set()
+        queue = deque([root])
+        visited.add(root)
+        ans =0
+        while queue:
+            n =len(queue)
+            ans  = 0 
+            for i in range(n):
+                node = queue.popleft()
+                ans+= node.val
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+        return ans
