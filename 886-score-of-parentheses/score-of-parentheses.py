@@ -10,15 +10,14 @@ class Solution:
                 current_open_matched = False
                 item  = stk[-1]
 
-                # if top is (, just we would might need to push 1 to stack not immediately , keep it stored
-                #in num , beacuse next top will be a number in which it need to be added to num and push this num
+                # if top is( pop it ansd push 1
 
                 if  item=="(":
                     current_open_matched = True
                     num = 1
                     stk.pop()
-                #if top was a number double it 
-                
+                #if top was a number add all previosu number until ( 
+                #and double this sum and insert to stack
                 else:
         
                     while stk and stk[-1]!="(":
@@ -30,7 +29,7 @@ class Solution:
             
               
                 stk.append(num)
-      
+        #at end stack  will have only numbers that need to be added
         return sum(stk)
             
      
