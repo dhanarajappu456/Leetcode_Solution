@@ -9,7 +9,7 @@ class Solution:
             arr.append(root.val)
             rec(root.right)
         rec(root)
-        print(arr)
+     
         def rec(i,j):
             if i>j:
                 return  None
