@@ -1,9 +1,16 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+'''
+solution - 1
+dfs 
+note the problem asks to sum nodes with even value as grand parent, not nodes with even greandparent and grangrandparent 
+and so on...
+just one level grand parent need to be taken into account
+just keep track of the parent and grandparent details for each node, to verify if node's value 
+
+be added  to the sum
+t  n
+s  n
+
+'''
 class Solution:
     def sumEvenGrandparent(self, root: TreeNode) -> int:
        
