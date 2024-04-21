@@ -7,25 +7,19 @@ class Solution:
             if c == "(":
                 stk.append(c)
             elif c==")":
-                if  stk[-1]!="(":
-                    s = 0
-                    while(stk and stk[-1]!="("):
-                        num = stk.pop(-1)
-                        s+= num
-                    s*=2
-                    stk.pop(-1)
-                    stk.append(s)
+                item = stk.pop()
+                if  item=="(":
+                    num = 1
                 else:
-                    stk.pop(-1)
-                    s = 0
-                    while(stk and ( stk[-1] != "(") ):
-                          num = stk.pop(-1)
-                          s += num
-                    s+=1
-                    stk.append(s)    
-                #print(stk)
-                          
-        return sum(stk)
+                    num = item*2
+                if stk and stk[-1]!="(":
+                    item = stk.pop()
+                    num+=item
+                else:
+                    if stk:
+                        stk.pop()
+                stk.append(num)
+        return stk[0]
             
      
 
