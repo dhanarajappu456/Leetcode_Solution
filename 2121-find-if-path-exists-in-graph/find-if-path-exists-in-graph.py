@@ -13,14 +13,13 @@ class Solution:
             adj[e[0]].append(e[1])
             adj[e[1]].append (e[0])
         def rec(s):
-            if s in vis:
-                return False
+           
             if s == d: 
                 return True
             vis.add(s)
           
             for neib in adj[s]:
-                if rec(neib):
+                if (neib not in vis) and rec(neib):
                     return True
             return False
             
