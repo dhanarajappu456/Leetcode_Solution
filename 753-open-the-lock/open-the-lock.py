@@ -27,8 +27,9 @@ class Solution:
                     vis.add(newVal1)
                     q.append( ( newVal1 , step+1))
 
-                if newVal1 == "8888":
-                    print(val , step)
+                #back move is important 
+                #eg say target is 0009 then 
+                #ans must be 1 , if we followed forward moves, the ans would have been 9 
                 newVal2 = val.copy()
                 newVal2[i] = str((int(newVal2[i]) - 1 )%10)
                 newVal2 = "".join(newVal2)
