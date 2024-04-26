@@ -1,33 +1,25 @@
-'''
-
-solution 2 - dp solution
-
-
-the dp solution fo solution 1 
-
-t n^3
-s n
-
-'''
-
 class Solution:
     def minFallingPathSum(self, grid: List[List[int]]) -> int:
         n = len(grid)
-        dp = [[0 for i in range(n+1)] for i in range(n+1)]
-  
-        #state indicate the min sum when choosing element from ith row to 
-        #end row , with j-1 being the column chosen from the previous row
-        for i in range(n-1,-1,-1):
-            #     j-1 being the previous index chosen
-            for j in range(n+1):
-                m  = float("inf")
-                for c in range(n):
-                    if c!=j-1:
-                        m = min(m  ,grid[i][c]+ dp[i+1][c+1])
-                
-                dp[i][j]= m 
-
-        return min(dp[0])
-
-
+        dp = [[0 for _ in range(n)] for _ in range(n)]
         
+        # Initialize the last row of dp with the values of the last row of the grid
+        dp[-1] = grid[-1]
+        
+        # Iterate over the rows from second last to first
+        for i in range(n-2, -1, -1):
+            # Find the minimum and second minimum value in the current row
+            min_val, second_min_val = float('inf'), float('inf')
+            for j in range(n):
+                if dp[i+1][j] < min_val:
+                    second_min_val = min_val
+                    min_val = dp[i+1][j]
+                elif dp[i+1][j] < second_min_val:
+                    second_min_val = dp[i+1][j]
+            
+            # Update dp with the minimum falling path sum
+            for j in range(n):
+                dp[i][j] = grid[i][j] + (min_val if dp[i+1][j] != min_val else second_min_val)
+        
+        # The minimum falling path sum will be the minimum value in the first row of dp
+        return min(dp[0])
