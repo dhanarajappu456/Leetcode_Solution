@@ -9,17 +9,20 @@ class Solution:
         # Iterate over the rows from second last to first
         for i in range(n-2, -1, -1):
             # Find the minimum and second minimum value in the current row
-            min_val, second_min_val = float('inf'), float('inf')
+            min1_val,min2_val,min1_col,min2_col = float("inf"),float("inf"),-1,-1
             for j in range(n):
-                if dp[i+1][j] < min_val:
-                    second_min_val = min_val
-                    min_val = dp[i+1][j]
-                elif dp[i+1][j] < second_min_val:
-                    second_min_val = dp[i+1][j]
+                if dp[i+1][j] <= min1_val:
+                    min2_val = min1_val
+                    min2_col = min1_col
+                    min1_val = dp[i+1][j]
+                    min1_col=j
+                elif dp[i+1][j] <= min2_val:
+                    min2_val = dp[i+1][j]
+                    min2_col =j
             
             # Update dp with the minimum falling path sum
             for j in range(n):
-                dp[i][j] = grid[i][j] + (min_val if dp[i+1][j] != min_val else second_min_val)
+                dp[i][j] = grid[i][j] + (min1_val if min1_col != j else min2_val)
         
         # The minimum falling path sum will be the minimum value in the first row of dp
         return min(dp[0])
