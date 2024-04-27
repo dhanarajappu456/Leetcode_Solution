@@ -1,7 +1,7 @@
 '''
 memoised solution 
 t n^3
-s n
+s n^3
 
 '''
 class Solution:
