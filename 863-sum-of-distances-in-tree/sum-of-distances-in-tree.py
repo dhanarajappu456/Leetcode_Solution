@@ -1,3 +1,25 @@
+'''
+
+the idea is we find answer for root here 0 
+then if you observe when we have ans for parent then ans for child can be found 
+such that 
+y = a -x + (n-x)
+where 
+y =ans_for_current_node
+a = ans_for_parent 
+x = total_number_of_nodes in subtree_of_current_node inclusing current node(1 is reduced from each subtree node,as compared
+to that of parent)
+(n-x) = remaining number of nodes(1 is increased for each other noded as compared to that of parent)
+
+
+this formula can be derived / obtained if you draw some examples
+
+t n
+
+s n(aux space)+ n(count space)
+
+'''
+
 class Solution:
     def sumOfDistancesInTree(self, n: int, edges: List[List[int]]) -> List[int]:
         adj  =defaultdict(list)
