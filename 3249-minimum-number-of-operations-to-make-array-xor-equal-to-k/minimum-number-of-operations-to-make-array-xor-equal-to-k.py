@@ -1,3 +1,13 @@
+'''
+solution 1 - bit manipulation
+the idea is take xor of all elements in the array and check which all position in k and this xor value differ 
+in which case we need to flip that position.
+
+t  n
+
+s  1 
+'''
+
 class Solution:
     def minOperations(self, nums: List[int], k: int) -> int:
         xor = 0 
