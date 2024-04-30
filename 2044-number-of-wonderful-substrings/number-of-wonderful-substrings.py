@@ -4,13 +4,17 @@ solution1
 approach  subarray sum  = k
 we know the xor of a num even number times gives = 0 
 and odd number of times gives the same number
-we use this approach 
+we use this approach  to solve
+we find cumulative xor and store it in map
+
+now look how things work: 
 
 each char a-j is mapped to vals  like 1,2,4,8....
 we find the subaray ending at current index, 
 a)which either has  all terms even number of times
 checked by :
-when at current index, we check if we have same culative xor found so far
+when at current index, we check if we have same culative xor found so far, which means that can be removed from
+beginnnig
 b)or either one of char from a to j is appears  odd number times
 checked by 
 wehen at current index , for each char a to j , if each of them appears exactly odd number of times
