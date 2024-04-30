@@ -17,7 +17,7 @@ when at current index, we check if we have same culative xor found so far, which
 beginnnig
 b)or either one of char from a to j  appears  odd number times
 checked by 
-wehen at current index , for each char a to j , if each of them appears exactly odd number of times
+when at current index , for each char a to j , if each of them appears exactly odd number of times
 this is done by xoring this char with cumulative xor , let  call this as "prefix_to_remove", which is some 
 thing that need to be cur from beginning
 
@@ -39,10 +39,14 @@ class Solution:
 
             pos = ord(c)-97
             xor ^= (1<<pos)
-           
+            # to get count of subarray ending at current index,
+            #with all terms even numebr of times
             if xor in mp:
                 res+= mp[xor]
             val  =1 
+            #getting subarray ending at current index with each char appear odd number times 
+            #seperately
+
             while(val<= (1<<9)):
                 prefix_to_remove  = xor^val
                 if prefix_to_remove in mp:
