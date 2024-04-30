@@ -15,7 +15,7 @@ a)which either has  all terms even number of times
 checked by :
 when at current index, we check if we have same culative xor found so far, which means that can be removed from
 beginnnig
-b)or either one of char from a to j is appears  odd number times
+b)or either one of char from a to j  appears  odd number times
 checked by 
 wehen at current index , for each char a to j , if each of them appears exactly odd number of times
 this is done by xoring this char with cumulative xor , let  call this as "prefix_to_remove", which is some 
