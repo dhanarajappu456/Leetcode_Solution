@@ -3,10 +3,10 @@ class Solution:
         
         l1,l2 =  version1.split("."),version2.split(".")
         m,n = len(l1), len(l2)
-        print(l1,l2)
+       
         i,j = 0, 0
         while(i<m and j<n):
-            print(l1[i],l2[j],int(l1[i]) ,int(l2[j]))
+ 
             if int(l1[i])> int(l2[j]):
                 return 1
             elif int(l1[i])< int(l2[j]):
