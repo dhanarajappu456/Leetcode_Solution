@@ -9,6 +9,7 @@ class Solution:
         temp = head
         while(temp!=None):
             num = temp.val
+            #whenever current node val>all previus node, we remove those nodes
             while(stk and stk[-1].val<num):
                 stk.pop(-1)
             stk.append(temp)
