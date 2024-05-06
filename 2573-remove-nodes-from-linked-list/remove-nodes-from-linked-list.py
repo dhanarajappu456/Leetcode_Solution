@@ -1,8 +1,8 @@
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+'''solution2 - 
+monotonic stk  of  decreasing value
+t n 
+s n 
+'''
 class Solution:
     def removeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
         stk =[]
