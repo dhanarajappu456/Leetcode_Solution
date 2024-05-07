@@ -1,20 +1,21 @@
-#solution 1 - recursion
+#solution 1 - using stack
 #t n 
-#s n(stk space)
+#s n
 class Solution:
     def doubleIt(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        def rec(root):
-            if root == None:
-                return 0 
-            
-            s = root.val*2 + rec(root.next) 
-            root.val  = s%10
-            c = s//10
-            return c 
-        
-        c = rec(head)
+        stk  = []
+        temp  = head
+        while(temp):    
+            stk.append(temp)
+            temp =temp.next
+        c = 0
+        while(stk):
+            node = stk.pop()
+            v = node.val*2 + c
+            node.val  = v%10
+            c = v//10
         temp = ListNode(c)
-        if c!=0:
-            temp.next  = head 
-            head = temp
+        if c :
+            temp.next  = head
+            head  = temp
         return head
