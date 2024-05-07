@@ -1,4 +1,4 @@
-#solution 1 - using stack
+#solution 2 - using stack
 #t n 
 #s n
 class Solution:
