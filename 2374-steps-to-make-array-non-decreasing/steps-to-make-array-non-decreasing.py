@@ -14,16 +14,17 @@ class Solution:
        
         n = len(nums)
         stk = []
-        ans =0 
+        ans =0
+     
         for num in nums[::-1]:
            
-            max_step =0 
+            cnt =0 
             while(stk and num>stk[-1][0]):
                 val,steps = stk.pop(-1)
-                max_step = max(max_step+1,steps)
-            stk.append((num,max_step))
+                cnt = max(cnt+1,steps)
+            stk.append((num,cnt))
           
-            ans  = max(ans,max_step)
+            ans  = max(ans,cnt)
         return ans
 
         
