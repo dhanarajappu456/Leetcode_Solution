@@ -1,26 +1,27 @@
 '''
-solution1 
-memo 
+solution2 - using mono dec stack
 
-the idea is rec(l,h) -> stores the minium ans for array ranging from l,h
+ the idea is to build tree with smallest elements first so that the maximum in the tree is minimised
+ so we keep on storing the elements to stack if they are decreasing when a value greater than elements in the stack 
+ comes we start building tree with those smallest elemnt and then finally build tree with those tree and this greater 
+ element
 
-t n^3 
-s  n(aux) + n^2(memo ds )
+t n 
+s  n
 
 '''
 
 class Solution:
     def mctFromLeafValues(self, arr: List[int]) -> int:
 
-        @lru_cache(None)
-        def rec(l,h):
-            if l>=h:
-                return 0
-            ans = float("inf")
-            for k in range(l,h):
-                val = max(arr[l:k+1]) * max(arr[k+1:h+1])  + rec(l,k) + rec(k+1,h)
-                ans  = min(val,ans)
-            return ans
-        n = len(arr)
-        return rec(0,n-1)
-        
+        stk  = [float("inf")]
+        res = 0 
+        for i,num in enumerate(arr): 
+            while(stk and stk[-1]<= num): 
+                curr = stk.pop()
+                res+= curr* min(stk[-1],num) 
+            stk.append(num)
+    
+        while(len(stk)>2):
+            res  = res +  (stk.pop(-1) * stk[-1] )
+        return res
