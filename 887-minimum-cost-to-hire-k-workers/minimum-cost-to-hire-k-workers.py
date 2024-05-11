@@ -29,7 +29,7 @@ which get devoid of inner loop
 t nlogn + n*logk ( w/q sort , and run for loop considering each ratio as manager ratio  with pushing and poppoing 
 from the heap of size k-1 
 )
-s
+s n+k(w/q array and the heap)
 
 w/q ratio array.
 
