@@ -1,5 +1,20 @@
 '''
-[[7,9],[10,7],[6,9],[10,4],[7,5],[7,10]]
+Solution 1 
+The idea is to sort ascending by attack and then descending by defense then keep storing the max attack and 
+defense as we iterate from the end.
+
+why we need the defense to be in descending ?
+
+If we sort both ascending and perform algo , consider test case
+[[7,9],[7,12],[10,4]] when at 7,9 we will find there is one number greater than it, since max attack so far is 10 and
+defense is 12, but it is no right. this happens bcz the denense 12 fall in an item with same attack 7 , which can't be 
+taken so it is essentially to have the items with same attack in descending , so that 
+we don't have this issue.
+and sorting order then become [[7,12],[7,9],[10,4]].
+
+t nlogn
+s 1
+
 '''
 
 
