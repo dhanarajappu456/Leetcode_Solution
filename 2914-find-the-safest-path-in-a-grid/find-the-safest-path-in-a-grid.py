@@ -25,16 +25,33 @@ class Solution:
                     q.append((x,y,dis+1))
                     near[x][y] = dis+1
                     vis.add((x,y))   
+    
+        def possible(saf_fact):
+            q= deque([])
+            vis  = set()
+            if near[0][0]>=saf_fact:
+                q.append((0,0))
+                vis.add((0,0)) 
+            while(q):
+                i,j  = q.popleft()
+                if i==n-1 and j== n-1:
+                    return True
+                for dr in d:
+                    x,y  = i+dr[0], j+dr[1]
+                    if 0<=x<n and 0<=y<n and ((x,y) not in  vis)  and (near[x][y]>=saf_fact):
+                        vis.add((x,y))
+                        q.append((x,y))
+            return False
 
-        max_heap  = [(-near[0][0],0,0)]
-        vis  = set()
-        vis.add((0,0))
-        while(max_heap):
-            mx,i,j = h.heappop(max_heap)
-            if (i == n-1 )and (j==n-1):
-                return -mx
-            for dr in d:
-                x,y = i+dr[0] , j+dr[1]
-                if  (0<=x<n) and (0<=y<n) and  (( x,y  ) not in vis):
-                    vis.add((x,y))
-                    h.heappush(max_heap,(-min(-mx,near[x][y]),x,y))
+        l,h =0,800
+        ans  = -1 
+        while(l<=h):
+            m = (l+h)//2
+            if possible(m):
+                l=m+1
+                ans  = m 
+            else:
+                h = m-1
+        return ans 
+                    
+               
