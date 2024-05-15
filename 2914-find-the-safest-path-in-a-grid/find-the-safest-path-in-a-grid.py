@@ -1,5 +1,4 @@
 from collections import deque
-import heapq as h
 class Solution:
     def maximumSafenessFactor(self,grid):
 
@@ -43,7 +42,7 @@ class Solution:
                         q.append((x,y))
             return False
 
-        l,h =0,800
+        l,h =0,400
         ans  = -1 
         while(l<=h):
             m = (l+h)//2
