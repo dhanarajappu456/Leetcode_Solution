@@ -6,6 +6,11 @@ position in nums, thus final ans
 where we took val as the term 2**i +2**j + 2**k ....etc  , which is  ored values of all nums , 
 which is nothing but a value  indicating the a bit position is set in any of the number .
 
+t n
+s 1 
+
+
+
 '''
 
 class Solution:
