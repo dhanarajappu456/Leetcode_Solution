@@ -4,24 +4,25 @@ class Solution:
         n = len(nums)
         chosen = defaultdict(int)
         nums.sort()
-        count  = 0 
+
         def rec(i):
-            nonlocal count
+          
             if i  == n:
-                #print( chosen)
+                
                 if len(chosen)>0:
-                    count+=1
-                return 
-            
+                    return 1
+                return  0
+            tk,not_tk = 0,0 
             if (nums[i]-k) not in chosen:
                 chosen[nums[i]]+=1
-                rec(i+1)
+                tk = rec(i+1)
 
                 chosen[nums[i]]-=1
                 if  chosen[nums[i]] == 0:
                     chosen.pop(nums[i])
-            rec(i+1)
+            not_tk = rec(i+1)
+            return not_tk +tk 
                 
-        rec(0)
-        return count
+        return rec(0)
+
         
