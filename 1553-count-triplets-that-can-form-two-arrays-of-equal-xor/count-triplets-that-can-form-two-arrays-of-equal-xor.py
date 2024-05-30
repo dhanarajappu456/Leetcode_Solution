@@ -17,6 +17,8 @@ we could have k-i possiblities for j , which is added to result
 t n^2
 s 1
 
+
+
 '''
 
 class Solution:
@@ -24,12 +26,16 @@ class Solution:
 
         res= 0
         n =len(arr)
-        for i in range(n-1):
-            xor = arr[i]
-            for k in range(i+1,n):
-                xor^=arr[k]
-                if xor ==0 :
-                  
-                    res+=  (k-i)
+        xor = 0 
+        mp_cnt  = defaultdict(int)
+        mp_prev_ind_sum = defaultdict(int)
+        mp_cnt[0]=1
+        mp_prev_ind_sum[0] = 0
+        for i in range(n):
+            xor ^= arr[i]
+            if xor in mp_cnt:
+                res+= i*mp_cnt[xor] - mp_prev_ind_sum[xor]
+            mp_cnt[xor]+=1
+            mp_prev_ind_sum[xor]+= (i+1)
         return res
         
