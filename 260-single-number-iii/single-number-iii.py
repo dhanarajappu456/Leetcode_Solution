@@ -1,3 +1,24 @@
+'''
+
+solution1 :
+sorting and then comapring iadjacent to check if it occur once or twice
+
+t nlogn 
+s  1 
+
+
+
+solution2 - using the count map
+
+t n 
+s n 
+
+
+'''
+
+
+
+#solution 2 
 class Solution:
     def singleNumber(self, nums: List[int]) -> List[int]:
 
