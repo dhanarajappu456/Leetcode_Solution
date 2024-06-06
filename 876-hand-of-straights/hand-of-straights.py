@@ -3,7 +3,7 @@ class Solution:
     def isNStraightHand(self, hand: List[int], groupSize: int) -> bool:
         minHeap = []
         cnt = defaultdict(int)
-        print(hand)
+
         curr_grp_size = 0
         for i,num in enumerate(hand):
             h.heappush(minHeap,num)
