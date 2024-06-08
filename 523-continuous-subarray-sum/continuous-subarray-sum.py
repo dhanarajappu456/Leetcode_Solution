@@ -14,6 +14,9 @@ class Solution:
             rem = prefixSum%k
             
             if rem in remainderToIndex:
+                #note that we dont updatt the rem  if 
+                #it is already there as we need to have smallest index 
+                #for a rem , as we are greedy to have length>=2
                 length  = i-remainderToIndex[rem]
                 if length>=2:
                     return True 
