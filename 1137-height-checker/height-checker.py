@@ -1,9 +1,29 @@
+from collections import defaultdict as dict 
+
 class Solution:
     def heightChecker(self, heights: List[int]) -> int:
-        sorted_height = sorted(heights)
-        cnt =0
-        for i,num in enumerate(sorted_height):
-            if num!=heights[i]:
-                cnt+=1
-        return cnt
+        sorted_height = []
+        cnt  = dict(int)
+        ans = 0 
+        for i,num in enumerate(heights):
+            cnt[num]+=1
+   
+        for val in range(1,101):
+            count = cnt[val]
+            for i in range(count):
+                sorted_height.append(val)
+        
+
+        for i,val in enumerate(heights):
+            if val!= sorted_height[i]:
+                ans+=1
+        return ans
+        
+
+
+           
+
+
+
+
         
