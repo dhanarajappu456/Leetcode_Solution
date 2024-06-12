@@ -1,3 +1,17 @@
+
+'''
+
+using three pointer , low  high and i 
+low keeps track of 0 and high for 2 and i is the current pointer 
+
+the edge case is when we find curren value as 2 and swap it with high , the high would have been
+pointing to the 0 , and wehen swapping it might therefore put this 1 after some 0 
+to deal with this we dont update the i when current value found is 2 
+t n 
+s  1 
+
+'''
+
 class Solution:
     def sortColors(self, nums: List[int]) -> None:    
         n = len(nums)
@@ -15,9 +29,10 @@ class Solution:
                 # nums =
                 # [1,2,0]
 
-                # Use Testcase
-                # Output
-                # [1,0,2]
+                #when current value found is 2 we dont necessarily update i , 
+                #as this the swapped value coming from high would be 0 , which 
+                #need to be dealt in next iteration , as this might bring 0 after some 1's 
+        
                 i-=1
             
             i+=1
