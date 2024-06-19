@@ -22,7 +22,7 @@ class Solution:
                     i=j
                 else:
                     i=j+1
-            print(curr_day,boq_rem)
+            
             return  boq_rem ==0
                 
             
