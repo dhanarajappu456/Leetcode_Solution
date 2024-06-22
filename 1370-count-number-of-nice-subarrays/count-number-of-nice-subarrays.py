@@ -1,9 +1,17 @@
 
+
 '''
+Solution 1 - 
 like subarray with sum == k 
 
 here the sum is number of odd numbers in a subarray
-pref stores the sum of odd numbers so far 
+pref pref sum which is the sum of count of odd numbers so far 
+
+the array can be imagined as :
+[1,1,2,1,1]----> [1,1,0,1,1]
+t n 
+s n 
+
 '''
 
 class Solution:
