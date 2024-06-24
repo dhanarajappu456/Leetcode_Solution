@@ -21,7 +21,20 @@ t n
 s n
 
 
+
+solution 3 o(1) space
+
+- same idea as of solution 2 , but not using the set dsa 
+
+instead modify those flipped position in the nums array itself , with some value to mark it
+
+so that extra space not used 
+t n 
+s 1 
+
 '''
+
+
 
 #solution 2 
 class Solution:
@@ -31,18 +44,34 @@ class Solution:
         
         '''
         n =len(nums)
+        #keeps count of how many times current element
+        #need to be flipped
         flip_count =  0
+        #stores the ans 
         flipped  = set()
         for i,num in enumerate(nums):
-            if (i-k) >=0 and ((i-k )in flipped ):
+            #checks if the flipcount contain
+            #flip from invalid window before( ie, window far more than k dist )
+            #in which case it need to be discarded , so count is reduced, 
+            #as that flip from any element in that window 
+            # don't influence the current element
+            if (i-k) >=0 and (nums[i-k]  == -1  ):
                 flip_count-=1
+            #flipping current element
             current   = (num + flip_count)%2 
+
+            #if current element is still  0 , 
+            #then we need to flip it 
             if current == 0:
+                #in case when there is no sufficient
+                #k element(icluding current element)
+                #we can't perform flip , so return -1 
                 if (i+ k) >n:
                     return -1 
                 flip_count+=1
-                flipped.add(i)
-        return len(flipped)
+                nums[i]=-1
+
+        return nums.count(-1)
             
             
 
