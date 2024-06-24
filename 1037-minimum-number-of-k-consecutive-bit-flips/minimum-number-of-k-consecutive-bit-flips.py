@@ -36,7 +36,7 @@ s 1
 
 
 
-#solution 2 
+#solution 3 - modifying nums array, so as to not use the extra space(set)
 class Solution:
     def minKBitFlips(self, nums: List[int], k: int) -> int:
 
@@ -47,8 +47,6 @@ class Solution:
         #keeps count of how many times current element
         #need to be flipped
         flip_count =  0
-        #stores the ans 
-        flipped  = set()
         for i,num in enumerate(nums):
             #checks if the flipcount contain
             #flip from invalid window before( ie, window far more than k dist )
