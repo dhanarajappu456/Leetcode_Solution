@@ -14,8 +14,8 @@ currrent element that need to be flipped.
 here we keep a vaiable that keep track of flipCount , which is 
 the varible denoting the number of flips the current element need to do 
 
-but remember , a flip in a window doesnt contribute to flipping an element outside 
-of it so we need to decrement this by 1 
+but remember , a flip in a window doesnt contribute to flipping an element outside and next to it
+ it so we need to decrement this by 1 
 
 t n 
 s n
