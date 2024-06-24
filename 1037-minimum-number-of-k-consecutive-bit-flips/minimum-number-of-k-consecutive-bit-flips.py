@@ -32,29 +32,61 @@ so that extra space not used
 t n 
 s 1 
 
+
+
+solution 4  - using deque
+
+o(k) space  == o(1) space
+
+approach 3 is efficient but , it modifies the input ,which is not good 
+
+so we us a data structure. As we iterate through the array with flipcount info 
+we keep on pushing 0 or 1 to thi DS , indicating curent element is flipped or not 
+and when we are at any index  i , the front of this dsa always gives the information about 
+(i-k))th index , if is flipped or not,  and we remove this info from the DS
+after this, as is no more needed 
+thus this DS maintain a size of k always 
+
+since we need to remove from front , the DS is deque 
+
+
+
+
+
+
+t n 
+s o(K) = o(1)
+
 '''
 
+from collections import deque
 
-
-#solution 3 - modifying nums array, so as to not use the extra space(set)
+#solution 4 - deque 
 class Solution:
     def minKBitFlips(self, nums: List[int], k: int) -> int:
 
         '''
         
         '''
+        dq  = deque([])
         n =len(nums)
         #keeps count of how many times current element
         #need to be flipped
         flip_count =  0
+        ans =0 
         for i,num in enumerate(nums):
             #checks if the flipcount contain
             #flip from invalid window before( ie, window far more than k dist )
             #in which case it need to be discarded , so count is reduced, 
             #as that flip from any element in that window 
             # don't influence the current element
-            if (i-k) >=0 and (nums[i-k]  == -1  ):
-                flip_count-=1
+
+            #once the k or elements visited we need to pop deque 
+            
+            if (i-k) >=0 :
+                flipped  = dq.popleft()
+                if flipped == 1:
+                    flip_count-=1
             #flipping current element
             current   = (num + flip_count)%2 
 
@@ -67,9 +99,14 @@ class Solution:
                 if (i+ k) >n:
                     return -1 
                 flip_count+=1
-                nums[i]=-1
+            
+                dq.append(1)
+                ans +=1 
+            else:
+                #no flip made 
+                dq.append(0)
 
-        return nums.count(-1)
+        return ans 
             
             
 
