@@ -11,13 +11,11 @@ class Solution:
         def rec(root,s):
             if root == None:
                 return 0
-            if root.right == None:
-                root.val = root.val + s 
-                l = rec(root.left,root.val)
-            else:
-                r = rec(root.right,s)
-                root.val += r 
-                l = rec(root.left,root.val)
-            return l or root.val
-        rec(root , 0)
+            old_val  = root.val
+            r = rec(root.right,s)
+            root.val = root.val + s +r 
+            l = rec(root.left,root.val)
+
+            return old_val + l+ r 
+        rec(root,0)
         return root
