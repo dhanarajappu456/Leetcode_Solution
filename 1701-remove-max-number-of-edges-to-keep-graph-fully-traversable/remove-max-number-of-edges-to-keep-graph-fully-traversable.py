@@ -73,7 +73,7 @@ class Solution:
                 p2 = ds_alice.findPar(v)
                 p3 = ds_bob.findPar(u)
                 p4 = ds_bob.findPar(v)
-                if p1==p2 and  p3==p4:
+                if p1==p2 or   p3==p4:
                     cnt+=1
                 else:
                     ds_alice.union(p1,p2)
