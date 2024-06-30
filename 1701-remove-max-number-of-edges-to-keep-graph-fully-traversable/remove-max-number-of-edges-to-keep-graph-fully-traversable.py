@@ -39,6 +39,8 @@ class Solution:
        
         ds_alice = DSU(n)
         ds_bob   = DSU(n)
+        #reverse sort the edges to find the min number of edges with which alice and bob 
+        #can traverse the greaph , so that remaining edges is maximised 
         edges.sort(key = lambda x:-x[0])
         cnt =0
         for t,u,v in edges:
