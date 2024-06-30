@@ -86,7 +86,8 @@ class Solution:
             p =p-1
             alice_pars.add(ds_alice.findPar(p))
             bob_pars.add(ds_bob.findPar(p))
-
+        # checking if there is only one component at , end
+        #meaning that every node can be traversed by both alices and bob
         if len(alice_pars) == len(bob_pars) ==1 :
             return cnt
         return -1 
