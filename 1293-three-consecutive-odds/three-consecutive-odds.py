@@ -1,12 +1,9 @@
 class Solution:
     def threeConsecutiveOdds(self, arr: List[int]) -> bool:
-        odds = 0
-        for i,num in enumerate(arr):
-            if num%2==0:
-                odds=0
-            else:
-                odds+=1
-            if odds>=3:
+        n = len(arr)
+        for i in range(n-2):
+            print(i)
+            if (arr[i] *arr[i+1] * arr[i+2])  %2 ==1: 
                 return True
         return False
             
