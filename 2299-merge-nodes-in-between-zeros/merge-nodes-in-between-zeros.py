@@ -6,7 +6,7 @@
 class Solution:
     def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
         '''
-        ()
+        
         '''
         ptr  =  head
         dummy =ListNode()
@@ -20,5 +20,6 @@ class Solution:
 
                 
             ptr = ptr.next
+        # remove unnecessary nodoe to right of temp
         temp.next = None
         return dummy.next
