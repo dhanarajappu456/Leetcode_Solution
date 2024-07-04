@@ -8,19 +8,17 @@ class Solution:
         '''
         ()
         '''
-        dummy = ListNode()
-        tmp = dummy
-        prev = None
-        ptr = head
+        ptr  =  head
+        dummy =ListNode()
+        temp = dummy 
         while(ptr):
-            if ptr.val == 0:
-                tmp.next = ListNode(0)
-                prev = tmp
-                tmp = tmp.next
+            if (ptr.next!=None) and(ptr.val == 0) :
+                temp.next = ptr
+                temp = temp.next
             else:
-                tmp.val+=ptr.val
+                temp.val+= ptr.val
 
+                
             ptr = ptr.next
-        prev.next = None
+        temp.next = None
         return dummy.next
-        
