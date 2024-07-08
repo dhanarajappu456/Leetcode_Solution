@@ -10,12 +10,8 @@ class Solution:
 
             ind  = (ind + k-1 )%len(nums)
             
-            if ind == len(nums)-1:
-                temp =  0
-            else:
-                temp   =ind
+           
             val = nums.pop(ind)
-            ind = temp
-        
+           
         return nums[0]
         
