@@ -4,14 +4,14 @@ class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
 
 
-        nums = dq([i+1 for i in range(n)])
+        def rec(n,k):
 
-        while(len(nums)>1):
+            if n==1:
+                return 0
+            
+            ind = rec(n-1,k)
+            ind = (ind+k) % n
 
-            for i in range(k-1):
-                nums.append(nums.popleft())
-     
-            nums.popleft()
-           
-        return nums[0]
+            return ind
         
+        return 1+rec(n,k)
