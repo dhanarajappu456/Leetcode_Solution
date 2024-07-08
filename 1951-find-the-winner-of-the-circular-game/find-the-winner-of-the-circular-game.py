@@ -4,6 +4,8 @@ class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
 
 
+
+        
         def rec(n,k):
             '''
             when single element , which is winner , index of it is 0
@@ -19,5 +21,7 @@ class Solution:
             ind = (ind+k) % n
 
             return ind
-        
+        '''
+        at end the value of ans is 1 more than index at which it stays
+        '''
         return 1+rec(n,k)
