@@ -1,14 +1,14 @@
 class Solution:
     def minOperations(self, logs: List[str]) -> int:
 
-        stk = []
+        folds = 0
         for op in logs:
             if op =="../":
-                if stk:
-                    stk.pop()
+                if folds:
+                    folds-=1
             elif op!="./":
-                stk.append(op)
+                folds+=1
  
-        return len(stk)
+        return folds
 
         
