@@ -27,7 +27,7 @@ class Solution:
                     break
             if not (eq):
                stk.append(curr_ind)
-           
+         
         info.sort(key =  lambda x: x[3])
         return [item[1] for item  in info  if item[1] != None ]
         
