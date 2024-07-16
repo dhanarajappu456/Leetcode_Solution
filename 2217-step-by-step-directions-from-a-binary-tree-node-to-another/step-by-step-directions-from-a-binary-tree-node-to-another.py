@@ -8,6 +8,10 @@ class Solution:
     def getDirections(self, root: Optional[TreeNode], startValue: int, destValue: int) -> str:
 
         start , end  = None, None
+
+        '''
+        find lca 
+        '''
         def lca_find(root):
 
 
@@ -30,7 +34,11 @@ class Solution:
                 
 
 
-      
+        '''
+
+            `1. find path from lca to startValue
+            2., find path from lca to  destValue`
+        '''
         def path_find(s, d,path):
             if s  == None:
                 return False
@@ -57,8 +65,9 @@ class Solution:
         path_find(lca,end,lca_to_dest)
 
         ans = ""
-        print(lca_to_src, lca_to_dest)
-
+     
+        '''we need to change all the movement from lca to srcValue to "U"
+        '''
         for c in lca_to_src:
             ans+="U"
 
