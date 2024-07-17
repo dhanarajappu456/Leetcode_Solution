@@ -8,20 +8,23 @@ class Solution:
                 return None
             left = rec(root.left)
             right = rec(root.right)
-            root.left = left
+
+            root.left  = left
             root.right = right
-            if root.val in to_delete:
-                if left:
-                    ans.append(left)
-                if right :
+            if root.val  in to_delete:
+                print(root.val)
+                if left :
+
+                    ans.append(left )
+
+                if right:
                     ans.append(right)
                 return None
-            else:
-                return root
             
-        if rec(root):
-            ans.append(root)
-
+            return root
+        r= rec(root)
+        if r :
+            ans.append(r)
         return ans
             
         
