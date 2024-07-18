@@ -15,9 +15,16 @@ class Solution:
             3.for each leaf node find the pair by starting bfs
         
         '''
+        
+
+        
         adj = defaultdict(list)
-        adj1 = defaultdict(list)
+
         leafs  = set()
+
+        '''
+        create undir graph
+        '''
         def create_g(root,prev):
             if root == None:
                 return None 
@@ -26,30 +33,43 @@ class Solution:
             if prev!= None:
                 adj[root].append(prev)
                 adj[prev].append(root)
-
-                adj1[root.val].append(prev.val)
-                adj1[prev.val].append(root.val)
             create_g(root.left,root)
             create_g(root.right,root)
         create_g(root,None)
+
+        '''
+        to keep track of processed leafs, means all pair with this leaf is obtained
+        '''
         processed_leaf  =  set()
         ans = 0
+
+        '''
+        processing each leaf , 
+        by starting bfs from this leaf  till d dist frontier , 
+        so as  to find all the valid pair formed by this leaf
+        '''
         for leaf in leafs:
             d=1 
             q= deque([])
             if leaf not in processed_leaf:
                 q = deque([leaf])
+            
             vis = set()
+            
             vis.add(leaf)
-            while(q and d<=distance):
+            while(d<=distance):
                 size = len(q )
                 for i in range(size):
                     node = q.popleft( )
                     for neib in adj[node]:
-                        if neib not in vis and neib not in processed_leaf:
+                        
+                        if neib not in vis:
                             q.append( neib )
                             vis.add( neib )
-                            if neib.left  == None and neib.right == None:
+                            '''
+                            got other node of the valid pair with leaf
+                            '''
+                            if neib not in processed_leaf  and neib.left  == None and neib.right == None:
                                 ans+=1
                 d+=1
             processed_leaf.add(leaf)
