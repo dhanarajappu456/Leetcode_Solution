@@ -3,13 +3,14 @@ class Solution:
 
         m,n = len(matrix),len(matrix[0])
         col_max_min,row_min_max  = float("inf "),float("-inf ")
+        #find the mins among all the max of each columns 
         for j in range(n):
             max_col = matrix[0][j]
             for i in range(m):
                 max_col= max(max_col, matrix[i][j])
             col_max_min = min(col_max_min,max_col) 
 
-        
+        #find the maxs  among all the mins  of each rows  
         for i in range(m):
             row_min  = min(matrix[i])
             row_min_max = max(row_min_max,row_min) 
