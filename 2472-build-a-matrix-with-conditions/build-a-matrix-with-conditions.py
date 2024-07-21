@@ -7,15 +7,14 @@ class Solution:
         ans = [[0 for i in range(k)] for j  in range(n)]
         adj1  = defaultdict(list)
         adj2 = defaultdict(list)
-        indeg_row, indeg_col =[0 for i in range(k+1)],[0 for i in range(k+1)]
-
 
         for a,b in rowConditions: 
             adj1[b].append(a)
-            indeg_row[a]+=1
         for a,b in  colConditions: 
             adj2[b].append(a)
-            indeg_col[a]+=1
+
+        #topo post order
+        #which gives the toposort order , and also detect the cycle 
         
         def rec(root,adj,res):
             if  root in path:
@@ -28,38 +27,36 @@ class Solution:
             for nb in adj[root]:
                 if rec(nb,adj,res):
                     return True
-            
             res.append(root)
             path.pop(-1)
 
 
      
         row,col  = [],[]
-        #print(indeg_row,indeg_col)
-
-  
+        #toposort in rows
         vis = set()
         path = []
         for val in range(1,k+1):
-          
+            #when there is cycle return []
             if rec(val,adj1,row):
                 return []
-            
+        #topsort in cols    
         vis = set()
         path= []
         for val in range(1,k+1):
- 
+            #when there is cycle return []
             if rec(val,adj2,col):
                 return []
         
 
         pos_row,pos_col = defaultdict(int),defaultdict(int)
-
+        #restructuring the position into map , for easy fetch of row and col position 
+        #given a particular value  from 1 to k 
         for i in range( k):
 
             pos_row[row[i]] = i
             pos_col[col[i]] = i 
-    
+        #assigning the values to its position given by above 
         for val in range(1,k+1):
             r,c  = pos_row[val],pos_col[val]
             ans[r][c] = val
