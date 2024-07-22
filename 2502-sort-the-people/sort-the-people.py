@@ -3,9 +3,6 @@ class Solution:
         h =[(height,i) for i,height in enumerate(heights)]
         h.sort(reverse  = True)
         ans = []
-        print(h)
-
         ans =[names[ind] for i,(ht,ind) in enumerate(h)]
-
         return ans 
         
