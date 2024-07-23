@@ -1,6 +1,10 @@
 class Solution:
     def frequencySort(self, nums: List[int]) -> List[int]:
-        nm = nums.copy()
-        nums.sort(key=lambda x: (nm.count(x),-x))
+        freq =  {}
+
+        for num in nums:
+            freq[num]= freq.get(num,0)+1
+
+        nums.sort(key=lambda x: (freq[x],-x))
         return  nums
         
