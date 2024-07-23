@@ -1,3 +1,5 @@
+# Sorry Bob\U0001f614\U0001f614
+
 class Solution:
     def doesAliceWin(self, s: str) -> bool:
         vow  = {'a','e','i','o','u'}
