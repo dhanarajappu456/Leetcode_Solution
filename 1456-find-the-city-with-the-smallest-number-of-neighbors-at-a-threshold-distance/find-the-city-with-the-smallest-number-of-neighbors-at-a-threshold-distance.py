@@ -2,46 +2,40 @@
 
 class Solution:
     def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
-        
-        
+        self.l = 0 
+        def f():
+            self.l+=1
+            return  self.l
+        #v^3
+        def floyd():
 
-        def bellman(i):
+            d = [[ 0 if i == j else float("inf")  for i in range(n)] for j in range(n)]
+            for a,b ,w in edges:
 
-            d =[float("inf") for i  in range(n)]
-            d[i] =0
-            nodes = set()
-            for _ in range(n-1):
-                #relax edges in both direction, as is undir
-                for a,b, w  in edges:
+                d[a][b] = w
+                d[b][a] = w 
+            #for all the pair of nodes(j,k), find the shortest path through node i 
+            for i in range(n):
 
-                    d[b] = min(d[b], d[a]+w)
-                    d[a] = min(d[a], d[b]+w)
-                 
-            #dont consider the source node itself , when counting  the rechable node
-            for v in range(n):
-                if i!=v and d[v]<=distanceThreshold:
-                    nodes.add(v)
-            return nodes
-            
-            
+                for j  in range(n):
 
+                    for  k in range(n):
 
-        ans  = -1 
-        min_cnt  = float("inf")
-        for i in range(n):
-            
-            nodes  =  bellman(i)
+                        d[j][k] = min(d[j][k], d[j][i] + d[i][k])
 
-            if len(nodes) <= min_cnt:
-                min_cnt = len(nodes)
-                ans = i
+            ans  = -1 
+            min_cnt  = float("inf")
+            for i in range(n):
+                nodes = set()
+                for j in range(n):
+                    #dont consider source node 
+                    if  i!=j and d[i][j] <= distanceThreshold:
+                        nodes.add(j)
 
+                if len(nodes) <= min_cnt:
+                    min_cnt = len(nodes)
+                    ans = i
 
-        return ans
+            return ans 
 
-
-            
-
-
-
-        
+        return floyd()
