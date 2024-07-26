@@ -2,10 +2,8 @@
 
 class Solution:
     def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
-        self.l = 0 
-        def f():
-            self.l+=1
-            return  self.l
+
+       
         #v^3
         def floyd():
 
