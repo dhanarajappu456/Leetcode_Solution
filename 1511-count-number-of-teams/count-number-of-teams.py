@@ -4,24 +4,30 @@ class Solution:
       
         ans =0 
         n  = len(rating)
-        #stores the ans if prev_ind is last chosen element and the order we look is
-        #inc or dec and cnt  number of elements is  already chosen
-        @lru_cache(None)
+        for j in range(1,n-1):
+            
+            left_smalls,left_greats,right_smalls,right_greats =0,0,0,0
+            n2 = rating[j]
 
-        def rec(prev_ind,inc,cnt):
-            if cnt ==3:
-               
-                return 1 
-            res =0
-            for i in range(prev_ind+1,n):
-                
-                if inc==True  and (prev_ind == -1 or rating[i]>rating[prev_ind]):
-                    res+= rec(i,True,cnt+1)
-                elif inc ==False  and (prev_ind == -1 or rating[i]<rating[prev_ind]):
-                    res+=rec(i,False,cnt+1)
-
-            return res
-
-        return rec(-1,True,0) + rec(-1,False,0)
-
-
+            #finding cnt of nums on left side, < n2  (middle element)
+            #and also cnt of nums on left side> n2 
+            for i in range(j):
+                if rating[i]<n2:
+                    left_smalls+=1
+                if rating[i]>n2:
+                    left_greats+=1
+            
+            #finding cnt of nums on right side, < n2  (middle element)
+            #and also cnt of nums on right side> n2 
+            for k in range(j+1,n):
+                if rating[k]<n2:
+                    right_smalls+=1
+                if rating[k]>n2:
+                    right_greats+=1
+            #the final ans is 
+            #combination 1  - smalls on left , n2 , large on right
+            #combination 2 -  large on right, n2, small on right
+            ans += left_smalls *right_greats  + left_greats * right_smalls
+            
+        return ans
+        
