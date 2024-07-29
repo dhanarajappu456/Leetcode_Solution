@@ -4,7 +4,10 @@ class Solution:
       
         ans =0 
         n  = len(rating)
+        #stores the ans if prev_ind is last chosen element and the order we look is
+        #inc or dec and cnt  number of elements is  already chosen
         @lru_cache(None)
+
         def rec(prev_ind,inc,cnt):
             if cnt ==3:
                
