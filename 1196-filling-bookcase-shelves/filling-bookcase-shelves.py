@@ -5,7 +5,7 @@ class Solution:
         n = len(books)
         # Memoization dictionary to store intermediate results
         memo = {}
-        
+        #function computes minheight to keep all books form i to n
         def rec(i):
             if i == n:
                 return 0
