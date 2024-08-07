@@ -10,13 +10,16 @@ class Solution:
         h.heapify(min_heap)
         ans = 0 
         mapped  = {}
+        position = 0
         while(max_heap):
-            mapped_letter_length , num = h.heappop(min_heap)
+    
             occur , c  = h.heappop(max_heap)
             occur *= -1
-            pos = mapped_letter_length+1
+            pos = position//8 +1 
             ans  += pos*occur
-            h.heappush(min_heap, (pos,num))
+
+            position+=1
+           
         return ans
 
 
