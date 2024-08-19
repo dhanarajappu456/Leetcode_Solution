@@ -8,9 +8,9 @@ class Solution:
             if current>n:
                 return float("inf")
 
-
+            #paste _ prev
             res1 = 1+rec(current+clipboard , clipboard) 
-
+            #copy and paste -currnet 
             res2  = 2+ rec( 2* current  , current )
 
             return min(res1 , res2)
