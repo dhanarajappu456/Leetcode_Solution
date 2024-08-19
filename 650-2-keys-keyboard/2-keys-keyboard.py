@@ -1,6 +1,6 @@
 class Solution:
     def minSteps(self, n: int) -> int:
-
+        @lru_cache(None )
         def rec (current,clipboard):
 
             if current  == n:
