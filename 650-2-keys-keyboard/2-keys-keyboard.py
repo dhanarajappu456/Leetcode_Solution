@@ -15,10 +15,11 @@ class Solution:
             for fact_i in range(1,i//2 + 1):
                 if i % fact_i ==0 :
                     #when fact_i is factor of i( i is the number of a's currently on screem)
-                    #we replicate it i // fact_i -1 times ,  so that we get n a's
-                    #total operation  = 
-                    #numer of opeation to get to i number of a's + 1 (copying i nuber of a's)  + i // fact_i -1
-                    #(pasting it i // fact_i -1 times)
+                    #we replicate "i nummber of a's" , " i // fact_i -1" times ,  so that we get "n" a's
+                    #total operation  is sum of 
+                    #1.) numer of opeation to get to i number of a's + 
+                    #2.)  1 (copying i nuber of a's) 
+                    #3.) i // fact_i -1 (pasting it i // fact_i -1 times)
                     dp[i] = min (dp[i], dp[fact_i] + (1 + i // fact_i -1)) 
         return dp[n]
         
