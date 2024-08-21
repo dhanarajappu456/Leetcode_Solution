@@ -9,12 +9,14 @@ class Solution:
             if i==j:
                 return 1
 
-            print(i,j)
+         
             min_ =float("inf")
             for k in range(i,j):
 
                 min_  = min(min_, rec(i,k)  + rec(k+1,j))
-
+            #if ith andn jth character are same , then ans-1 
+            #should be returned
+            #eg: aba
             return min_-1  if s[i] == s[j] else min_
     
         return rec(0,n-1)
