@@ -9,8 +9,7 @@ class Solution:
         for num in original:
             curr.append(num)
             if len(curr) == n:
-                ans.append(curr.copy())
+                ans.append(curr)
                 curr  = []
-                
         return ans 
             
