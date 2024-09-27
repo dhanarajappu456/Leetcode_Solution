@@ -28,6 +28,10 @@ class MyCalendarTwo:
         #always keep all intervals encountered so far in this list
         self.non_overlap.append((start, end))
         return True
+    '''
+    t n 
+    s n
+    '''
 
 # Your MyCalendarTwo object will be instantiated and called as such:
 # obj = MyCalendarTwo()
