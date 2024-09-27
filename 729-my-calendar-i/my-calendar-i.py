@@ -1,19 +1,46 @@
+class TreeNode:
+    def __init__(self,start, end) :
+        self.left, self.right   = None , None 
+        self.s, self.e   = start , end 
+        
 class MyCalendar:
 
     def __init__(self):
         
-        self.mp = set()
+        self.root = None
+        
         
 
     def book(self, start: int, end: int) -> bool:
         
-        for e in  self.mp: 
+        node = TreeNode(start, end)
+        if self.root == None:
+            self.root = node
+            return True 
+        curr   = self.root
+        while curr:
             
-            if not(end <=e[0]  or e[1] <=start):
+           
+            if curr.e<=start:
+                if not curr.right :
+                    curr.right  = TreeNode(start, end)
+                    return True
+                curr = curr.right
+                
+          
+            elif end<= curr.s:
+                if not curr.left :
+                    curr.left  = TreeNode(start, end)
+                    return True
+                curr = curr.left
+            else:
                 return False
+        
+        
+        return True 
             
-        self.mp.add( ( start, end))
-        return True
+        
+      
         
 
 
