@@ -13,7 +13,7 @@ to find the element with left most element in the stk with height<= current elem
 t nlogn 
 s  n(stk)
 
-solution3- optimised solution - greedy 
+solution3- optimised solution - greedy  -sorting
 
 we sort the array based in value also we will have their old index saved
 thus as we iterate on this sorted array ,which is the right leg
