@@ -6,7 +6,7 @@ class Solution:
             st =""
             #constructing the string , based on 
             #chars chosen 
-            
+
             for j in range(n):
                 if i&(1<<j)!=0:
                     st = s[-(j+1)]+st
@@ -16,7 +16,7 @@ class Solution:
                 di[i] =  len(st)
                 
         max_ = -1*float("inf")
- 
+        #findind the max product of  length 
         for i in di:
             for j in di:
                 if j&i == 0:
