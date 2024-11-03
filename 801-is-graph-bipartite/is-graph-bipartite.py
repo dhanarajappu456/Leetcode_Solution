@@ -7,6 +7,7 @@ class Solution:
 
             
             if color[node]!=-1:
+                #take care of both parent and other nodes
                 return prevColor!=color[node]
 
             color[node] = 1-prevColor
