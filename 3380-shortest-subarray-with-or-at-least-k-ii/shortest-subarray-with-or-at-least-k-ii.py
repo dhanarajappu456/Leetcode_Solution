@@ -7,17 +7,12 @@ class Solution:
         j= 0 
         bits=[0 for i in range(32)]
 
-        def remove(bits,num):
+        def update(bits,num,val):
             for i in range(32):
                 if (num&(1<<i))!=0 :
-                    bits[i]-=1
+                    bits[i]+= val
              
-                    
-        def add(bits,num):
-            for i in range(32):
-                if (num&(1<<i))!=0 :
-                    bits[i]+=1
-            
+  
         def get_decimal(bits):
             ans =  0 
             for i in range(32):
@@ -25,14 +20,14 @@ class Solution:
                     ans|=(1<<i)
             return ans
         while(j<n ):
-            add(bits,nums[j])
+            update(bits,nums[j],1)
             if get_decimal(bits)<k:
                 j+=1
                 continue
             while(i<=j and get_decimal(bits)>=k):
            
                 ans = min(ans,j-i+1)
-                remove(bits,nums[i])
+                update(bits,nums[i],-1)
                 i+=1
             j+=1
         return -1 if ans == float("inf") else ans
