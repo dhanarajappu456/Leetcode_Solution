@@ -13,12 +13,12 @@ class Solution:
             while(l<=h):
                 m  = (l+h)//2
                 if check( m ):
+                    ans  =  min(ans, m)
                     h = m-1
-                    ans  =  min(ans, h)
                 else:
                     l = m+1 
         binary()
-        return ans+1
+        return ans
 
 
         
