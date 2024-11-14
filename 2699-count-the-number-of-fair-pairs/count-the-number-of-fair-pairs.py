@@ -4,11 +4,10 @@ class Solution:
         n  = len(nums)
         i,j  = 0, n-1 
         ans  =  0 
-        # arr =[i for i in range(n)]
-        # arr.sort(key  = lambda x:nums[x])
-        # print(arr)
+      
         nums.sort()
-        print(nums)
+        #find  the index of least possible number
+        #that can be added so that the sum is b.w tha asked range
         def low(num  , l,r):
        
             while(l<=r): 
@@ -21,7 +20,9 @@ class Solution:
             if  l<n and  (lower<=(num+ nums[l]) <=upper):
                 return l
             return -1
-
+        #find the index of max number , so that 
+        #sum of current number num and it is b.w 
+        #the asked range
         def up(num, l,r):
            
             while(l<=r): 
