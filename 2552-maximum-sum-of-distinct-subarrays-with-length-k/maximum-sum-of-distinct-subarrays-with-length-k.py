@@ -16,14 +16,15 @@ class Solution:
                 continue
             else:
                
-                #logic to check the answer
-                #check k distinct termns in the window
-               
-                d[nums[i]] -=1
+                
+                
+                #if the count of unique chars is ==k 
+                #then check if it could be an ans
                 if len(d) ==k:
                      ans  = max(ans, sum_)
+                #shrink the window
                 sum_-= nums[i]
-                
+                d[nums[i]] -=1
                 if d[nums[i]]==0:
                     d.pop(nums[i])
                 i+=1
