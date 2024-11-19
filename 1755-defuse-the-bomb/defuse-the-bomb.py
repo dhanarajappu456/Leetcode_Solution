@@ -6,7 +6,7 @@ class Solution:
         if k!=0:
         
             win_sum = sum(code[1:k+1]) if k>0 else sum (code[k:])
-        print(win_sum)
+   
         for i in range(N):
             res[i] = win_sum
             if k<0:
