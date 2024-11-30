@@ -1,37 +1,42 @@
+import heapq as h 
 class Solution:
     def minimumTime(self, grid: List[List[int]]) -> int:
-        if grid[1][0] > 1 and grid[0][1] > 1:
+        
+
+        
+        if (grid[0][1] >1) and (grid[1][0] > 1) : 
             return -1
-        R, C = len(grid), len(grid[0])
-
-        def isOutside(i, j):
-            return i < 0 or i >= R or j < 0 or j >= C
-
-        def idx(i, j):
-            return i * C + j
-
-        N = R * C
-        time = [2**31] * N
-        pq = [0]
-
-        time[0] = 0
-        while len(pq):
-            tij = heappop(pq)
-            t, ij = tij >> 32, tij & ((1 << 30) - 1)
-            i, j = divmod(ij, C)
-            if i == R - 1 and j == C - 1:
-                return t
-
-            for di, dj in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
-                r, s = i + di, j + dj
-                if isOutside(r, s):
-                    continue
-
-                w = 0 if (grid[r][s] - t) & 1 else 1
-                nextTime = max(t + 1, grid[r][s] + w)
-
-                rs = idx(r, s)
-                if nextTime < time[rs]:
-                    time[rs] = nextTime
-                    heappush(pq, (nextTime << 32) + rs)
+        m,n = len(grid),len(grid[0])
+        d = [[ float("inf") for j in range(n)] for i in range(m)]
+        min_heap = [(grid[0][0], 0,0)]
+        d[0][0] = grid[0][0]
+        h.heapify(min_heap)
+        dir_ = [(0,1),(0,-1),(1,0),(-1,0)]
+        dist_mat =[[float("inf") for j in range(n)] for i in range(m)]
+        dist_mat[0][0] = 0
+        while(min_heap):
+            dist_,x,y= h.heappop(min_heap)
+            
+            if (x== m-1) and (y == n-1):
+                return dist_
+            for i,j in dir_:
+                a,b = x+i , y+j
+                if (0<=a<m) and (0<=b<n):
+                    # calculated time to reach neibr 
+                    # 1. when diff is odd and diff is even
+                    new_dist = 0 
+                    distance = grid[a][b] - dist_
+                    if  distance<=0:
+                        new_dist  = dist_+1
+                    else:
+                        if  distance %2 ==0:
+                            new_dist = grid[a][b]+1
+                        else:
+                            new_dist = grid[a][b]
+                    
+                    if new_dist < dist_mat[a][b]:
+                        dist_mat[a][b] = dist_
+                        h.heappush(min_heap,(new_dist ,a,b))
+       
         return -1
+
