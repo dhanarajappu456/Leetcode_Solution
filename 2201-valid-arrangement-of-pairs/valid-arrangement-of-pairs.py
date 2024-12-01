@@ -23,6 +23,8 @@ class Solution:
         #basically running a dfs from the starting node
         while stack:
             while adj[stack[-1]]:
+                #important to pop the value from the adj list , so as
+                # to not visit again
                 next_node = adj[stack[-1]].popleft()
                 stack.append(next_node)
             result.append(stack.pop())
