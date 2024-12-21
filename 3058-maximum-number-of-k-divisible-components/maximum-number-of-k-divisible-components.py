@@ -16,10 +16,10 @@ class Solution:
 
 
         vis = set()
-        print(root)
-        print(adj)
+     
+ 
         def rec(root):
-            print("idn")
+      
             vis.add(root)
             ans  = values[root]
             for nb in adj[root]:
@@ -27,15 +27,12 @@ class Solution:
                     val = rec(nb)
 
                     if (val!=-1) and(  val%k ==0):
-                        print("fdkjdfs")
                         self.cnt+=1
                     else:
                         if val!=-1:
                             ans+= val
             if ans%k==0:
-               
                 self.cnt +=1
-                print("fd",self.cnt)
                 ans = -1
             return ans
         rec(root)
