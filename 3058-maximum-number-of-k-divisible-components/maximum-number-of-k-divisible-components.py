@@ -1,3 +1,10 @@
+'''
+it doesn't matter , if we formed a component on the subtree
+that is the values are used or not , we can always return 
+all the values from the subtree, but whwen sub component
+has a multiple of k , that is when increment the answer
+'''
+
 class Solution:
     def maxKDivisibleComponents(self, n: int, edges: List[List[int]], values: List[int], k: int) -> int:
         
@@ -7,6 +14,10 @@ class Solution:
             adj[a].append(b)
             adj[b].append(a)
 
+        for a in range(0,n):
+            if len(adj[a])<=1:
+                root = a 
+                break
         root = 0 
         self.cnt = 0
         vis = set()
@@ -16,24 +27,9 @@ class Solution:
             for nb in adj[root]:
                 if nb not in vis:
                     val = rec(nb)
-                    #a non neg -1 
-                    #indicates that subtree has some values
-                    # left that , can be used form value 
-                    # which is multiple of k 
-                    if (val!=-1):
-                        ans+=val
-            #if the 
-            #1.root 
-            #2 root and left 
-            #3.root and right 
-            # 4. root and left and right
-            #is a multiple of k , then we assume to have 
-            #used  those value and  return -1 , to indicated
-            #no value returned byt his function, which wiil be checked
-            #in upper calls that is in parent rec function 
-            if (ans%k)==0:
+                    ans+= val
+            if ans%k==0:
                 self.cnt +=1
-                ans = -1
             return ans
         rec(root)
         return self.cnt
