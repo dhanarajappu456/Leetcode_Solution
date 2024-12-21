@@ -13,7 +13,7 @@ class Solution:
                 return 0
             l = rec(root.left)
             r = rec(root.right)
-            print(l,r)
+       
             self.ans = max(self.ans , l-1, r-1)
 
             if (root.left and root.left.val == root.val)  and ( root.right and root.right.val == root.val ):
