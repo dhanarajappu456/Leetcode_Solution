@@ -16,7 +16,10 @@ class Solution:
             for nb in adj[root]:
                 if nb not in vis:
                     val = rec(nb)
-                    #a non neg
+                    #a non neg -1 
+                    #indicates that subtree has some values
+                    # left that , can be used form value 
+                    # which is multiple of k 
                     if (val!=-1):
                         ans+=val
             #if the 
