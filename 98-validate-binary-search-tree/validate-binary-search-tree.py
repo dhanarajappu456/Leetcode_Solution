@@ -9,26 +9,16 @@ class Solution:
         #return self.rec(root,-1 * float('inf'),float('inf'))
         inorder =  [ ]
         
-        def rec(root):
+        def rec(root,low,high):
             
-            if root  == None :
-                return None
-
-            rec(root.left)
-            inorder.append(root.val)
-            rec(root.right)
-        
-        rec(root)
- 
-        sorted_arr = sorted(inorder)
-        if inorder != sorted_arr:
-            return False
-        #also there can be cases inorder  =[2,2,2]
-        #in which case we need to return the false as the
-        #answer
-        for i in range(1,len(inorder)):
-            if inorder[i-1] == inorder[i]:
+            if root  == None:
+                return True
+            if not(low<=root.val<=high):
                 return False
-        return True
+            l = rec(root.left,low,root.val-1)
+            r =rec(root.right, root.val+1 , high)
+            return l and r
+        return rec(root,-float("inf"),float("inf"))
+
        
     
