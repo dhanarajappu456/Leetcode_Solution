@@ -19,7 +19,7 @@ class Solution:
             rec(root.right)
         
         rec(root)
-        print(inorder)
+ 
         sorted_arr = sorted(inorder)
         if inorder != sorted_arr:
             return False
