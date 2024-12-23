@@ -40,6 +40,6 @@ class Solution:
                     q.append(nd.right)
         
             cnt   = conflict_cnt(arr)
-            print(cnt)
+
             ans += cnt
         return ans 
