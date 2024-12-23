@@ -20,7 +20,7 @@ class Solution:
             mp = {num: i for i, num in enumerate(arr)}
             
             for i in range(len(arr)):
-                while arr[i] != sorted_[i]:
+                if arr[i] != sorted_[i]:
                     j = mp[sorted_[i]]
                     # Swap elements
                     arr[i], arr[j] = arr[j], arr[i]
@@ -44,7 +44,7 @@ class Solution:
                     q.append(nd.right)
         
             cnt = conflict_cnt(arr)
-            print(cnt)  # Debugging output
+           
             ans += cnt
         
         return ans
