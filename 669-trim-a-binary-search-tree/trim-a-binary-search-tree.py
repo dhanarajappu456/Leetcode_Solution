@@ -15,9 +15,9 @@ class Solution:
             r =  rec(root.right)
             root.left = l
             root.right = r 
-            print(root.val, low,high)
+            
             if low<=root.val<=high:
-                print(root.val)
+    
                 return root
             return l or r
 
