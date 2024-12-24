@@ -40,21 +40,29 @@ class Solution:
         i,j = n-1,m-1
         s = ""
         while(i>=0 and j>=0):
-            
+            print(i,j)
             if text1[i] == text2[j]:
+                print("hii")
                 s  = text1[i] + s
                 i-=1
                 j-=1
             
             else:
-                
-                if i-1>=0 and j-1>=0 and dp[i-1][j]>=dp[i][j-1]:
+                left ,top = -1,-1 
+                if i-1 >=0 :
+                    top = dp[i-1][j]
+                if j-1>=0 :
+                    left = dp[i][j-1]
+                if top>=left:
+                    
                     i-=1
                 else:
                     j-=1
             
-        
-       
+        #print(dp)
+        for a in dp:
+            print(a)
+        print(s)
         return dp[n-1][m-1]
 
                 
