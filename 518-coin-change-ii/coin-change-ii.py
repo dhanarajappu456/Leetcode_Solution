@@ -40,22 +40,39 @@ class Solution:
 
 
 
-        @lru_cache(None)
-        def rec(ind, rem):
+        # @lru_cache(None)
+        # def rec(ind, rem):
 
-            if rem ==0:
-                return 1
-            elif rem <0 :
-                return 0
+        #     if rem ==0:
+        #         return 1
+        #     elif rem <0 :
+        #         return 0
 
             
-            cnt=0
-            for ind in range(ind,n):
+        #     cnt=0
+        #     for ind in range(ind,n):
 
-                if rem>= num[ind]:
-                   cnt+=rec(ind, rem-num[ind])
-            return cnt
-        return rec(0, tar)
+        #         if rem>= num[ind]:
+        #            cnt+=rec(ind, rem-num[ind])
+        #     return cnt
+        # return rec(0, tar)
 
+        prev = [ 1 if i== 0 else 0 for i in range(tar+1)]
+        for i in range(1,tar+1):
+            if i%num[0] == 0:
+                prev[i] = 1
+        for i in range(1,n):
+            
+            curr = [ 0 for i in range(tar+1)]
+            for j in range(tar+1):
+                take = 0
+                not_take = 0
+                if j>= num[i]: 
+                    take = curr[j-num[i]]
+                not_take = prev[j]
+                curr[j] = take + not_take
+            prev  = curr
+        
+        return prev[tar]
 
             
