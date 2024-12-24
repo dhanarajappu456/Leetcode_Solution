@@ -16,27 +16,46 @@ class Solution:
 
 
 
-        prev = [0 for j in range(m)] 
-        prev[0] = int(text1[0] == text2[0])
+        dp =  [ [0 for j in range(m)] for i in range(n)] 
+        dp[0][0] = int(text1[0] == text2[0])
         for j in range(1,m):
             '''
             set if there is a match found previously 
             '''
-            prev[j] =  prev[j-1]  or int(text2[j] == text1[0])
+            dp[0][j] =  dp[0][j-1]  or int(text2[j] == text1[0])
         for i in range(1,n):
-            curr = [0 for j in range(m)] 
+           
             for  j in range(m):
                 choice1 , choice2 , choice3  = 0,0,0
                 if text1[i] == text2[j]:
                     choice1= 1 
                     if j-1>= 0 :
-                        choice1 += prev[j-1]
-                choice2 =  prev[j]
+                        choice1 += dp[i-1][j-1]
+                choice2 =  dp[i-1][j]
                 if j-1>=0:
-                    choice3 =  curr[j-1]
-                curr [j] = max(choice1, choice2 ,choice3)
-            prev =  curr
-        return prev[m-1]
+                    choice3 =  dp[i][j-1]
+                dp[i][j] = max(choice1, choice2 ,choice3)
+            
+
+        i,j = n-1,m-1
+        s = ""
+        while(i>=0 and j>=0):
+            
+            if text1[i] == text2[j]:
+                s  = text1[i] + s
+                i-=1
+                j-=1
+            
+            else:
+                
+                if i-1>=0 and j-1>=0 and dp[i-1][j]>=dp[i][j-1]:
+                    i-=1
+                else:
+                    j-=1
+            
+        
+       
+        return dp[n-1][m-1]
 
                 
 
