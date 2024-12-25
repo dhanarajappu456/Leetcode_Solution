@@ -52,7 +52,7 @@ class Solution:
         self.max_d = 0
         dfs(0,adj2,set())
         dmx2 = self.max_d
-
+        #remember new tree diamter is always >= max(dmx1,dmx2)
         return max(dmx1, dmx2,  math.ceil(dmx1/2) + math.ceil(dmx2/2)+1)
     
 
