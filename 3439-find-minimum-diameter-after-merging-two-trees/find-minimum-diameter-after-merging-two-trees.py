@@ -1,57 +1,59 @@
 class Solution:
-    def minimumDiameterAfterMerge(self, edges1, edges2):
-        # Calculate the number of nodes for each tree
-        n = len(edges1) + 1
-        m = len(edges2) + 1
+    def minimumDiameterAfterMerge(self, edges1: List[List[int]], edges2: List[List[int]]) -> int:
+        #best strategy is to choose n1 and n2 and connect 
+        #where n1 is mid node  of longest path b/w two nodes(diameter)
+        #of the first tree
+        #where n2 is the same thing for the second tree
+    
+        #so 
+        #idea is to find the max path b/w 2 nodes in 
+        #eaxh treee ( that is diameter)
+        #then connect the nodes at the mid of this path 
+        #in each tree
+        self.max_d =0
+        def two_max_find(curr, m1,m2):
+            if curr>=m1: 
+                
+                m2=m1
+                m1 = curr 
+            elif curr>=m2:
+                m2 = curr 
+            return (m1,m2) 
+        def dfs(nd,adj,vis):
+            
+            vis.add(nd)
+            m1,m2 = 0,0
+            for nb in adj[nd]:
+                if nb not in vis:
+                    d = dfs(nb,adj,vis)
+                    m1,m2 = two_max_find(d,m1,m2)
+           
+            self.max_d  =max(self.max_d ,m1+m2)
+            return max(m1,m2) + 1 
+            
+        
+        adj1,adj2 = defaultdict(list), defaultdict(list)
+        
+      
+       
+        for a,b in edges1:
+            adj1[a].append(b)
+            adj1[b].append(a)
+           
+        
+        for a,b in edges2:
+            adj2[a].append(b)
+            adj2[b].append(a)
+            
+        
+        dfs(0,adj1,set())
+        dmx1 = self.max_d
+ 
+        self.max_d = 0
+        dfs(0,adj2,set())
+        dmx2 = self.max_d
 
-        # Build adjacency lists for both trees
-        adj_list1 = self.build_adj_list(n, edges1)
-        adj_list2 = self.build_adj_list(m, edges2)
+        return max(dmx1, dmx2,  math.ceil(dmx1/2) + math.ceil(dmx2/2)+1)
+    
 
-        # Calculate the diameters of both trees
-        diameter1 = self.find_diameter(n, adj_list1)
-        diameter2 = self.find_diameter(m, adj_list2)
-
-        # Calculate the longest path that spans across both trees
-        combined_diameter = ceil(diameter1 / 2) + ceil(diameter2 / 2) + 1
-
-        # Return the maximum of the three possibilities
-        return max(diameter1, diameter2, combined_diameter)
-
-    def build_adj_list(self, size, edges):
-        adj_list = [[] for _ in range(size)]
-        for edge in edges:
-            adj_list[edge[0]].append(edge[1])
-            adj_list[edge[1]].append(edge[0])
-        return adj_list
-
-    def find_diameter(self, n, adj_list):
-        # First BFS to find the farthest node from an arbitrary node (e.g., 0)
-        farthest_node, _ = self.find_farthest_node(n, adj_list, 0)
-
-        # Second BFS to find the diameter starting from the farthest node
-        _, diameter = self.find_farthest_node(n, adj_list, farthest_node)
-        return diameter
-
-    def find_farthest_node(self, n, adj_list, source_node):
-        queue = deque([source_node])
-        visited = [False] * n
-        visited[source_node] = True
-
-        maximum_distance = 0
-        farthest_node = source_node
-
-        while queue:
-            for _ in range(len(queue)):
-                current_node = queue.popleft()
-                farthest_node = current_node
-
-                for neighbor in adj_list[current_node]:
-                    if not visited[neighbor]:
-                        visited[neighbor] = True
-                        queue.append(neighbor)
-
-            if queue:
-                maximum_distance += 1
-
-        return farthest_node, maximum_distance
+        
