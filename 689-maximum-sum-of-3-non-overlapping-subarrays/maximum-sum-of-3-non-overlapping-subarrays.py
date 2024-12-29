@@ -7,6 +7,12 @@ class Solution:
             sm = sub_sums[-1]+nums[i+k-1] -nums[i-1]
             sub_sums.append(sm)
    
+       
+        '''
+        max_sm we can get from nums[i:n]
+        if we havae cnt number of subarrays to be
+        chosen
+        '''
         @lru_cache(None)
         def max_sm(i,cnt):
 
