@@ -6,7 +6,7 @@ class Solution:
         for i in range(1,n-k+1):
             sm = sub_sums[-1]+nums[i+k-1] -nums[i-1]
             sub_sums.append(sm)
-        print(sub_sums)
+   
         @lru_cache(None)
         def max_sm(i,cnt):
 
