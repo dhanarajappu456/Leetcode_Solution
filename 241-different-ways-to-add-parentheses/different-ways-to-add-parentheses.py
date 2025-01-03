@@ -24,5 +24,4 @@ class Solution:
                 
         n = len(expression)
         v = rec(0,n-1)
-        print(v)
         return(v)
