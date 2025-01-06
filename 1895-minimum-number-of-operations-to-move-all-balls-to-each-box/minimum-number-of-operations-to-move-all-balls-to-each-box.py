@@ -1,8 +1,10 @@
 class Solution:
     def minOperations(self, boxes: str) -> List[int]:
+        
         n = len(boxes)
         res = [0 for i in range(n)]
         ans=0
+        #number of balls so far
         ball =0
         for i  in range(n):
 
