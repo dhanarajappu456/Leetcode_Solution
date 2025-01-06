@@ -1,10 +1,24 @@
 class Solution:
     def minOperations(self, boxes: str) -> List[int]:
-        
         n = len(boxes)
         res = [0 for i in range(n)]
+        ans=0
+        ball =0
         for i  in range(n):
-            for j in range(n):
-                if j!=i and boxes[j] =="1":
-                    res[i]+= abs(i-j)
+
+            if ball :
+                ans+= ball
+            res[i] = ans
+            if boxes[i] == "1":
+                ball+=1
+        ans=0
+        ball =0
+        for i  in range(n-1,-1,-1):
+
+            if ball :
+                ans+= ball
+            res[i] += ans
+            if boxes[i] == "1":
+                ball+=1
+      
         return (res)
