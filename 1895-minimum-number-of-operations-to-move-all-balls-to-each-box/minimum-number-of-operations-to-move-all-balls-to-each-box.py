@@ -22,5 +22,4 @@ class Solution:
             res[i] += ans
             if boxes[i] == "1":
                 ball+=1
-      
         return (res)
