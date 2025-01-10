@@ -37,6 +37,8 @@ class Solution:
         cnt = 0
         trie  = Trie()
         for word in words:
+            #no need to put all chars in the word, at max len(pref) 
+            #number of  chars is need to put
             trie.insert(word[:min(len(word),len(pref))])
         present, cnt = trie.search(pref)
         return cnt
