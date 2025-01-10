@@ -11,7 +11,6 @@ class Solution:
             for c in curr_cnts:
                 counts[c] = max(counts[c],curr_cnts[c])
         ans = set(words1)
-        print(counts)
         for w in words1:
             curr_cnts = Counter(w)
             for c in counts:
