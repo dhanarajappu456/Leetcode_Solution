@@ -4,6 +4,14 @@ class Solution:
         for i, c in enumerate(s):
             if locked[i] =="1":
                 if c ==")":
+                    '''
+                    note the case 
+                    (x))
+                    x-> non locked and others locked .
+                    According to this algo the ) at 2 is  matched
+                    with ( at 0
+                    although it should be matched with x at 1 .
+                    '''
                     if locked_op:
                         locked_op.pop(-1)
                     elif non_locked:
@@ -18,7 +26,6 @@ class Solution:
         while(locked_op and non_locked and non_locked[-1]> locked_op[-1]):
             locked_op.pop(-1)
             non_locked.pop(-1)
-        print(locked_op,non_locked)
         return  (locked_op ==[] )and (len(non_locked) %2 ==0)
 
         
