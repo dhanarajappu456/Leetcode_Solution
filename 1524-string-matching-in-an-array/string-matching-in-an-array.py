@@ -4,11 +4,11 @@ class Solution:
         def kmp(txt,pat):
 
             
-            m,n  = len(pat),len(txt)
-            lps = [0 for i in range(m)]
+            m1,m2  = len(txt), len(pat)
+            lps = [0 for i in range(m2)]
             j = 0
             i =1 
-            while(i<m):
+            while(i<m2):
                 if pat[i] == pat[j]:
                     lps[i] = j+1
                     i+=1
@@ -22,7 +22,7 @@ class Solution:
             j =0
             i= 0
 
-            while(i<n):
+            while(i<m1):
 
                 if pat[j] == txt[i]:
                     i+=1
@@ -34,7 +34,7 @@ class Solution:
                     else:
 
                         i+=1
-                if j == m:
+                if j == m2:
                     return True
             return False
                 
