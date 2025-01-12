@@ -1,32 +1,29 @@
 class Solution:
     def canBeValid(self, s: str, locked: str) -> bool:
-        locked_op , non_locked =   [] ,[]
-        for i, c in enumerate(s):
-            if locked[i] =="1":
-                if c ==")":
-                    '''
-                    note the case 
-                    (x))
-                    x-> non locked and others locked .
-                    According to this algo the ) at 2 is  matched
-                    with ( at 0
-                    although it should be matched with x at 1 .
-                    '''
-                    if locked_op:
-                        locked_op.pop(-1)
-                    elif non_locked:
-                        non_locked.pop(-1)
-                    else:
-                        return False
-                else:
-                    locked_op.append(i)
+        if len(s)%2!=0:
+            return False
+        open,close=0,0
+        for i,c in enumerate(s):
+            
+            if c == "(" or locked[i] =="0":
+               open+=1
+              
             else:
-                non_locked.append(i)
-        
-        while(locked_op and non_locked and non_locked[-1]> locked_op[-1]):
-            locked_op.pop(-1)
-            non_locked.pop(-1)
-        return  (locked_op ==[] )and (len(non_locked) %2 ==0)
+                open-=1
+            if open<0:
+                return False
+        n = len(s)
+        open,close=0,0
+        for i in range(n-1,-1,-1):
+            c = s[i]
+            if c == ")" or locked[i] =="0":
+               close+=1
+              
+            else:
+                close-=1
+            if close<0:
+                return False    
+        return  True
 
         
                     
