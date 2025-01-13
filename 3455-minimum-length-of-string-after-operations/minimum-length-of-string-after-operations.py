@@ -9,7 +9,11 @@ class Solution:
             c  = s[i]
             val  = ord(c)-ord('a')
             chars_cnt[val]+=1
+            #as soon as there are 3 chars available , we can delete the left
+            #and right chars, keep the middle one 
             if chars_cnt[val] == 3:
                 min_len -=2
+                #persisting the middle char and assumed to moved to left most 
+                #postition in the 3 position
                 chars_cnt[val]=1
         return min_len
