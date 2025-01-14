@@ -5,7 +5,7 @@ class Solution:
             pref,suff = 0, 0
             if len(words[i])<= len(words[j]):
                 ln  = len(words[i])
-                return words[i] == words[j][:ln] == words[j][-ln:]
+                return words[j].startswith(words[i]) and words[j].endswith(words[i])
             return False                   
                     
 
