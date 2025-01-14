@@ -1,7 +1,7 @@
 class Node:
     def __init__(self):
         self.children = {}  # Using a dictionary instead of an array
-        self.flag = False
+    
     
     def contains(self, letter):
         return letter in self.children
@@ -12,12 +12,7 @@ class Node:
     def get(self, letter):
         return self.children.get(letter)
     
-    def setEnd(self):
-        self.flag = True
-    
-    def getEnd(self):
-        return self.flag
-
+  
 class Trie:
     def __init__(self):
         self.root = Node()
@@ -28,7 +23,7 @@ class Trie:
             if not temp.contains(char):
                 temp.put(char, Node())
             temp = temp.get(char)    
-        temp.setEnd()
+  
     
     def search(self, word: str) -> bool:
         temp = self.root
