@@ -24,7 +24,7 @@ class Trie:
                 temp.put(c1,c2, Node())
             temp = temp.get(c1,c2)   
             temp.cnt+=1
-
+    #t:O(m)
     def count(self, word: str) -> bool:
         temp = self.root
         m  = len(word)
@@ -41,14 +41,34 @@ class Solution:
     def countPrefixSuffixPairs(self, words: List[str]) -> int:
         ans = 0
         n = len(words)
-        #startinf from the end of the words list  ,we  make a 
+        #, the idea is trie will contain the key as chars in the left most and right
+        #most poistions of a word ,
+        #that is char at 
         '''
-         pref and suff trie, for the word words[j] and 
-        check for all the words words[i] , that comes  before it 
-        in the words list ,  if  it could be suff and pref of the 
-        word words[j]
+        1)0, m-1
+        2) 1 , m-2
+        .
+        .
+        .
+
+        and so on
+        '''
+
+        '''
+        also each node containe the cnt variable , that 
+        denote the freq of occurence of the particular prefix
+
+        Inside the count function ,  when we check if a words[i] if prefix of any words
+        to the right of it  , this cnt variale helps in doing so
+
+        The count function checs if words[i] pref and suff , by 
+        comparing the 2 letters in eaach node with
+         the left most and right most characters of it 
+
+         
         '''
         trie = Trie()
+        #t:o(n)
         for word in reversed(words):
             #for how many word, word[j], this word , word[i]
             #is a prefix of
