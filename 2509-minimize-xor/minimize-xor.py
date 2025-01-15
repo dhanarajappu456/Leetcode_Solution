@@ -32,10 +32,3 @@ class Solution:
             mask<<=1
 
         return x
-
-        
-
-
-
-
-        return 0 
