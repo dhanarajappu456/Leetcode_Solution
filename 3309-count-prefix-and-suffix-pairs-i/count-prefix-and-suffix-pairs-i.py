@@ -1,37 +1,41 @@
 class Node:
     def __init__(self):
         self.children = {}  # Using a dictionary instead of an array
+        self.cnt =0
     
+    def contains(self, l1,l2):
+        return (l1,l2) in self.children
     
-    def contains(self, letter):
-        return letter in self.children
+    def put(self, l1,l2, node):
+        self.children[(l1,l2)] = node
     
-    def put(self, letter, node):
-        self.children[letter] = node
-    
-    def get(self, letter):
-        return self.children.get(letter)
+    def get(self, l1,l2):
+        return self.children.get((l1,l2))
     
   
 class Trie:
     def __init__(self):
         self.root = Node()
     
-    def insert(self, word: str) -> None:
+    def insert(self, word) -> None:
         temp = self.root
-        for char in word:
-            if not temp.contains(char):
-                temp.put(char, Node())
-            temp = temp.get(char)    
-  
-    
-    def search(self, word: str) -> bool:
+        for (c1,c2) in zip(word,reversed(word)):
+            if not temp.contains(c1,c2):
+                temp.put(c1,c2, Node())
+            temp = temp.get(c1,c2)   
+            temp.cnt+=1
+
+    def count(self, word: str) -> bool:
         temp = self.root
-        for char in word:
-            if not temp.contains(char):
-                return False
-            temp = temp.get(char)    
-        return True 
+        m  = len(word)
+        i,j = 0 ,m-1
+        while(i<m):
+            if not temp.contains(word[i],word[j]):
+                return 0
+            temp = temp.get(word[i],word[j])  
+            i+=1
+            j-=1  
+        return temp.cnt 
 
 class Solution:
     def countPrefixSuffixPairs(self, words: List[str]) -> int:
@@ -44,17 +48,13 @@ class Solution:
         in the words list ,  if  it could be suff and pref of the 
         word words[j]
         '''
-        for j in range(n - 1, 0, -1):
-            w = words[j]
-            pref_trie = Trie()
-            suff_trie = Trie()
-
-            pref_trie.insert(w)
-            suff_trie.insert(w[::-1])
-
-            for i in range(j):
-                if len(words[i]) <= len(words[j]):
-                    pat = words[i]
-                    if pref_trie.search(pat) and suff_trie.search(pat[::-1]):
-                        ans += 1
+        trie = Trie()
+        for word in reversed(words):
+            #for how many word, word[j], this word , word[i]
+            #is a prefix of
+            ans+=trie.count(word)
+            trie.insert(word)
         return ans
+        
+    
+     
