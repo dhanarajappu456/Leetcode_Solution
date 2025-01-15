@@ -63,9 +63,9 @@ class Solution:
 
         The count function checs if words[i] pref and suff , by 
         comparing the 2 letters in eaach node with
-         the left most and right most characters of it 
+        corresponding  left most and right most characters of itself(words[i])
 
-         
+
         '''
         trie = Trie()
         #t:o(n)
