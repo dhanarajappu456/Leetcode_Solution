@@ -11,23 +11,27 @@ class Solution:
         n = len(num2_b)
         ones = num2_b.count("1")
         i = 0
-        ans  = 0
+        x  = 0
+        #generating the number x, such that , msb 1's in num1 is
+        #unset
+
         while(ones and i<len(num1_b)):
             if num1_b[i] =="1":
-                print(i)
-                ans|= (1<<(m-1)-i)
+                x|= (1<<(m-1)-i)
                 ones-=1
             i+=1
         mask = 1
-        print("ones",ones)
+        #if there are remainining ones ,
+        #then starting from lsb x should be such that, 
+        #we need to set the 0 to 1 , in the num1
         while(ones ):
             if (mask & num1) ==0:
-                print(mask, "mask")
-                ans|=mask
+              
+                x|=mask
                 ones-=1
             mask<<=1
 
-        return ans
+        return x
 
         
 
