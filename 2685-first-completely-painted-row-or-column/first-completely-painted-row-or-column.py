@@ -30,6 +30,8 @@ class Solution:
                 val  = mat[i][j]
                 max_ind = max(max_ind , val_ind[val])
             ans = min(ans, max_ind)
+        
+        #for each col see max ind in arr , at which entire col is marked
         for j in range(n):
             max_ind  = 0 
             for i in range(m):
