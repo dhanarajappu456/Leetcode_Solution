@@ -1,20 +1,24 @@
 class Solution:
     def numTilePossibilities(self, tiles: str) -> int:
         n =len(tiles)
-        used =  [False for i in range(n)]
+        letters =  [ 0 for i in range(26)]
         res = set()
-        
+        for c in tiles:
+    
+            letters[ord(c)-65] +=1 
+        cnt =0 
         def rec(s):
-            res.add(s)
-            for  j in range(n):
+            nonlocal cnt 
+            cnt+=1
+            for j in range(26):
 
-                if  used[j]:
+                if letters[j] == 0:
                     continue
-                used[j] = True
-                rec(s+tiles[j] ) 
-                used[j] = False
+                letters[j] -=1
+                rec(s+ chr(j + 65) ) 
+                letters[j] +=1
         
         rec("")
-        return len(res)-1 
+        return cnt-1
 
         
