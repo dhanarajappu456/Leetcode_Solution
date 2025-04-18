@@ -20,20 +20,28 @@ class Solution:
 
 
         n = len(nums)
+       
         factors = set()
         val_ind = dict(list)
+        #factors of k 
         for i in range(1,k+1):
             if k%i == 0:
                 factors.add(i)
-        
+        #creating num -> [indices list]
         for i,num in enumerate(nums):
             val_ind[num].append(i)
         ans = 0 
         for num in val_ind:
             mp  = dict(int)
+            
             for i in val_ind[num]: 
+
                 needed  = k//gcd(i,k)
+                #number of j previously visited , that form pair with
+                #current index i
                 ans+=mp[needed]
+                #counting this i as  multiple of all the fact
+                #that divides it
                 for fact in factors:
                     if i%fact ==0:
                         mp[fact]+=1
