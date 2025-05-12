@@ -13,8 +13,6 @@ class Solution:
         
         # par to mark as parent, which is already visited
         def rec(root,par):
-            if root == None:
-                return 0
             time  =0 
             ans = 0 
             for nb in adj[root]:
