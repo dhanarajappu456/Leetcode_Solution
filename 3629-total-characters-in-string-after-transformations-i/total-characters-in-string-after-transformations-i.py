@@ -1,21 +1,34 @@
+
+
 class Solution:
     def lengthAfterTransformations(self, s: str, t: int) -> int:
-        mod = 10**9 + 7
-        
-        # mp[i] stores how many characters with value (a + i) we have
-        mp = [0] * 26
-        for c in s:
-            mp[ord(c) - ord('a')] += 1
-        
-        for _ in range(t):
-            temp = [0] * 26
-            for i in range(26):
-                count = mp[i]
-                if i == 25:  # 'z'
-                    temp[0] = (temp[0] + count) % mod  # 'a'
-                    temp[1] = (temp[1] + count) % mod  # 'b'
+        mp =[ 0 for i in range(26)]
+        mod = 10**9+7
+        for c  in s:
+            mp[ord(c)-97]+=1
+        for i in range(t):
+            temp = [0 for i in range(26)]
+            for k in  range(26):
+               
+                if k == 25:
+                    cnt = mp[k]
+                    #character a 
+                    temp[0]  += cnt
+                    #character  b  
+                    temp[1]  += cnt
                 else:
-                    temp[i + 1] = (temp[i + 1] + count) % mod
+                    cnt = mp[k]
+                    # next character
+                    temp[k+1] = temp[k+1] + cnt
             mp = temp
+        ans = 0 
+        for i in range(26):
+            ans = (ans + mp[i]%mod)%mod
+        return ans
+
+
+
+
+
+
         
-        return sum(mp) % mod
