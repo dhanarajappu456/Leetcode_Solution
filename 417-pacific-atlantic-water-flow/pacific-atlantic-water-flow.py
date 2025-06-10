@@ -6,35 +6,39 @@ class Solution:
             return []
 
         rows, cols = len(heights), len(heights[0])
-        
-        pacific = [[False] * cols for _ in range(rows)]
-        atlantic = [[False] * cols for _ in range(rows)]
-        
-        def dfs(r, c, visited, prev_height):
-            if (r < 0 or r >= rows or c < 0 or c >= cols or 
-                visited[r][c] or heights[r][c] < prev_height):
-                return
-            visited[r][c] = True
-            for dr, dc in [(1,0), (-1,0), (0,1), (0,-1)]:
-                dfs(r + dr, c + dc, visited, heights[r][c])
-
-        # Start DFS from Pacific Ocean (top row and left column)
-        for i in range(rows):
-            dfs(i, 0, pacific, heights[i][0])
-        for j in range(cols):
-            dfs(0, j, pacific, heights[0][j])
-
-        # Start DFS from Atlantic Ocean (bottom row and right column)
-        for i in range(rows):
-            dfs(i, cols - 1, atlantic, heights[i][cols - 1])
-        for j in range(cols):
-            dfs(rows - 1, j, atlantic, heights[rows - 1][j])
-
-        # Find all cells that can reach both oceans
         result = []
+
+        def can_reach_both(i, j):
+            pacific_reached = atlantic_reached = False
+            visited = set()
+
+            def dfs(r, c):
+                nonlocal pacific_reached, atlantic_reached
+                if (r, c) in visited:
+                    return
+                visited.add((r, c))
+
+                # Check if we reached Pacific or Atlantic
+                if r == 0 or c == 0:
+                    pacific_reached = True
+                if r == rows - 1 or c == cols - 1:
+                    atlantic_reached = True
+
+                if pacific_reached and atlantic_reached:
+                    return
+
+                for dr, dc in [(1,0), (-1,0), (0,1), (0,-1)]:
+                    nr, nc = r + dr, c + dc
+                    if 0 <= nr < rows and 0 <= nc < cols:
+                        if heights[nr][nc] <= heights[r][c]:
+                            dfs(nr, nc)
+
+            dfs(i, j)
+            return pacific_reached and atlantic_reached
+
         for i in range(rows):
             for j in range(cols):
-                if pacific[i][j] and atlantic[i][j]:
+                if can_reach_both(i, j):
                     result.append([i, j])
 
         return result
