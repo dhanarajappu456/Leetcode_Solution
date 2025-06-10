@@ -16,22 +16,25 @@ class Solution:
                 nonlocal pacific_reached, atlantic_reached
                 if (r, c) in visited:
                     return
-                visited.add((r, c))
 
-                # Check if we reached Pacific or Atlantic
                 if r == 0 or c == 0:
                     pacific_reached = True
                 if r == rows - 1 or c == cols - 1:
                     atlantic_reached = True
-
                 if pacific_reached and atlantic_reached:
                     return
-
+                visited.add((r, c))
                 for dr, dc in [(1,0), (-1,0), (0,1), (0,-1)]:
                     nr, nc = r + dr, c + dc
                     if 0 <= nr < rows and 0 <= nc < cols:
                         if heights[nr][nc] <= heights[r][c]:
                             dfs(nr, nc)
+                # Check if we reached Pacific or Atlantic
+                
+
+                
+
+                
 
             dfs(i, j)
             return pacific_reached and atlantic_reached
