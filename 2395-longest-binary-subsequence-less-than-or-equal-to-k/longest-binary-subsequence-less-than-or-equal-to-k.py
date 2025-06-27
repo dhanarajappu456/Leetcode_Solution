@@ -4,6 +4,7 @@ class Solution:
         cnt  = 0 
         num = 0
         i = 0 
+        #choosing the values from right to left  in the string s 
         while(i<n and num<=k):
             
             if s[n-1-i] =="1":
@@ -11,12 +12,12 @@ class Solution:
                     break
                 else:
                     num = num+(2**i)
-                    #print(i, s[n-1-i])
+               
             
             cnt+=1
             
             i+=1
-        print(cnt,i)
+        #choosing leading 0's in case any
         while(i<n):
            
             if s[n-1-i] =="0":
