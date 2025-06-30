@@ -1,15 +1,15 @@
 from collections import defaultdict as dict
-
 class Solution:
     def findLHS(self, nums: List[int]) -> int:
-        nums.sort()
-        mp = dict(int)
+        count = dict(int)
         ans = 0
         for i,num in enumerate(nums):
-            if num not in mp:
-                mp[num] = i
-            if num-1 in mp:
-                ans = max( ans , i -mp[num-1] + 1 )
+            count[num]+=1
+        for num in nums:
+            min_ = num 
+            max_ = num+1
+            if count[num+1]:
+                ans = max(ans , count[num] + count[num+1])
         return ans
 
     
