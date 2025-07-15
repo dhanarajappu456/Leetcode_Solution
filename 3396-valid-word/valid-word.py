@@ -1,7 +1,7 @@
 class Solution:
     def isValid(self, word: str) -> bool:
-        vows = ["a","e","i","o","u","A","E","I","O","U"]
-        nums = ["0","1","2","3","4","5","6","7","8","9"]
+        vows = set(["a","e","i","o","u","A","E","I","O","U"])
+        nums = set(["0","1","2","3","4","5","6","7","8","9"])
         def check(word):
             dig = 0 
             vow  =  0
