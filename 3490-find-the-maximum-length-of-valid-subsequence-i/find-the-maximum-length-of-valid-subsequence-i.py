@@ -10,26 +10,19 @@ class Solution:
         odd,even  =0 ,0 
         alt = 0 
 
-
+        #finding the odd nums
         for i in range(n): 
             if nums[i]%2!=0:
                 odd+=1
-        
+        #finding the even nums 
         for i in range(n ):
             if nums[i]%2  ==0:
                 even+=1
-
+        #finding the alternating parity numbers
         for i in range(n):
             if nums[i]%2 != last_rem:
                 last_rem   = nums[i]%2 
                 count+=1
         alt  = max(alt, count)
-        # count = 0 
-        
-        # for i in range(1,n):
-        #     if nums[i]%2 != last_rem :
-        #         last_rem   = nums[i]%2 
-        #         count+=1
-    
-        
+
         return   max(odd, even, alt)
