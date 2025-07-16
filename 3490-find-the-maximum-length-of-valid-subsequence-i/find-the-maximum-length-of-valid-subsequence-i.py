@@ -7,8 +7,6 @@ class Solution:
         n  =len(nums)
         last_rem = -1
         count = 0 
-        alt  = 0 
-
         odd,even  =0 ,0 
         alt = 0 
 
@@ -24,16 +22,14 @@ class Solution:
         for i in range(n):
             if nums[i]%2 != last_rem:
                 last_rem   = nums[i]%2 
-                print(last_rem)
                 count+=1
         alt  = max(alt, count)
-        count = 0 
+        # count = 0 
         
-        for i in range(1,n):
-            if nums[i]%2 != last_rem :
-                last_rem   = nums[i]%2 
-                count+=1
-        
-        alt = max(alt , count)
+        # for i in range(1,n):
+        #     if nums[i]%2 != last_rem :
+        #         last_rem   = nums[i]%2 
+        #         count+=1
+    
         
         return   max(odd, even, alt)
