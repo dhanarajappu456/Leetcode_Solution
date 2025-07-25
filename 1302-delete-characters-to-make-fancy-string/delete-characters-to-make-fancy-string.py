@@ -1,18 +1,11 @@
 class Solution:
     def makeFancyString(self, s: str) -> str:
-        prev_char  = -1
-        cnt =0 
-        ans  =  [ ]
-        for c in s:
-            if   prev_char == c :
-                if cnt<2:
-                    cnt+=1
-                    ans.append(c)  
-            else: 
-                prev_char = c 
-                ans.append(c)
-                cnt=1 
-        return "".join(ans)
-
-
+        ans  =""
+        for i,c in enumerate(s):
+           
+            if (i>=2) and (ans[-1]==c) and( ans[-2]==c) :
+              
+                continue 
+            ans+= c 
+        return ans
         
