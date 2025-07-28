@@ -6,16 +6,15 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        
-        fast,slow = head,head 
-        
-        while(fast and fast.next ):
+
+        s,f  =  head, head
+        while(f and f.next):
             
-            fast = fast.next.next
-            slow = slow.next
-            
-            if fast == slow:
+            s = s.next
+            f = f.next.next
+            # this condition can't be put at the start of the loop , 
+            #cuz, that might include the case where , f and s = is at head , and ther is no cylce
+            # but putting this at the start of the loop will say , it has cycle.
+            if f==s:
                 return True
         return False
-        
-        
