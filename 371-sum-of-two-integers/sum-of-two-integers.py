@@ -1,6 +1,7 @@
 class Solution:
     def getSum(self, a: int, b: int) -> int: 
-        #12 bit mask
+        #12 bit mask - the sum can go max 2000, which need 11 bits , and 
+        #1 bit for the sign , so 12 bits in total 
         mask = 0b111111111111
         while(b & mask):
             temp = a^b
