@@ -9,6 +9,9 @@ class Solution:
         mn  = min(complexity)
         if (mn < complexity[0] ) or (complexity.count(mn)>1 and complexity[0] ==  mn):
             return 0 
+
+
+        #in other case you  can permute all n-1 complexities
         n = len(complexity)
 
         return math.factorial(n-1)%mod
