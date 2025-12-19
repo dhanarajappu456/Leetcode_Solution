@@ -3,17 +3,27 @@ class Solution:
         #sliding window 
         #current profit with strategy being  whole 1 
         curr_profit = 0 
+        #profit from index k to end
+        inital_profit = 0
+        #total profit with all the given strategy
+        total_profit = 0
+        n = len(prices)
+        for i in range(n):
+            if i>=k:
+                inital_profit+=(prices[i] * strategy[i])
+            total_profit += (prices[i] * strategy[i])
+        
         n  = len(prices)
         #keeeps  track of profit  = prices * strategy
-        profit =  [ prices[i] * strategy[i] for  i in range(n)]
-        curr_profit = sum(profit[k:])
+       
+        curr_profit = inital_profit
         #all strategy from ind= k//2 to k-1 is 1 , so 
         for i in range(k//2,k):
             curr_profit += ( prices[i] * 1)
         
         #may be the initalu strategy would be the best one 
         # that is why sum(profit) also may be the ans
-        ans = max ( curr_profit , sum(profit))
+        ans = max ( curr_profit ,total_profit)
         i,j = 0 , k-1
         while(j<n):
             ans =max(ans,curr_profit)
