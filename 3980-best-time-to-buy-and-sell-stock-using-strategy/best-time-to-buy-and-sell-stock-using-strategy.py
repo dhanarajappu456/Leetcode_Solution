@@ -1,55 +1,43 @@
 class Solution:
     def maxProfit(self, prices: List[int], strategy: List[int], k: int) -> int:
-
+        #sliding window 
+        #current profit with strategy being  whole 1 
         curr_profit = 0 
         n  = len(prices)
+        #keeeps  track of profit  = prices * strategy
         profit =  [ prices[i] * strategy[i] for  i in range(n)]
         curr_profit = sum(profit[k:])
-      
+        #all strategy from ind= k//2 to k-1 is 1 , so 
         for i in range(k//2,k):
             curr_profit += ( prices[i] * 1)
-      
+        
+        #may be the initalu strategy would be the best one 
+        # that is why sum(profit) also may be the ans
         ans = max ( curr_profit , sum(profit))
-        #print(profit,curr_profit,sum(profit),ans)
-
         i,j = 0 , k-1
-        
-    
         while(j<n):
-            #print(curr_profit)
             ans =max(ans,curr_profit)
-        
-            #logic of what need to be done with element at j
-            #logic for what need to be done with element at i+k//2
-            
-
             j+=1
-           
-
             if j<n:
+                # we  need to add the new price at j to the ans as sttrategy will be 1 now at j 
+                #but before that we need to undo the effect of previous strategy that was at this index
                 if strategy[j] ==1:
                     curr_profit -= prices[j]
                 elif strategy[j]== -1:
                     curr_profit += prices[j]
-                #print("cr1",j,curr_profit)
                 curr_profit+= prices[j]
-                #print("cr",j,curr_profit)
-                # if k!=2:
-                # if strategy[i+k//2] == -1:
-                #     curr_profit += prices[i+k//2]
-                # elif strategy[i+k//2] == 1:
+                # the strategy at i+k//2 was 1 , intially, 
+                # so we had taken the prices at i+k//2 , we need to undo it 
+           
                 curr_profit -= prices[i+k//2]
-                #print("cr",curr_profit)
-            
+                #the strategy at  i was 0 , now we need to  consider the actual strategy that was there
+                #at index i 
                 if strategy[i] == 1:
                     curr_profit+= prices[i]
                 elif strategy[i] == -1:
                     curr_profit-= prices[i]
-                
-                #print("cr",curr_profit)
-
-
                 i+=1
+            
 
 
                 
