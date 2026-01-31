@@ -1,23 +1,21 @@
+import java.util.Arrays;
 
 class Solution {
     public char nextGreatestLetter(char[] letters, char target) {
-    
-        int left = 0, right = letters.length - 1 , n =  letters.length;
+        int idx = Arrays.binarySearch(letters, target);
 
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-
-            if (letters[mid] <= target) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
+        // If found, skip all duplicates
+        if (idx >= 0) {
+            while (idx < letters.length && letters[idx] == target) {
+                idx++;
             }
+        } else {
+            // target not found → get insertion point
+            idx = -idx - 1;
         }
 
-        // wrap-around using modulo
-        return left < n ? letters[left] :  letters[0];
-
-
-       
+        // wrap-around if target >= all letters
+        return letters[idx % letters.length];
     }
 }
+
