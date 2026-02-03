@@ -12,19 +12,20 @@ class Solution:
             i+=1 
         if  cnt==0 or i>=n:
             return False
-        print(1,i)
+       
         cnt =0 
+        
         while(i<n and nums[i-1]>nums[i]):
             cnt+=1
             i+=1
         if cnt  == 0 or i>=n:
             return False
-        print(2,i)
+       
         cnt  = 0 
         while(i<n and nums[i-1]<nums[i]):
             cnt+=1
             i+=1
-        print(3,i)
+        
 
         return (cnt >=1 and  i>=n)
         
